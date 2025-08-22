@@ -141,10 +141,13 @@ SEO_ENHANCER = True  # SEO enhancer is disabled by default
 SEO_ENHANCER_OPEN_GRAPH = True # Subfeature of SEO enhancer
 SEO_ENHANCER_TWITTER_CARDS = True # Subfeature of SEO enhancer
 
-# Minify
+# Minify OFF
 
-CSS_MIN = True
-JS_MIN = True
-HTML_MIN = True
-INLINE_CSS_MIN = True
-INLINE_JS_MIN = True
+CSS_MIN = False
+JS_MIN = False
+HTML_MIN = False
+INLINE_CSS_MIN = False
+INLINE_JS_MIN = False
+
+# Random cache breakers
+CB = "?cb=123"

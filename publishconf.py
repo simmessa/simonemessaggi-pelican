@@ -16,6 +16,14 @@ CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
 
+# Minify ON
+
+CSS_MIN = True
+JS_MIN = False
+HTML_MIN = True
+INLINE_CSS_MIN = True
+INLINE_JS_MIN = True
+
 # Following items are often useful when publishing
 
 # DISQUS_SITENAME = ""
