@@ -14,7 +14,8 @@ AUTHOR_META = {
 
 CSS_OVERRIDE = ['theme/css/simonemessaggi.css']
 
-SITENAME = 'Simonemessaggi.it'
+SITENAME = u'SimoneMessaggi.it'
+SITESUBTITLE = u'Master at Mistakes'
 SITEURL = "http://127.0.0.1:8000"
 COPYRIGHT_YEAR = "2025"
 
