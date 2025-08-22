@@ -31,6 +31,14 @@ PLUGINS = [
   "pelican.plugins.sitemap",
   "pelican.plugins.statistics",
   "pelican.plugins.webassets",
+  "pelican_redirect",
+]
+
+CONTENT_REDIRECT_CONFIGURATION = [
+    {
+        "ARTICLE_URL": "{slug}",
+        # "PAGE_URL": "old/pages/{slug}.html",
+    }
 ]
 
 STATIC_PATHS = ['images', 'extra/CNAME']
