@@ -5,357 +5,357 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml"
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://127.0.0.1:8000/</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/archives.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/archives.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/author/simmessa.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/author/simmessa.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/author/simmessa2.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/author/simmessa2.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/authors.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/authors.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/categories.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/categories.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/humans.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/category/humans.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/rants.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/category/rants.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/tech.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/category/tech.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/come-attrarre-talenti-nel-mondo-del-tech.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/come-attrarre-talenti-nel-mondo-del-tech.html</loc>
 <lastmod>2018-11-20T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/container-security-migliorare-la-sicurezza-con-i-distroless-container.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/container-security-migliorare-la-sicurezza-con-i-distroless-container.html</loc>
 <lastmod>2019-09-01T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/fare-un-dump-da-uno-snapshot-rds-con-python-e-terraform.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/fare-un-dump-da-uno-snapshot-rds-con-python-e-terraform.html</loc>
 <lastmod>2018-10-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/guida-al-protocollo-knxnetip-cioe-knx-over-ip.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/guida-al-protocollo-knxnetip-cioe-knx-over-ip.html</loc>
 <lastmod>2015-12-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/in-italia-siamo-indietro.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/in-italia-siamo-indietro.html</loc>
 <lastmod>2014-08-12T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/index2.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/index2.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/la-mia-breve-storia-di-tastiere-meccaniche-parte-1.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/la-mia-breve-storia-di-tastiere-meccaniche-parte-1.html</loc>
 <lastmod>2020-12-25T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/la-mia-esperienza-di-lavoro-a-ilgiornaleit.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/la-mia-esperienza-di-lavoro-a-ilgiornaleit.html</loc>
 <lastmod>2018-11-11T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/lo-stato-della-fibra-a-rivolta-dadda.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/lo-stato-della-fibra-a-rivolta-dadda.html</loc>
 <lastmod>2018-08-07T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/per-chi-cerca-di-forzarvi-il-server-ssh.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/per-chi-cerca-di-forzarvi-il-server-ssh.html</loc>
 <lastmod>2016-02-06T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni.html</loc>
 <lastmod>2018-06-13T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/aws-cloud.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/aws-cloud.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/cherry-mx.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/cherry-mx.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/cms.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/cms.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/digital-divide.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/digital-divide.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/distroless.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/distroless.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/docker.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/docker.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/fail2ban.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/fail2ban.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/fibra-ottica.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/fibra-ottica.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/ghost.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/ghost.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/home-automation.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/home-automation.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/iot.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/iot.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/knx.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/knx.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/kubernetes.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/kubernetes.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/legacy.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/legacy.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/mysql.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/mysql.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/nodejs.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/nodejs.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/performance.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/performance.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/python.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/python.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/rds.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/rds.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/security.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/security.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/ssh.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/ssh.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/startups.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/startups.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/talent.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/talent.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/talk.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/talk.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/tastiere-meccaniche.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/tastiere-meccaniche.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/teambuilding.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/teambuilding.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/terraform.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/terraform.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/trends.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/trends.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/wordpress.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tag/wordpress.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tags.html</loc>
-<lastmod>2025-08-15T17:30:58-00:00</lastmod>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/tags.html</loc>
+<lastmod>2025-08-15T17:33:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/viviamo-nellera-post-wordpress.html</loc>
+<loc>https://simmessa.github.io/simonemessaggi-pelican/viviamo-nellera-post-wordpress.html</loc>
 <lastmod>2014-08-21T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
