@@ -14,7 +14,12 @@
     <article class="post">
         <div class="inner">
             <div class="box post-box">
-                <img src="{{ article.cover }}" class=""/>
+                {% if article.cover|lower|truncate(4, True, '') == "http" %}
+                    {% set selected_cover = article.cover %}
+                {% else %}
+                    {% set selected_cover = SITEURL+"/"+article.cover %}
+                    <img src="{{ selected_cover }}" class="boh"/>
+                {% endif %}
                 <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>
                 <span class="post-meta">

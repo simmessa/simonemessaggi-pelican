@@ -12,6 +12,27 @@ AUTHOR_META = {
   }
 }
 
+MENUITEMS = (
+  ('Home', '/'),
+  ('Rants', '/category/rants/'),
+  ('Tech', '/category/tech/'),
+  ('Humans', '/category/humans/'),
+)
+
+### Plugins
+
+PLUGINS = [
+    "pelican.plugins.image_process",
+    "pelican.plugins.minify",
+    "pelican.plugins.neighbors",
+    # "pelican.plugins.obsidian",
+    "pelican.plugins.related_posts",
+    "pelican.plugins.seo",
+    "pelican.plugins.sitemap",
+    "pelican.plugins.statistics",
+    "pelican.plugins.webassets",
+]
+
 CSS_OVERRIDE = ['theme/css/simonemessaggi.css']
 
 SITENAME = u'SimoneMessaggi.it'
@@ -39,13 +60,13 @@ LINKS = (
     ("Pelican", "https://getpelican.com/"),
     ("Python.org", "https://www.python.org/"),
     ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-    ("You can modify those links in your config file", "#"),
 )
+
 
 # Social widget
 SOCIAL = (
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
+  ('Twitter', 'http://twitter.com/simmessa'),
+  ('Github', 'https://github.com/simmessa')
 )
 
 DEFAULT_PAGINATION = 10
@@ -53,7 +74,55 @@ DEFAULT_PAGINATION = 10
 SHOW_TAGS_IN_ARTICLE_SUMMARY = True
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = False
+
+# Sitemap
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
+
+### SLUGS:
+
+# Post and Pages path
+ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}/'
+ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
+PAGE_URL = 'pages/{slug}/'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
+YEAR_ARCHIVE_URL = '{date:%Y}/'
+YEAR_ARCHIVE_SAVE_AS = '{date:%Y}/index.html'
+MONTH_ARCHIVE_URL = '{date:%Y}/{date:%m}/'
+MONTH_ARCHIVE_SAVE_AS = '{date:%Y}/{date:%m}/index.html'
+
+# Tags and Category path
+CATEGORY_URL = 'category/{slug}/'
+CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+CATEGORIES_URL = 'category/'
+CATEGORIES_SAVE_AS = 'category/index.html'
+TAG_URL = 'tag/{slug}/'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
+TAGS_URL = 'tag/'
+TAGS_SAVE_AS = 'tag/index.html'
+
+# Author
+AUTHOR_URL = 'author/{slug}/'
+AUTHOR_SAVE_AS = 'author/{slug}/index.html'
+AUTHORS_URL = 'author/'
+AUTHORS_SAVE_AS = 'author/index.html'
+
+#Archives
+ARCHIVES_URL = 'archive/'
+ARCHIVES_SAVE_AS = 'archive/index.html'
+
 
 # SEO Optimization
 SEO_REPORT = True  # SEO report is enabled by default
