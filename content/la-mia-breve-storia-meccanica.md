@@ -1,6 +1,6 @@
 ---
 date: 2020-12-25
-title: "La mia breve storia di tastiere meccaniche - parte 1"
+title: La mia breve storia di tastiere meccaniche - parte 1
 cover: images/das_keyboard_anne_pro2.jpg
 author: simmessa
 status: published
