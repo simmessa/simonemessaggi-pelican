@@ -37,7 +37,7 @@ PLUGINS = [
 CONTENT_REDIRECT_CONFIGURATION = [
     {
         "ARTICLE_URL": "{slug}",
-        # "PAGE_URL": "old/pages/{slug}.html",
+        "PAGE_URL": "{slug}",
     }
 ]
 
