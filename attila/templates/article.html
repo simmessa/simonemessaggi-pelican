@@ -73,7 +73,7 @@
     <header class="post-header {% if selected_cover or selected_color %} has-cover {% endif %}">
       <div class="inner">
         <span class="post-info">
-          <a href="/"><span class="post-type">{{ "Home" }}</span></a>&nbsp;&gt;&nbsp;
+          <a href="{{ SITEURL }}"><span class="post-type">{{ "Home" }}</span></a>&nbsp;&gt;&nbsp;
           <span class="post-type">{{ "Article" }}</span>
           {% if primary_tag %}
           <a href="/category/{{primary_tag.name | lower}}.html"><span class="post-count">{{primary_tag.name | title}}</span></a>
