@@ -16,7 +16,7 @@ CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
 
-# Minify ON
+# Minify ON, but JS is off since files are minified in Makefile
 
 CSS_MIN = True
 JS_MIN = False
@@ -28,3 +28,7 @@ INLINE_JS_MIN = True
 
 # DISQUS_SITENAME = ""
 GOOGLE_ANALYTICS = "G-Q242MTLMK7"
+
+# Random cache breakers
+JSMIN = ".min"
+CB = "?cb=12233"
