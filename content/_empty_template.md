@@ -1,10 +1,10 @@
 ---
 date: 2025-08-19
-title: Just your title, no quotes
+title: Just your title
 cover: images/coverimage.jpg
 author: simmessa
-status: draft # published after editing
-category: None
+status: hidden
+category: none
 tags: tag1, tag2
 ---
 
