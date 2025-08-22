@@ -22,16 +22,19 @@ MENUITEMS = (
 ### Plugins
 
 PLUGINS = [
-    "pelican.plugins.image_process",
-    "pelican.plugins.minify",
-    "pelican.plugins.neighbors",
-    # "pelican.plugins.obsidian",
-    "pelican.plugins.related_posts",
-    "pelican.plugins.seo",
-    "pelican.plugins.sitemap",
-    "pelican.plugins.statistics",
-    "pelican.plugins.webassets",
+  "pelican.plugins.image_process",
+  "pelican.plugins.minify",
+  "pelican.plugins.neighbors",
+  # "pelican.plugins.obsidian",
+  "pelican.plugins.related_posts",
+  "pelican.plugins.seo",
+  "pelican.plugins.sitemap",
+  "pelican.plugins.statistics",
+  "pelican.plugins.webassets",
 ]
+
+STATIC_PATHS = ['images', 'extra/CNAME']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 
 CSS_OVERRIDE = ['theme/css/simonemessaggi.css']
 
@@ -78,17 +81,17 @@ RELATIVE_URLS = False
 
 # Sitemap
 SITEMAP = {
-    'format': 'xml',
-    'priorities': {
-        'articles': 0.5,
-        'indexes': 0.5,
-        'pages': 0.5
-    },
-    'changefreqs': {
-        'articles': 'monthly',
-        'indexes': 'daily',
-        'pages': 'monthly'
-    }
+  'format': 'xml',
+  'priorities': {
+    'articles': 0.5,
+    'indexes': 0.5,
+    'pages': 0.5
+  },
+  'changefreqs': {
+    'articles': 'monthly',
+    'indexes': 'daily',
+    'pages': 'monthly'
+  }
 }
 
 ### SLUGS:
