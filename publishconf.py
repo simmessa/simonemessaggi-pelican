@@ -22,7 +22,7 @@ CSS_MIN = True
 JS_MIN = False
 HTML_MIN = True
 INLINE_CSS_MIN = True
-INLINE_JS_MIN = True
+INLINE_JS_MIN = False
 
 # Following items are often useful when publishing
 
