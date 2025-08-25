@@ -1,6 +1,7 @@
 ---
 date: 2021-03-1
 title: Fibra a Rivolta d'Adda nel 2021? Forse ci siamo
+lang: it
 cover: images/fibra_colorata.jpg
 status: draft
 category: Rants

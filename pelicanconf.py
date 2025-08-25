@@ -32,6 +32,7 @@ PLUGINS = [
   "pelican.plugins.statistics",
   "pelican.plugins.webassets",
   "pelican_redirect",
+  # "i18n_subsites",
 ]
 
 CONTENT_REDIRECT_CONFIGURATION = [
@@ -40,6 +41,18 @@ CONTENT_REDIRECT_CONFIGURATION = [
         "PAGE_URL": "{slug}",
     }
 ]
+
+DEFAULT_LANG = 'it'
+
+# Languages
+# I18N_SUBSITES = {
+#     'it': {
+#         'SITENAME': 'SimoneMessaggi.it',
+#         },
+#     'en': {
+#         'SITENAME': 'SimoneMessaggi.it',
+#         }
+#     }
 
 STATIC_PATHS = ['images', 'extra/CNAME']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
@@ -107,6 +120,8 @@ SITEMAP = {
 # Post and Pages path
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}/'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
+ARTICLE_LANG_URL = '{date:%Y}/{date:%m}/{lang}/{slug}/'
+ARTICLE_LANG_SAVE_AS = '{date:%Y}/{date:%m}/{lang}/{slug}/index.html'
 PAGE_URL = 'pages/{slug}/'
 PAGE_SAVE_AS = 'pages/{slug}/index.html'
 YEAR_ARCHIVE_URL = '{date:%Y}/'

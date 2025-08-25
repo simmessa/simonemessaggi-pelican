@@ -1,6 +1,8 @@
 ---
 date: 2015-12-31
 title: Guida al protocollo KNXnet/IP cioè KNX over IP
+slug: guide-knxnet-over-ip-protocol
+lang: it
 cover: images/knxiprouterinterfaceoverlay.png
 status: published
 category: Tech
@@ -18,7 +20,7 @@ Anche a questo baud rate, inoltre, il bus può supportare fino a 50 telegrammi a
 
 Ad ogni modo, con i progressi nell’uso di KNX c’è certamente un bisogno di velocità maggiori, specialmente a livello di backbone.
 
-Con i dispositivi di video sorveglianza e monitoring centralizzato che stanno diventando molto comuni, c’è spesso un requisito per tutti i telegrammi di essere disponibili al livello topologico più altro.
+Con i dispositivi di video sorveglianza e monitoring centralizzato che stanno diventando molto comuni, c’è spesso un requisito per tutti i telegrammi di essere disponibili al livello topologico più alto.
 
 Con il cavo di bus KNX TP1, ci troviamo quindi in presenza di un collo di bottiglia, che IP può risolvere.
 
@@ -26,7 +28,7 @@ Per supportare questo protocollo (IP) il gruppo KNX ha sviluppato il telegramma 
 
 E’ importante capire però che se anche le reti LAN hanno molti benefici, i requisiti di avere un’infrastruttura controllata e definita necessitano di mantenere KNX TP1 come base.
 
-![Il cavo KNX TP1](./images/KNX-cable.jpg)
+![Il cavo KNX TP1](/images/KNX-cable.jpg)
 *fig.1 - Il cavo KNX TP1*
 
 ## Il telegramma KNX/IP
@@ -49,7 +51,7 @@ Il telegramma  TP1 infatti si mantiene, ma viene usato un field aggiuntivo per d
 
 La maggior parte di questi servizi sono auto mantenuti e non necessitano del nostro intervento, quindi per noi sarà importante concentrarci sui due evidenziati sopra, **il tunnelling e il routing.**
 
-##KNXnet/IP Tunnelling
+## KNXnet/IP Tunnelling
 
 La modalità più semplice, nonché la principale per interfacciarsi con un sistema KNX, e permette la comunicazione punto a punto (unicast) tra un singolo device esterno e il sistema KNX, il funzionamento è del tutto analogo all’usare USB o un’interfaccia seriale!
 
@@ -68,13 +70,13 @@ Il router IP gestirà anche la tabella dei filtri per gestire il traffico (conge
 
 Chiaramente, trattandosi di multicast, abbiamo che per contattare più dispositivi punteremo ad un indirizzo multicast standard, in qusto modo abbiamo una comunicazione uno a molti, la KNX association ha riservato l’indirizzo di multicast 224.0.23.12 per comodità ma qualsiasi altro indirizzo può essere impiegato, basta che sia lo steso su tutti i dispositivi.
 
-![Usiamo un router IP come backbone e line coupler](./images/KNX-IP-network.jpg)
+![Usiamo un router IP come backbone e line coupler](/images/KNX-IP-network.jpg)
 
 *fig.2 - Usiamo un router IP come backbone e line coupler*
 
 Con il routing KNXnet/IP abbiamo un metodo di comunicazione che permette a tutto il traffico sul bus di venir monitorato, questo è molto utile in tutti i casi in cui i dispositivi richiedano accesso ad esempio ai sistemi di visualizzazione, però lo svantaggio è che non permette di svolgere funzioni ETS come bus monitor o il download sui device.
 
-##Quale Hardware mi serve?
+## Quale Hardware mi serve?
 
 Visti i principali metodi di comunicazione, diamo uno sguardo ai prodotti che ci servono per realizzare un sistema KNX su IP.
 
@@ -94,7 +96,7 @@ Il routing invece, per sua stessa natura, non ha limiti al numero di connessioni
 
 Alcuni device hanno inoltre time server e schede di memoria per registrare il bus.
 
-![Questo è il router KNXnet / IP Gira 2167 00](./images/Gira-KNX-IP-router.jpg)
+![Questo è il router KNXnet / IP Gira 2167 00](/images/Gira-KNX-IP-router.jpg)
 *fig.3 - Questo è il router KNXnet / IP Gira 2167 00*
 
 **Nota Bene:**
@@ -105,7 +107,7 @@ Entrambi i device che abbiamo visto, schede e router generalmente richiedono un 
 
 Per non correre rischi è meglio far funzionare ciascun device con la sua PSU dedicata, o, in alternativa, usare il protocollo Power over Ethernet (PoE) se il nostro switch lo consente, il costo dello switch potrebbe aumentare, ma l’installazione si semplifica notevolmente!
 
-##Sicurezza e accesso remoto
+## Sicurezza e accesso remoto
 
 Una volta che abbiamo implementato una soluzione IP è possibile configurare uno dei tipi di collegamento descritti sopra per l’accesso remoto.
 
@@ -113,7 +115,7 @@ Usando un’interfaccia tunnelling, possiamo stabilire una connessione diretta e
 
 Se avessimo bisogno di collegare tra loro due sistemi KNX tramite routing KNXnet/IP la VPN DEVE obbligatoriamente supportare il traffico multicast e avere questa grant dall’amministratore di sistema.
 
-##Conclusione
+## Conclusione
 
 Considerato tutto, non è affatto strano per noi ricevere un sacco di domande su KNX IP, anche perché non se ne parla molto nel corso di certificatione KNX.
 
@@ -122,4 +124,4 @@ Una volta che i termini descritti sopra sono compresi, comunque, diventa molto p
 *Articolo originale inglese scritto da Mark Warburton e disponibile all’indirizzo:
 http://knxtoday.com/2014/01/3056/solutions-ip-and-knx-bringing-you-up-to-speed.html*
 
-**Tradotto da Simmessa.**
+**Tradotto da Simone Messaggi.**

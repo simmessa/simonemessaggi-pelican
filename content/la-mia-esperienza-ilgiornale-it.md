@@ -1,6 +1,7 @@
 ---
 date: 2018-11-11
 title: La mia esperienza di lavoro a ilGiornale.it
+lang: it
 cover: images/redazione.jpg
 status: published
 canonical: https://medium.com/@simmessa/la-mia-esperienza-di-lavoro-a-ilgiornale-it-327bdf543fa3

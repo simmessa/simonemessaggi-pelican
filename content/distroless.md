@@ -1,6 +1,8 @@
 ---
 date: 2019-09-1
 title: Container security: migliorare la sicurezza con i distroless container
+lang: it
+slug: distroless-containers-improve-security
 cover: images/rena-1-8063.jpeg
 status: published
 category: Tech
@@ -57,7 +59,7 @@ Chiunque di voi si sia preso la briga di scrivere un *Dockerfile* o due sa pero'
 
 Perche' oltre all'applicazione nel container e' presente una base costituita dal sistema operativo sottostante, leggero quanto volete, ma comunque sempre presente.
 
-Per i miei primi Dockerfile, ad esempio, mi sono sempre affidato ad una base **debian** (debian:stretch) perche' avevo bona confidenza con questo OS e sapevo quanti e quali pacchetti potevo installare, inoltre avevo a disposizione software testato e stabile, anche se a discapito del numero di versione. Immagini basate su debian pesavano facilmente centinaia di MB ma erano piu' facili da usare e da debuggare.
+Per i miei primi Dockerfile, ad esempio, mi sono sempre affidato ad una base **debian** (debian:stretch) perche' avevo buona confidenza con questo OS e sapevo quanti e quali pacchetti potevo installare, inoltre avevo a disposizione software testato e stabile, anche se a discapito del numero di versione. Immagini basate su debian pesavano facilmente centinaia di MB ma erano piu' facili da usare e da debuggare.
 
 Poi nel tempo, sono passato alla [**stretch-slim**](https://hub.docker.com/_/debian), una distribuzione debian minimale che pero' garantiva l'80% degli strumenti di debian, in un formato piu' compatto ed efficiente.
 

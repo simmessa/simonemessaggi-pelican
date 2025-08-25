@@ -1,6 +1,7 @@
 ---
 date: 2014-08-21
 title: Viviamo nell'era post Wordpress?
+lang: it
 cover: images/wordpress-512.png
 author: simmessa
 status: published

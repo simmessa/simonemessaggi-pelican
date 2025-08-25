@@ -1,6 +1,7 @@
 ---
 date: 2014-08-12
 title: In Italia siamo indietro
+lang: it
 cover: images/29_square_wheels.jpg
 canonical: "https://medium.com/@simmessa/in-italia-siamo-indietro-d32fdc126713"
 status: published
@@ -8,7 +9,7 @@ category: Rants
 tags: Legacy, Ghost, NodeJS
 ---
 
-*Fa specie constatare che, questo post, scritto nel lontano 12 agosto 2014 sia, per certi versi, ancora così attuale... comunque ve lo lascio e tirate voi le conclusioni!*
+*Fa specie constatare che, questo post, scritto nel lontano 12 agosto 2014 sia, per certi versi, ancora così attuale... Cio' nonostante, ci sono parti veramente inaccurate, per esempio ho migrato il sito gia' altre due volte verso tecnologie piu' recenti. In ogni caso ve lo lascio e tirate voi le conclusioni!*
 
 Il web si sta evolvendo, quello che sappiamo fare, per il momento, è copiare, e anche male, dai nostri amici smanettoni USA.Quindi, ci accontentiamo di tecnologie obsolete.Quali tecnologie obsolete? direte voi.Praticamente tutto quello che vedete sul web italiano in questo momento lo è, centinaia di migliaia di siti che utilizzando come **database MySQL,** come linguaggio di programmazione il **PHP o ASP.**Nel web italiano, **HTML5** di solito è un banner che compare a fondo pagina, come a dire: **Ehi ma quanto siamo fighi!**
 

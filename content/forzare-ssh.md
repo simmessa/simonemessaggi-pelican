@@ -1,6 +1,8 @@
 ---
 date: 2016-02-06
 title: Per chi cerca di forzarvi il server SSH
+lang: it
+slug: bruteforce-ssh-server
 cover: images/K-Line.jpg
 status: published
 category: Tech

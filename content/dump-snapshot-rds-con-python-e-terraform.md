@@ -1,6 +1,8 @@
 ---
 date: 2018-10-31
 title: Fare un dump da uno snapshot RDS con Python e Terraform
+slug: dump-rds-snapshot-to-sql-python-terraform
+lang: it
 cover: images/AWS-Feature.png
 status: published
 canonical: https://medium.com/@simmessa/fare-un-dump-da-uno-snapshot-rds-con-python-e-terraform-7cbd0fa026fc
@@ -433,3 +435,4 @@ Se invece qualcosa dovesse essere andato storto, riceverete un messaggio d'error
 
 Vi ringrazio dell'attenzione, ovviamente in caso di problemi o di possibili migliorie, non esitate a commentare qui sotto.
 
+p.s.: commenti disabilitati (n.d.a)

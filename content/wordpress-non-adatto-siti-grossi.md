@@ -1,6 +1,7 @@
 ---
 date: 2018-06-13
 title: Perché Wordpress non è adatto ai siti di grosse dimensioni
+lang: it
 cover: images/wordpress.png
 status: published
 canonical: https://medium.com/@simmessa/perch%C3%A9-wordpress-non-%C3%A8-adatto-ai-siti-di-grosse-dimensioni-890be4e320a8

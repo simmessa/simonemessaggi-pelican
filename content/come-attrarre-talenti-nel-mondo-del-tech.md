@@ -1,6 +1,8 @@
 ---
 date: 2018-11-20
 title: Come attrarre talenti nel mondo del tech
+lang: it
+slug: attract-talent-in-tech-world
 cover: images/talent.jpg
 status: published
 canonical: https://medium.com/@simmessa/come-attrarre-talenti-nel-mondo-del-tech-28695185e7a3

@@ -1,6 +1,7 @@
 ---
 date: 2018-08-7
 title: Lo stato della fibra a Rivolta d'Adda
+lang: it
 cover: images/fibra.jpg
 canonical: "https://medium.com/@simmessa/lo-stato-della-fibra-a-rivolta-dadda-19744704ddeb"
 status: published
