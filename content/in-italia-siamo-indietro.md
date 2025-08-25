@@ -1,6 +1,7 @@
 ---
 date: 2014-08-12
 title: In Italia siamo indietro
+slug: italy-so-behind-in-tech
 lang: it
 cover: images/29_square_wheels.jpg
 canonical: "https://medium.com/@simmessa/in-italia-siamo-indietro-d32fdc126713"

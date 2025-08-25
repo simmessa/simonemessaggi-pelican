@@ -1,6 +1,7 @@
 ---
 date: 2014-08-12
 title: Here in Italy we are so behind
+slug: italy-so-behind-in-tech
 lang: en
 cover: images/29_square_wheels.jpg
 canonical: "https://medium.com/@simmessa/in-italia-siamo-back-d32fdc126713"
