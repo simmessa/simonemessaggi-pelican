@@ -1446,7 +1446,7 @@ http://knxtoday.com/2014/01/3056/solutions-ip-and-knx-bringing-you-up-to-speed.h
 &lt;p&gt;Scusatemi il post non tecnico, non è facile codificare da una mansarda in montagna :)&lt;/p&gt;
 &lt;p&gt;A presto.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Nota dal futuro: Ghost è praticamente morto, nel corso degli anni ho migrato questo blog a Gatsby, che è stato acquistato da Netlify nel 2023, quindi dichiarato morto a sua volta... Così nel 2025 finalmente sono passato a Pelican, che si basa su Python piuttosto che su NodeJS, e questo è per il meglio. Ovviamente vi faro' sapere se questa tecnologia durera' piu' di qualche anno...&lt;/em&gt;&lt;/p&gt;</content><category term="Rants"/><category term="CMS"/><category term="Wordpress"/></entry><entry><title>Do we live in a post Wordpress era?</title><link href="https://www.simonemessaggi.it/2014/08/en/post-wordpress-cms-era/" rel="alternate"/><published>2014-08-21T00:00:00+02:00</published><updated>2014-08-21T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2014-08-21:/2014/08/en/post-wordpress-cms-era/</id><summary type="html">&lt;p&gt;&lt;em&gt;Of course, as is appropriate, my prediction is far from true, and after a number of years Ghost seems more dead than alive, the original article was dated August 21, 2014 when it appeared on &lt;a href="Simmessa.com"&gt;Simmessa.com&lt;/a&gt;, yet, in 2025 I feel like the "omen" is actually becoming a lot …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Of course, as is appropriate, my prediction is far from true, and after a number of years Ghost seems more dead than alive, the original article was dated August 21, 2014 when it appeared on &lt;a href="Simmessa.com"&gt;Simmessa.com&lt;/a&gt;, yet, in 2025 I feel like the "omen" is actually becoming a lot closer to reality...&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;I'm writing this post from the bed of a mountain attic. I don't have remorse. I don't need an app, just a smartphone's browser. Of course my knowledge of &lt;strong&gt;markdown&lt;/strong&gt; is quite limited at the moment, so I don't expect this to become my greatest looking post to date.&lt;/p&gt;
+&lt;p&gt;I'm writing this post from the bed of a mountain attic. I don't feel no remorse. I don't need an app, just a smartphone browser. Of course my knowledge of &lt;strong&gt;markdown&lt;/strong&gt; is quite limited at the moment, so I don't expect this to become my greatest looking post to date.&lt;/p&gt;
 &lt;p&gt;The incredible thing is to be able to do it with this ease, while totally on the loose.&lt;/p&gt;
 &lt;p&gt;No options, &lt;em&gt;write &amp;gt; save &amp;gt; publish&lt;/em&gt; unfortunately I would like so many things to be automatic, like &lt;em&gt;publicize&lt;/em&gt; with autopost on twitter and facebook. But it's too early, and they say that those who are satisfied enjoy a lot more.&lt;/p&gt;
 &lt;p&gt;I think &lt;a href="https://ghost.org/"&gt;ghost&lt;/a&gt; can be the right platform to bridge between traditional blogging and microblogging.&lt;/p&gt;
@@ -1503,4 +1503,156 @@ Today for this reason I opened a blog on &lt;a href="Ghost"&gt;https://www.kicks
 &lt;p&gt;More thoughts will follow, if time allows, with elucubrations on the world of Italian web technology, the discoveries I make and of course I will investigate &lt;strong&gt;new technologies,&lt;/strong&gt; some of which might be real improvements or simple thecn trends of the moment...&lt;/p&gt;
 &lt;p&gt;For now that's all, preparing a platform with nodejs took quite the toll on my free time, and I have other work to do, but expect to hear from me pretty soon...&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Simone Messaggi&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;originally published on August 12, 2014 at simmessa.com and reprinted on &lt;a href="https://medium.com/@simmessa/in-italia-siamo-back-d32fdc126713"&gt;medium.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Rants"/><category term="Legacy"/><category term="Ghost"/><category term="NodeJS"/></entry></feed>
+&lt;p&gt;&lt;em&gt;originally published on August 12, 2014 at simmessa.com and reprinted on &lt;a href="https://medium.com/@simmessa/in-italia-siamo-back-d32fdc126713"&gt;medium.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="Rants"/><category term="Legacy"/><category term="Ghost"/><category term="NodeJS"/></entry><entry><title>Email usa e getta sul tuo server di posta</title><link href="https://www.simonemessaggi.it/2008/03/throwaway-emails-for-dummies/" rel="alternate"/><published>2008-03-12T00:00:00+01:00</published><updated>2008-03-12T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2008-03-12:/2008/03/throwaway-emails-for-dummies/</id><summary type="html">&lt;p&gt;Hai un server email privato? Bene! Vuoi avere un'email che puoi dare via per le registrazioni senza preoccuparti della quantità infinita di spam che finirai per ricevere?&lt;/p&gt;
+&lt;p&gt;Allora continua a leggere, forse questo articolo e' per te...&lt;/p&gt;
+&lt;p&gt;Uno dei modi semplici in cui molti, se non tutti, dei punti sopra …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hai un server email privato? Bene! Vuoi avere un'email che puoi dare via per le registrazioni senza preoccuparti della quantità infinita di spam che finirai per ricevere?&lt;/p&gt;
+&lt;p&gt;Allora continua a leggere, forse questo articolo e' per te...&lt;/p&gt;
+&lt;p&gt;Uno dei modi semplici in cui molti, se non tutti, dei punti sopra possono essere realizzati è un hack molto semplice della vostra configurazione *nix.&lt;/p&gt;
+&lt;h1&gt;Divertiamoci con /etc/aliases&lt;/h1&gt;
+&lt;p&gt;Cos'è un file /etc/aliases sui sistemi *nix? è un repository centrale per i nomi utente locali sul server utilizzato quando si tratta di consegna e-mail.&lt;/p&gt;
+&lt;p&gt;Non ho molto da dire sugli alias che non si poteva trovare su migliori risorse online, quindi non vi so dare grandi spiegazioni qui.&lt;/p&gt;
+&lt;p&gt;Uso postfix sul mio server, e lo adoro, rende l'impostazione e-mail molto facile mentre sotto il cofano è parecchio potente.&lt;/p&gt;
+&lt;p&gt;Cosa c'è in un file di alias? Scopriamolo.&lt;/p&gt;
+&lt;p&gt;Ecco un esempio rapido di /etc/aliases:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    # See man 5 aliases for format
+
+    some_alias: some_unix_username
+    some_other_alias: some_other_username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E' piuttosto semplice, giusto?&lt;/p&gt;
+&lt;p&gt;Ora, la grande domanda e': cosa possiamo fare attraverso una manipolazione degli alias?&lt;/p&gt;
+&lt;p&gt;Molto, è un file di testo dopotutto ;)&lt;/p&gt;
+&lt;p&gt;Ecco cosa troverai alla fine del mio alias attuale:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    cut...
+    #weekmail_start
+    this_alias_changes_every_day: my_linux_username
+    #weekmail_end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Il concetto qui è piuttosto semplice, stiamo per creare una nuova e-mail diversa ogni giorno, utilizzando alcuni parametri che cambiano ogni giorno, in modo che non sarà disponibile per spamming in tempi successivi. Il punto è quello di inventare una regola con cui siamo in grado di calcolare l'indirizzo e-mail esatto ogni giorno.&lt;/p&gt;
+&lt;p&gt;Ecco come usiamo alcuni comandi disponibili su bash in linux:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#need day of the week&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dotw&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%A&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;number&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%d&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;month&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%m&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$dotw$number$month&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$alias&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;tr&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"[:upper:]"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"[:lower:]"&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Needs filename as argument."&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;fname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'/weekmail_start/,/weekmail_end/d'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;.weekmail
+
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;/sbin/weekmail&lt;span class="p"&gt;|&lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/replaceme/'&lt;/span&gt;&lt;span class="nv"&gt;$alias&lt;/span&gt;&lt;span class="s1"&gt;'/'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/sbin/weekmail_changed
+
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;.weekmail&lt;span class="w"&gt; &lt;/span&gt;/sbin/weekmail_changed&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;newaliases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Logica degli alias usa e getta&lt;/h2&gt;
+&lt;p&gt;Ok, i passi qui sono abbastanza lineari, ma controlliamoli assieme:&lt;/p&gt;
+&lt;p&gt;1) riempire alcune varsiabili con cose che cambiano ogni giorno, prese tramite il comando "date" per creare degli alias usa e getta.
+2) tagliare la parte "weekmail" dal file /etc/aliases (questo passaggio coinvolge l'editor sed) e salvare il risultato in un file temporaneo.
+3) prendere una nuova porzione di weekmail da un altro file statico (/sbin/weekmail in questo esempio) e sostituire una stringa conosciuta con l'alias appena calcolato, quindi memorizzarlo da qualche parte.
+4) creare un nuovo /etc/aliases unendo i due file precedentemente creati
+5) invocare &lt;code&gt;newaliases&lt;/code&gt; per assicurarsi che il vostro nuovo alias sia attivato&lt;/p&gt;
+&lt;p&gt;Ora basta metterlo nel crontab con "crontab -e":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    10 0 &lt;span class="gs"&gt;* *&lt;/span&gt; * /path_to/your_weekmail_script /etc/aliases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Et Voila'! Questo è un bel indirizzo email spazzatura che hai appena creato, fresco ogni giorno!&lt;/p&gt;
+&lt;p&gt;Sono abbastanza sicuro che i vantaggi di questo approccio dopo aver impostato delle wildcard pigliatutto (*@yourdomain.com) sono evidenti...&lt;/p&gt;
+&lt;p&gt;Assicurati di inviarmi il tuo feedback se usi anche tu questo hack... il mio script è stato buttato giu' velocemente (circa 10 minuti) e quindi dovrebbe essere il minimo sindacale...migliorabile.&lt;/p&gt;
+&lt;p&gt;Spero che vi sia utile, ragazzi. Vi faccio i migliori auguri!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;p.s.: Riporto qui un articolo davvero vecchio (2008) comparso sul mio primo blog, ma che suona stranamente attuale, dato che il problema dello SPAM e' esploso in questi quasi 20 anni&lt;/em&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Tutorial"/><category term="Email"/><category term="Hack"/></entry><entry><title>Self hosted throwaway emails for dummies</title><link href="https://www.simonemessaggi.it/2008/03/en/throwaway-emails-for-dummies/" rel="alternate"/><published>2008-03-12T00:00:00+01:00</published><updated>2008-03-12T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2008-03-12:/2008/03/en/throwaway-emails-for-dummies/</id><summary type="html">&lt;p&gt;Do you host email on your own server? Good! Do you wanna have an email that you can give away for registrations without worrying about the endless amount of spam you'll end up getting?&lt;/p&gt;
+&lt;p&gt;Then read on, maybe this stuff is for you...&lt;/p&gt;
+&lt;p&gt;One of the simple ways in which …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Do you host email on your own server? Good! Do you wanna have an email that you can give away for registrations without worrying about the endless amount of spam you'll end up getting?&lt;/p&gt;
+&lt;p&gt;Then read on, maybe this stuff is for you...&lt;/p&gt;
+&lt;p&gt;One of the simple ways in which many, if not all, of the above points can be accomplished is a very simple hack of your linux/unix config.&lt;/p&gt;
+&lt;h2&gt;Having fun with your /etc/aliases&lt;/h2&gt;
+&lt;p&gt;What is an /etc/aliases file on *nix systems? it's a central repository for local usernames on your server used when dealing with email delivery.&lt;/p&gt;
+&lt;p&gt;I don't really have much to say about aliases that you couldn't find on better online resources, therefore I won't provide much explanation here.&lt;/p&gt;
+&lt;p&gt;I use postfix on my server, and I frickin' love it, it makes email setup a breeze while being very powerful.&lt;/p&gt;
+&lt;p&gt;So what's there in an aliases file? Let's find out.&lt;/p&gt;
+&lt;p&gt;Here's an exempt of an actual cat of /etc/aliases:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    # See man 5 aliases for format
+
+    some_alias: some_unix_username
+    some_other_alias: some_other_username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That's pretty simple uh?&lt;/p&gt;
+&lt;p&gt;Now the big question is, what can we accomplish through some aliases manipulation?&lt;/p&gt;
+&lt;p&gt;A lot, it's a text file after all ;)&lt;/p&gt;
+&lt;p&gt;Here's what you'll find at the end of my current alias:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    cut...
+    #weekmail_start
+    this_alias_changes_every_day: my_linux_username
+    #weekmail_end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The concept here's pretty simple, we're going to create a different, new email every day, using some parameters that change daily, so that it won't be available for spamming at later times. The point is to make up some rule with which we are able to compute the exact email address every day.&lt;/p&gt;
+&lt;p&gt;That's when some bash scripting + linux readily available commands come into play:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#need day of the week&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dotw&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%A&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;number&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%d&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;month&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%m&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$dotw$number$month&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$alias&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;tr&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"[:upper:]"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"[:lower:]"&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Needs filename as argument."&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;fname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'/weekmail_start/,/weekmail_end/d'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;.weekmail
+
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;/sbin/weekmail&lt;span class="p"&gt;|&lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/replaceme/'&lt;/span&gt;&lt;span class="nv"&gt;$alias&lt;/span&gt;&lt;span class="s1"&gt;'/'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/sbin/weekmail_changed
+
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;.weekmail&lt;span class="w"&gt; &lt;/span&gt;/sbin/weekmail_changed&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;newaliases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Throwaway alias logic&lt;/h2&gt;
+&lt;p&gt;Ok, the steps here are pretty straightforward, but let's check'em out:&lt;/p&gt;
+&lt;p&gt;1) fill some vars with stuff that is different every day, taken from the "date" command invocation and craft your throwaway alias.
+2) cut away the "weekmail" part from the current /etc/aliases (this step involves the sed editor) and save the result in a temp file.
+3) take a new weekmail portion from another, static file (/sbin/weekmail in this example) and replace a known string with the freshly computed alias, then store it somewhere.
+4) craft a new /etc/aliases by joining the two previously created files
+5) invoke "newaliases" to make sure your new alias is activated&lt;/p&gt;
+&lt;p&gt;Now you just have to put it in your crontab with "crontab -e":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    10 0 &lt;span class="gs"&gt;* *&lt;/span&gt; * /path_to/your_weekmail_script /etc/aliases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Et Voila' ! That's some nice junk email address you have there, fresh every day!&lt;/p&gt;
+&lt;p&gt;I'm pretty sure the pros of this approach after the * wildcard catchall approach (*@yourdomain.com) are self evident...&lt;/p&gt;
+&lt;p&gt;Be sure to send me some feedback if you elaborate over this hack... my script was scratched down with fingernails on a blackboard in a hurry (took me about 10 mins) and so it oughta be the bare minimum...&lt;/p&gt;
+&lt;p&gt;Hope it turns out useful for you guys, Wish you all the best!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;p.s.: I'm republishing this ancient article (2008) from my first blog. The thing is I found it still rather enjoyable today as it was when originally published. Due to the fact that email SPAM has exploded in the last 20 years&lt;/em&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Tutorial"/><category term="Email"/><category term="Hack"/></entry><entry><title>Album review: Wim Roelants - Burn</title><link href="https://www.simonemessaggi.it/2007/06/en/album-review-wim-roelants-burn/" rel="alternate"/><published>2007-06-27T00:00:00+02:00</published><updated>2007-06-27T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2007-06-27:/2007/06/en/album-review-wim-roelants-burn/</id><summary type="html">&lt;p&gt;&lt;em&gt;This is an ancient album review I wrote in 2007: Wim Roelants - Burn&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Wim is an established sessionman / studio guitar player in Belgium. Apart from being a performer, endorser, guitar instructor and clinician for many years, Wim is also a composer and songwriter, and "Burn" is his first solo CD …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This is an ancient album review I wrote in 2007: Wim Roelants - Burn&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Wim is an established sessionman / studio guitar player in Belgium. Apart from being a performer, endorser, guitar instructor and clinician for many years, Wim is also a composer and songwriter, and "Burn" is his first solo CD.&lt;/p&gt;
+&lt;p&gt;The album is composed of 10 original tracks, the genre is instrumental guitar rock, with some blues/fusion accents and also a little bit of funkiness, which never hurts, if you ask me.&lt;/p&gt;
+&lt;p&gt;The first track, with its meditative tones, is quite an unusual way to start such a record, but the phrasing is interesting, as the jazzy chord progression drives its way to the end about 6 minutes later, with the help of a tight rythm section. I think it's a good resume of Wim's musical taste, but I found it a little unfocused, to say the least.&lt;/p&gt;
+&lt;p&gt;The title track, one of the album's best moments, has a catchy melody, and is a nice showcase of Wim's guitaristic prowess. the guitar works are well executed and overall solid. Wim sure is a talented guitar player and he's capable of many different styles. His soloing is pretty conventional though, it shows good feeling but it gets somewhat repetitive after some listening.&lt;/p&gt;
+&lt;p&gt;The work of the other musicians involved in this project is truly first class, as it sounds inspired, like if the four have been playing together for a long time.&lt;/p&gt;
+&lt;p&gt;Shades, the 3rd track, with its slower pace and bluesy roots, is also quite enjoyable. I found that it benefits quite a lot by the inclusion of background acoustic guitars and the occasional funky rythm guitar.&lt;/p&gt;
+&lt;p&gt;The Quickening 2 intro brought to memory some of Steve Morse works with his band, the four musicians play tightly and there's room for some harmonic exploration as well as some true shredding moments.&lt;/p&gt;
+&lt;p&gt;That said, I'm pleased to say that Wim is the kind of guitarist which is more after good melodies rather than the showcase of mad guitar skills. I personally like his kind of approach, cause the world's full of soulless notes-per-second machines and awful songs, and this is not the case with Wim.&lt;/p&gt;
+&lt;p&gt;All in all, the impression I received after repeated listenings of Burn is of a quite traditional guitar record. The production is about average, the kind of stuff you would expect from other guitar "solo" albums, and I guess this doesn't help much the "novelty factor". Maybe a less conventional approach could have made this record more enjoyable.&lt;/p&gt;
+&lt;p&gt;Bronze is another delicate, acoustic rock/fusion ballad, and like "in your eyes" it doesn't hurt, but it doesn't either add much to the overall character of the record.&lt;/p&gt;
+&lt;p&gt;The Kickstart 2 oriental feeling is welcomed as a good change to the record's uniformity of style. The guitar's heavier sound leave a distinct mark but I found the bass the most convincing trait of this track. The soloing is, again, good but didn't strike me as particuarly original or new.&lt;/p&gt;
+&lt;p&gt;Karnak Karma, on the other hand, is maybe the most original of all the included tracks, with its ethnic character and the 2/4 drumming, I would say it's refreshing and therefore, a good variation of Wim's musical tone.&lt;/p&gt;
+&lt;p&gt;To resume this album in a sentence, I would say "Burn" is a solid instrumental record with the predominance of softer, more melodic tracks. Even without truly excelling at anything in particular it's surely worth listening, especially if you're into melodic guitar works.&lt;/p&gt;
+&lt;p&gt;Wim cites Satriani, Steve Vai and John Petrucci as his main influences, but I found his style also very close to that of guitarist Andy Timmons.&lt;/p&gt;
+&lt;p&gt;I you like this records I suggest that you check out also:&lt;/p&gt;
+&lt;p&gt;"Tricot no pais das maravilhas" by Goncalo Pereira
+Any record by Andy Timmons (Andy Timmons Band)&lt;/p&gt;
+&lt;p&gt;You can check out Wim and his works &lt;a href="http://www.wimroelants.com/"&gt;here&lt;/a&gt;&lt;/p&gt;</content><category term="Music"/><category term="Review"/><category term="Album"/></entry><entry><title>The Manowar "epic" years</title><link href="https://www.simonemessaggi.it/2007/05/en/manowar-the-epic-years/" rel="alternate"/><published>2007-05-23T00:00:00+02:00</published><updated>2007-05-23T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2007-05-23:/2007/05/en/manowar-the-epic-years/</id><summary type="html">&lt;p&gt;When I was a kid I used to be a huge Manowar fan for maybe 1 or two years.&lt;/p&gt;
+&lt;p&gt;One of my best friend got this Manowar double cd + videotape set which was very epic and fun (Hey Ace, how's it going?)&lt;/p&gt;
+&lt;p&gt;I remember listening to "Hail to England" &amp;amp; "Into …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I was a kid I used to be a huge Manowar fan for maybe 1 or two years.&lt;/p&gt;
+&lt;p&gt;One of my best friend got this Manowar double cd + videotape set which was very epic and fun (Hey Ace, how's it going?)&lt;/p&gt;
+&lt;p&gt;I remember listening to "Hail to England" &amp;amp; "Into glory ride" at least a thousand times. And I'm still doing so once in a while, with a different spirit.&lt;/p&gt;
+&lt;p&gt;But the very best part was the videotape, containing a sort of documentary of all things Manowar.&lt;/p&gt;
+&lt;p&gt;I've seen it many times and I used to remember all the hymns and slogans it contained, something very close to a religious cult.&lt;/p&gt;
+&lt;p&gt;I admit this "True Metal" thing is mostly bullshit but I recognize it was very fun at the time and I don't regret being a Manowar zealot, it didn't last much though.&lt;/p&gt;
+&lt;p&gt;If you feel nostalgic you can always chek the videotape I'm talking about, as some pious soul finally put it up on YouTube, the internet pulsating collective Memory / Soul.&lt;/p&gt;
+&lt;p&gt;It's called &lt;strong&gt;Secret of Steel&lt;/strong&gt;, and it brought back so many memories!&lt;/p&gt;
+&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/1JPfQd4Ap8A?si=8_Xvo-kntTZHWfCv" title="YouTube video player" width="560"&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;Note from the future: This was some of the worst rock'n'roll sexist macho male stuff out there, totally unconceivable today, but it was so funny, I don't believe in these valors honestly, but please don't stigmatize / cancel this and learn from the past to make sense of the present and future times! Also, the youtube video might be gone or could be seen only on their damn platform, I didn't upload it and honestly I can't control it in any way, sorry.&lt;/em&gt;&lt;/p&gt;</content><category term="Music"/><category term="Tutorial"/><category term="Email"/><category term="Hack"/></entry></feed>
