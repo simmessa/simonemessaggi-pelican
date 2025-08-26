@@ -24,10 +24,10 @@ I love Docker, Kubernetes and Elasticsearch.
 Devops and Operation Master at Mia-Platform,
 
 ---
-**Title:***
+**Title:**
 Strengthen security with distroless container
 
-**Breve Description:**
+**Short Description:**
 We live in the era of the container revolution and this already widespread trend will explode further in the coming years.
 
 The containers continue to be one of the hottest trends of the moment, but if with the container we design, develop and deploy applications, why often we do not dedicate more than 5 minutes to the safety of the container?
@@ -40,7 +40,7 @@ We talk about distroless container, a promising technique created by Google with
 
 We are in 2019, and we live now in the age of the *Container revolution*, within a few years we passed from shared hosting to VPS to the cloud and container of today.
 
-The use of containers in production is now a "normal" and consolidated phenomenon, according to [Gartner] (https://www.gartner.com/smarterwithgartner/6-best-practices-for-creating-a-container-platform-strategy/) by 2022 75% of companies will use containerized applications in production (the percentage in 2019 is about 30% and still growing).
+The use of containers in production is now a "normal" and consolidated phenomenon, according to [Gartner](https://www.gartner.com/smarterwithgartner/6-best-practices-for-creating-a-container-platform-strategy/) by 2022 75% of companies will use containerized applications in production (the percentage in 2019 is about 30% and still growing).
 
 As always happens, when new technologies emerge, the first concern is to make sure that "function" and some aspects are leaked, for this reason docker and the container have made a reputation far from good as regards the aspects of **cybersecurity.**
 
@@ -52,7 +52,7 @@ If you want to see, the reduced degree of insulation offered by the container do
 
 Just to deepen the security theme, today I want to propose a technique for the safety of container that uses the approach *distroless*.
 
-If with VMs the focus was on isolated virtual machine instances and each "dedicated" to a certain application, with the container we arrive to have almost an identity between the application itself and the container in which it turns. We come to say that **the container, at the bottom level IS the application.***
+If with VMs the focus was on isolated virtual machine instances and each "dedicated" to a certain application, with the container we arrive to have almost an identity between the application itself and the container in which it turns. We come to say that **the container, at the bottom level IS the application.**
 
 Any one of you who has taken the trouble of writing a *Dockerfile* or two knows... it's not that simple.
 
@@ -62,7 +62,7 @@ For my first Dockerfiles, for example, I have always entrusted myself to a base 
 
 Then over time, I went over to the [**stretch-slim**](https://hub.docker.com/_/debian), a minimal debian distribution that however guaranteed about 80% of debian tools, in a more compact and efficient format.
 
-Over the years, I have come to know [***Alpine**](https://hub.docker.com/_/alpine), an extremely minimal Linux distro and irresistible weight, perfect for keeping containers light and performing. Alpine is really the narrowest version of Linux on the bone I've seen, it's basically a [*busybox**] (https://hub.docker.com/_/busybox) (used in the embedded world) with the addition of the apk minimal package manager. Alpine-based images tend to weigh even less than 100 MB which involves a good gain in bandwidth and time savings.
+Over the years, I have come to know [**Alpine**](https://hub.docker.com/_/alpine), an extremely minimal Linux distro and irresistible weight, perfect for keeping containers light and performing. Alpine is really the narrowest version of Linux on the bone I've seen, it's basically a [**busybox**](https://hub.docker.com/_/busybox) (used in the embedded world) with the addition of the apk minimal package manager. Alpine-based images tend to weigh even less than 100 MB which involves a good gain in bandwidth and time savings.
 
 Distroless, if you want, are a step further towards efficient containers where the operating system disappears and there are only the minimum libraries needed to run our application.
 

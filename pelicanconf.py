@@ -166,4 +166,4 @@ INLINE_JS_MIN = False
 
 # Random cache breakers
 JSMIN = ".min"
-CB = "?cb=122"
+CB = "?cb=123"

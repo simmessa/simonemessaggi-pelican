@@ -15,3 +15,7 @@
     height: 300px;
     object-fit: cover;
 }
+
+.post-title{
+    text-shadow: 5px 5px 15px #222;
+}

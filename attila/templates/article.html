@@ -119,6 +119,21 @@
           {% if article.stats and 'read_mins' in article.stats %}
           &bull; {{ article.stats['read_mins'] }} min read
           {% endif %}
+          {% if article.translations %}
+          <div>
+            <hr>
+            {% for art in article.translations %}
+                <p>Read <strong><a href="{{ SITEURL }}/{{ art.url }}">this article</a></strong> in 
+                {% if art.lang == 'en' %} 
+                    English
+                {% elif art.lang == 'it' %}
+                    Italian
+                {% endif %} 
+                language <strong><a href="{{ SITEURL }}/{{ art.url }}"> here &gt;&gt;</a></strong>
+                </p>
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
         {% if selected_cover %}
           <div class="post-cover cover">
