@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>SimoneMessaggi.it - Tech</title><link href="https://www.simonemessaggi.it/" rel="alternate"/><link href="https://www.simonemessaggi.it/feeds/tech.atom.xml" rel="self"/><id>https://www.simonemessaggi.it/</id><updated>2020-12-25T00:00:00+01:00</updated><subtitle>Master at Mistakes</subtitle><entry><title>La mia breve storia di tastiere meccaniche - parte 1</title><link href="https://www.simonemessaggi.it/2020/12/la-mia-breve-storia-di-tastiere-meccaniche-parte-1/" rel="alternate"/><published>2020-12-25T00:00:00+01:00</published><updated>2020-12-25T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2020-12-25:/2020/12/la-mia-breve-storia-di-tastiere-meccaniche-parte-1/</id><summary type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>SimoneMessaggi.it - Tech</title><link href="https://www.simonemessaggi.it/" rel="alternate"/><link href="https://www.simonemessaggi.it/feeds/tech.atom.xml" rel="self"/><id>https://www.simonemessaggi.it/</id><updated>2020-12-25T00:00:00+01:00</updated><subtitle>Master at Mistakes</subtitle><entry><title>La mia breve storia di tastiere meccaniche - parte 1</title><link href="https://www.simonemessaggi.it/2020/12/my-brief-history-mechanical-keyboards-part1/" rel="alternate"/><published>2020-12-25T00:00:00+01:00</published><updated>2020-12-25T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2020-12-25:/2020/12/my-brief-history-mechanical-keyboards-part1/</id><summary type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Se avete usato un pc negli anni '90 sapete gia' di cosa sto parlando... Nell'epoca in cui mi sono avvicinato per la prima volta al mondo dei personal …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Se avete usato un pc negli anni '90 sapete gia' di cosa sto parlando... Nell'epoca in cui mi sono avvicinato per la prima volta al mondo dei personal computer, quando ancora li chiamavamo PC IBM compatibili... le tastiere erano molto meglio di adesso.&lt;/p&gt;
 &lt;p&gt;E davvero mi capitava spesso di usarle, su MS-DOS 3.30, erano imprescindibili, non essendo ancora diffuse le interfacce grafiche di Windows.&lt;/p&gt;
@@ -20,7 +20,7 @@
 &lt;p&gt;Questo perche' a me piace che ciascun tasto opponga una certa resistenza alla pressione, questa resistenza mi serve ad avere la certezza di averlo premuto prima di poter proseguire con il resto della digitazione.&lt;/p&gt;
 &lt;p&gt;Per molti altri, al contrario, questo fatto della resistenza e' &lt;strong&gt;estremamente spiacevole&lt;/strong&gt;, una sorta di impedimento.&lt;/p&gt;
 &lt;p&gt;Alla fine, dipende tutto dal tocco di ciascuno, visto che non siamo tutti uguali. C'e' chi ha le dita leggere e preferisce "volare" su una tastiera che registra la pressione al minimo tocco, c'e' chi ha invece le mani pesanti e pigia i tasti come se dovesse martellare talpe sul whack-a-mole...&lt;/p&gt;
-&lt;h2&gt;Tastiere da portatile e a farfalla&lt;/h2&gt;
+&lt;h2&gt;Altre tastiere strane: da laptop e a farfalla&lt;/h2&gt;
 &lt;p&gt;Un'altra tipologia di tastiere parecchio diffusa e' quella che troviamo sulla maggioranza dei portatili, con tastiere ad isola. La tipologia costruttiva e' quella degli &lt;em&gt;scissors switch&lt;/em&gt; (a forbice), con tutte le varianti del caso ovvero i "fantasmagorici" switch butterfly (a farfalla) brevettati da Apple.&lt;/p&gt;
 &lt;p&gt;Anche qui, se va tutto bene ci sono soluzioni decenti, ma quando i produttori decidono di risparmiare arrivano le (brutte) sorprese, soprattutto in termini di durata nel tempo.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Switch a farfalla e a forbice, anche Apple ammette di aver sbagliato" src="/images/scissors-vs-butterfly-keyboard-switch.jpg"/&gt;&lt;em&gt;Switch a forbice o a farfalla, non esattamente il massimo&lt;/em&gt;&lt;/p&gt;
@@ -33,18 +33,18 @@
 &lt;p&gt;Come potete vedere, questi sono i tre fondamentali switch meccanici visti nel dettaglio del loro funzionamento, e sono contraddistinti da 3 colori diversi, in base al funzionamento interno.&lt;/p&gt;
 &lt;p&gt;Il colore di riferimento, anche se con eventuali variazioni, e' dovuto al fatto che questi sono i colori del principale produttore di switch meccanici, ovvero &lt;a href="https://www.cherrymx.de/en"&gt;Cherry Mx&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Vediamo allora le tre principali tipologie di switch per tastiera meccanica&lt;/p&gt;
-&lt;h3&gt;Gli switch "rossi"&lt;/h3&gt;
+&lt;h3&gt;Gli switch lineari "rossi"&lt;/h3&gt;
 &lt;p&gt;Questi switch sono di tipo lineare, ovvero, quando una forza viene impressa sullo switch, si comportano linearmente. In breve, significa che la pressione di attuazione, ovvero la pressione minima con cui il tasto registra un segnale, e' piuttosto bassa, e questo rende gli switch rossi particolarmente indicati per due tipologie di utilizzatori:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;i gamer:&lt;/strong&gt; che necessitano dei tempi di risposta piu' rapidi in assoluto&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;i typer "leggeri":&lt;/strong&gt; dato che questi switch richiedono di una pressione minima per essere attivati&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Gli switch "marroni"&lt;/h3&gt;
+&lt;h3&gt;Gli switch tattili "marroni"&lt;/h3&gt;
 &lt;p&gt;Questi switch sono di tipo tattile, la differenza tra brown e red puo' sembrare minima dall'animazione che avete visto poco sopra, ma in realta' il feeling e' molto diverso. Uno switch tattile, infatti, non ha un comportamento lineare, ma registra la pressione solo quando questa supera una certa soglia.&lt;/p&gt;
 &lt;p&gt;I brown sono forse gli switch che assomigliano di piu' a quelli delle tastiere a membrana, oppongono una resistenza sensibile, anche se mediamente inferiore, e danno una feeling ideale per la digitazione, quando questa avviene con un tocco medio / pesante.&lt;/p&gt;
 &lt;p&gt;Per questa ragione sono quelli piu' indicati per chi si trova, per lavoro o per altra ragione, a dover scrivere molto alla tastiera del suo computer.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Se siete programmatori o per un normale lavoro da ufficio, gli switch brown sono tra quelli piu' indicati per voi&lt;/em&gt;&lt;/p&gt;
-&lt;h3&gt;Gli switch blu&lt;/h3&gt;
+&lt;h3&gt;Gli switch blu, ovvero i "rumorosi"&lt;/h3&gt;
 &lt;p&gt;I blue sono senza dubbio gli switch meccanici piu' riconoscibili del trio, questo perche' hanno una caratteristica unica: se ci fate caso c'e' una parte di switch separata dal corpo blu a contatto con il tasto.&lt;/p&gt;
 &lt;p&gt;Questa parte dello switch durante la pressione va a fare contatto con il fondo producendo un tipico suono "click" che e' la caratteristica distintiva dei blue.&lt;/p&gt;
 &lt;p&gt;Gli switch di questo tipo sono gli unici che producono questo suono quando il tasto viene effettivamente premuto, restituendo all'utente un ulteriore feedback uditivo dell'avvenuta pressione.&lt;/p&gt;
@@ -55,11 +55,11 @@
 &lt;p&gt;La caratteristica principale degli switch blu, quindi, e' - passatemi il termine - la &lt;em&gt;cliccosita'&lt;/em&gt; che producono quando li premiamo. Dal punto di vista del feeling, gli switch blu sono ideali per chi ama un ulteriore feedback e vuole essere certo di aver premuto il tasto, perfetto per chi possiede un tocco pesante e non frequenta ambienti troppo affolati.&lt;/p&gt;
 &lt;p&gt;La principale controindicazione dei blu, a mio avviso, e' la rumorosita' durante l'utilizzo, questi switch sono assolutamente da sconsigliare per chi si trova a lavorare in un ufficio con dei colleghi, ad esempio in un open space, e di questi giorni, chi non lavora in un open space?&lt;/p&gt;
 &lt;p&gt;Certo, sempre per rimanere (pandemicamente) attuali, le tastiere con cherry blue non hanno controindicazioni per chi lavora da casa e ha il lusso di non avere vicino altre persone che potrebbero esserne disturbate.&lt;/p&gt;
-&lt;h2&gt;Altre tipologie di switch&lt;/h2&gt;
+&lt;h2&gt;Switch esotici e altre tipologie&lt;/h2&gt;
 &lt;p&gt;Come avrete gia' notato, il bello degli switch meccanici e' che ci sono grandi possibilita' di personalizzazione della tastiera, non male per un accessorio che da sempre consideravamo "standard".&lt;/p&gt;
 &lt;p&gt;In particolare, non ci fermiamo ai soli tre tipi di switch visti qui sopra, esistono infatti moltissimi produttori e, data la recente domanda del mercato, centinaia se non migliaia di variazioni dei tre switch classici red, brown &amp;amp; blue.&lt;/p&gt;
 &lt;p&gt;Vederli tutti e' semplicemente impossibile per cui cercheremo di parlare di quelli piu' interessanti e/o originali.&lt;/p&gt;
-&lt;h3&gt;Silent switch&lt;/h3&gt;
+&lt;h3&gt;Silenzio, entra lo switch silenziato&lt;/h3&gt;
 &lt;p&gt;Il suono delle tastiere meccaniche senza dubbio richiede un capitolo speciale di questa serie di articoli, perche' per molti, incluso chi scrive, il sound di una tastiera meccanica e' una componente fondamentale nella scelta.&lt;/p&gt;
 &lt;p&gt;In generale, rispetto alle normali tastiere a membrana considerate come la tipologia di tastiera piu' diffusa e comune in un ufficio, le tastiere meccaniche sono mediamente piu' rumorose.&lt;/p&gt;
 &lt;p&gt;Questa loro caratteristica, che deriva direttamente dagli switch utilizzati, ha portato i produttori ad ideare una prima variante, sono gli switch cosiddetti "silent".&lt;/p&gt;
@@ -68,7 +68,7 @@
 &lt;p&gt;Attenzione pero', il rumore di una tastiera non dipende dal solo switch, andrebbero considerati anche altri componenti tra cui, fondamentale, lo chassis che funge da vera e propria cassa di risonanza.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Gli O-ring sono la soluzione piu' economica al problema di rumorosita' degli switch" src="/images/o_ring_dampeners.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;Gli switch silent solitamente sono piu' cari delle versioni "standard", esistono pero' alcuni accorgimenti, tra cui principalmente l'utilizzo di &lt;em&gt;o-ring&lt;/em&gt;, per silenziare gli switch classici che con pochi euro permettono di raggiungere risultati interessanti.&lt;/p&gt;
-&lt;h3&gt;Low profile switch&lt;/h3&gt;
+&lt;h3&gt;Switch low profile&lt;/h3&gt;
 &lt;p&gt;Altra variante molto diffusa dei singoli switch e' quella dei &lt;em&gt;low profile&lt;/em&gt; che sono sostanzialmente delle versioni ridotte degli switch standard.&lt;/p&gt;
 &lt;p&gt;I low profile nascono come variante per due ragioni storiche:&lt;/p&gt;
 &lt;ul&gt;
@@ -80,7 +80,7 @@
 &lt;p&gt;&lt;img alt="MSI Titan ovvero il primo laptop al mondo dotato di tastiera meccanica - source: TheVerge" src="/images/msi_titan_laptop_mechanical.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;Credo comunque che presto arriveranno delle novita' in questo senso e, se succedera', lo dovremo alle innovazioni degli switch meccanici low profile.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;~ Continua ~&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Spero vi sia piaciuto l'articolo! ci ritroviamo presto con la seconda parte&lt;/em&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Tastiere meccaniche"/><category term="Cherry MX"/></entry><entry><title>Container security: migliorare la sicurezza con i distroless container</title><link href="https://www.simonemessaggi.it/2019/09/distroless-containers-improve-security/" rel="alternate"/><published>2019-09-01T00:00:00+02:00</published><updated>2019-09-01T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2019-09-01:/2019/09/distroless-containers-improve-security/</id><summary type="html">&lt;p&gt;&lt;em&gt;Segue un breve riassunto di un talk che ho composto durante la mia collaborazione con Mia Platform&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Spero vi sia piaciuto l'articolo! ci ritroviamo presto con la seconda parte&lt;/em&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Mechanical Keyboards"/><category term="Cherry MX"/></entry><entry><title>Container security: migliorare la sicurezza con i distroless container</title><link href="https://www.simonemessaggi.it/2019/09/distroless-containers-improve-security/" rel="alternate"/><published>2019-09-01T00:00:00+02:00</published><updated>2019-09-01T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2019-09-01:/2019/09/distroless-containers-improve-security/</id><summary type="html">&lt;p&gt;&lt;em&gt;Segue un breve riassunto di un talk che ho composto durante la mia collaborazione con Mia Platform&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Bio:&lt;/strong&gt;
 La mia storia d'amore con i computer è iniziata ad 8 anni, grazie al Commodore64, poi ho fatto di questa passione la mia professione.&lt;/p&gt;
 &lt;p&gt;Ho lavorato su reti, sviluppo web (back &amp;amp; front …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Segue un breve riassunto di un talk che ho composto durante la mia collaborazione con Mia Platform&lt;/em&gt;&lt;/p&gt;
