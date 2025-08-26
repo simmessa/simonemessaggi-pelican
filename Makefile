@@ -70,10 +70,10 @@ devserver:
 	"$(PELICAN)" -lr
 
 devserver-global:
-	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b 0.0.0.0
+	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
-	"$(PELICAN)" -lr
+	"$(PELICAN)" -lr -b 0.0.0.0
 
 publish:
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)

@@ -1,12 +1,13 @@
 ---
 date: 2020-12-25
 title: La mia breve storia di tastiere meccaniche - parte 1
+slug: my-brief-history-mechanical-keyboards-part1
 lang: it
 cover: images/das_keyboard_anne_pro2.jpg
 author: simmessa
 status: published
 category: Tech
-tags: Tastiere meccaniche, Cherry MX
+tags: Mechanical Keyboards, Cherry MX
 ---
 
 *Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!*
@@ -48,7 +49,7 @@ Per molti altri, al contrario, questo fatto della resistenza e' **estremamente s
 
 Alla fine, dipende tutto dal tocco di ciascuno, visto che non siamo tutti uguali. C'e' chi ha le dita leggere e preferisce "volare" su una tastiera che registra la pressione al minimo tocco, c'e' chi ha invece le mani pesanti e pigia i tasti come se dovesse martellare talpe sul whack-a-mole...
 
-## Tastiere da portatile e a farfalla
+## Altre tastiere strane: da laptop e a farfalla
 
 Un'altra tipologia di tastiere parecchio diffusa e' quella che troviamo sulla maggioranza dei portatili, con tastiere ad isola. La tipologia costruttiva e' quella degli *scissors switch* (a forbice), con tutte le varianti del caso ovvero i "fantasmagorici" switch butterfly (a farfalla) brevettati da Apple.
 
@@ -74,14 +75,14 @@ Il colore di riferimento, anche se con eventuali variazioni, e' dovuto al fatto 
 
 Vediamo allora le tre principali tipologie di switch per tastiera meccanica
 
-### Gli switch "rossi"
+### Gli switch lineari "rossi"
 
 Questi switch sono di tipo lineare, ovvero, quando una forza viene impressa sullo switch, si comportano linearmente. In breve, significa che la pressione di attuazione, ovvero la pressione minima con cui il tasto registra un segnale, e' piuttosto bassa, e questo rende gli switch rossi particolarmente indicati per due tipologie di utilizzatori:
 
 - **i gamer:** che necessitano dei tempi di risposta piu' rapidi in assoluto
 - **i typer "leggeri":** dato che questi switch richiedono di una pressione minima per essere attivati
 
-### Gli switch "marroni"
+### Gli switch tattili "marroni"
 
 Questi switch sono di tipo tattile, la differenza tra brown e red puo' sembrare minima dall'animazione che avete visto poco sopra, ma in realta' il feeling e' molto diverso. Uno switch tattile, infatti, non ha un comportamento lineare, ma registra la pressione solo quando questa supera una certa soglia.
 
@@ -91,7 +92,7 @@ Per questa ragione sono quelli piu' indicati per chi si trova, per lavoro o per 
 
 *Se siete programmatori o per un normale lavoro da ufficio, gli switch brown sono tra quelli piu' indicati per voi*
 
-### Gli switch blu
+### Gli switch blu, ovvero i "rumorosi"
 
 I blue sono senza dubbio gli switch meccanici piu' riconoscibili del trio, questo perche' hanno una caratteristica unica: se ci fate caso c'e' una parte di switch separata dal corpo blu a contatto con il tasto.
 
@@ -113,7 +114,7 @@ La principale controindicazione dei blu, a mio avviso, e' la rumorosita' durante
 
 Certo, sempre per rimanere (pandemicamente) attuali, le tastiere con cherry blue non hanno controindicazioni per chi lavora da casa e ha il lusso di non avere vicino altre persone che potrebbero esserne disturbate.
 
-## Altre tipologie di switch
+## Switch esotici e altre tipologie
 
 Come avrete gia' notato, il bello degli switch meccanici e' che ci sono grandi possibilita' di personalizzazione della tastiera, non male per un accessorio che da sempre consideravamo "standard".
 
@@ -121,7 +122,7 @@ In particolare, non ci fermiamo ai soli tre tipi di switch visti qui sopra, esis
 
 Vederli tutti e' semplicemente impossibile per cui cercheremo di parlare di quelli piu' interessanti e/o originali.
 
-### Silent switch
+### Silenzio, entra lo switch silenziato
 
 Il suono delle tastiere meccaniche senza dubbio richiede un capitolo speciale di questa serie di articoli, perche' per molti, incluso chi scrive, il sound di una tastiera meccanica e' una componente fondamentale nella scelta.
 
@@ -139,7 +140,7 @@ Attenzione pero', il rumore di una tastiera non dipende dal solo switch, andrebb
 
 Gli switch silent solitamente sono piu' cari delle versioni "standard", esistono pero' alcuni accorgimenti, tra cui principalmente l'utilizzo di *o-ring*, per silenziare gli switch classici che con pochi euro permettono di raggiungere risultati interessanti.
 
-### Low profile switch
+### Switch low profile
 
 Altra variante molto diffusa dei singoli switch e' quella dei *low profile* che sono sostanzialmente delle versioni ridotte degli switch standard.
 

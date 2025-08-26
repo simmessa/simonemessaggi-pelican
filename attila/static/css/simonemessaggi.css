@@ -19,3 +19,40 @@
 .post-title{
     text-shadow: 5px 5px 15px #222;
 }
+
+@media only screen and (max-width: 480px) {
+/* Mobile responsiveness tweaks */
+
+    .post-header .post-title {
+        font-size: 4em;
+    }
+
+    .blog-name {
+        font-size: 3.5em;
+    }
+    .blog-description {
+        font-size: 2em;
+    }
+
+    h2.post-title {
+        font-size: 3em;
+    }
+
+    .post-excerpt .post-tags a {
+        font-size: 0.75em;
+    }
+
+    .post-excerpt {
+        font-size: 1.55em;
+        line-height: 1.75em;
+    }
+
+    div.post-meta {
+        font-size: 1.4em;
+    }
+
+    .post-content {
+        font-size: 1.55em;
+        line-height: 1.75em;
+    }
+}

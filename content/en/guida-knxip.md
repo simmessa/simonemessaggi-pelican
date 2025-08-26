@@ -5,7 +5,7 @@ slug: guide-knxnet-over-ip-protocol
 lang: en
 cover: images/knxiprouterinterfaceoverlay.png
 status: published
-category: Technique
+category: Tech
 tags: IOT, Home automation, KNX
 ---
 
