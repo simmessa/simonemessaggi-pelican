@@ -17,6 +17,7 @@ MENUITEMS = (
   ('Rants', '/category/rants/'),
   ('Tech', '/category/tech/'),
   ('Humans', '/category/humans/'),
+  ('Music', '/category/music/'),
 )
 
 ### Plugins
@@ -62,6 +63,7 @@ CSS_OVERRIDE = ['theme/css/simonemessaggi.css']
 SITENAME = u'SimoneMessaggi.it'
 SITESUBTITLE = u'Master at Mistakes'
 SITEURL = "http://127.0.0.1:8000"
+SITE_DESCRIPTION = "Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti."
 COPYRIGHT_YEAR = "2025"
 
 THEME = 'attila'

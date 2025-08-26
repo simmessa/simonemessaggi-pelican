@@ -18,7 +18,7 @@
                     {% set selected_cover = article.cover %}
                 {% else %}
                     {% set selected_cover = SITEURL+"/"+article.cover %}
-                    <img src="{{ selected_cover }}" class="boh"/>
+                    <img src="{{ selected_cover }}" class="boh" alt="{{ article.summary|striptags|truncate(100) }}"/>
                 {% endif %}
                 <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>
