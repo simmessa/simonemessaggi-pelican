@@ -1,0 +1,321 @@
+<!doctype html><html lang=it><meta charset=utf-8><meta charset=utf-8 content=text/html http-equiv=Content-Type><meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible><title>Dump your db from AWS RDS snapshot with Python and Terraform</title><meta content=True name=HandheldFriendly><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=origin name=referrer><meta content=Pelican name=generator><link href=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/ rel=canonical><link title="SimoneMessaggi.it Full Atom Feed" href=https://www.simonemessaggi.it/feeds/all.atom.xml rel=alternate type=application/atom+xml><link title="SimoneMessaggi.it Categories Atom Feed" href=https://www.simonemessaggi.it/feeds/tech.atom.xml rel=alternate type=application/atom+xml><link href=https://www.simonemessaggi.it/theme/css/style.css rel=stylesheet><link href=https://www.simonemessaggi.it/theme/css/simonemessaggi.css rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Lato" rel=stylesheet><script>var siteUrl = 'https://www.simonemessaggi.it';</script><script>var localTheme = localStorage.getItem('attila_theme');
+    switch (localTheme) {
+      case 'dark':
+        document.documentElement.classList.add('theme-dark');
+        break;
+      case 'light':
+        document.documentElement.classList.add('theme-light');
+        break;
+      default:
+        break;
+    }</script><meta content="Okay, all of you already know about Amazon cloud prowess, so I won't bore you with the details. If your instances are on AWS it's very..." name=description><meta content=simmessa name=author><meta content="AWS Cloud" name=tags><meta content=RDS name=tags><meta content=MySQL name=tags><meta content=Terraform name=tags><meta content=Python name=tags><meta prefix="og: http://ogp.me/ns#" content=SimoneMessaggi.it property=og:site_name><meta content="Dump your db from AWS RDS snapshot with Python and Terraform" prefix="og: http://ogp.me/ns#" property=og:title><meta content="Okay, all of you already know about Amazon cloud prowess, so I won't bore you with the details. If your instances are on AWS it's very..." prefix="og: http://ogp.me/ns#" property=og:description><meta prefix="og: http://ogp.me/ns#" content=en_US property=og:locale><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/ property=og:url><meta prefix="og: http://ogp.me/ns#" content=article property=og:type><meta content="2018-10-31 00:00:00+01:00" prefix="og: http://ogp.me/ns#" property=article:published_time><meta prefix="og: http://ogp.me/ns#" property=article:modified_time><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/author/simmessa/ property=article:author><meta prefix="og: http://ogp.me/ns#" content=Tech property=article:section><meta content="AWS Cloud" prefix="og: http://ogp.me/ns#" property=article:tag><meta prefix="og: http://ogp.me/ns#" content=RDS property=article:tag><meta prefix="og: http://ogp.me/ns#" content=MySQL property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Terraform property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Python property=article:tag><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/images/AWS-Feature.png property=og:image><meta content=summary_large_image name=twitter:card><meta content=@simmessa name=twitter:site><meta content="Dump your db from AWS RDS snapshot with Python and Terraform" name=twitter:title><meta content=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/ name=twitter:url><meta content=https://www.simonemessaggi.it/images/AWS-Feature.png name=twitter:image:src><meta content="Okay, all of you already know about Amazon cloud prowess, so I won't bore you with the details. If your instances are on AWS it's very..." name=twitter:description><script type=application/ld+json>
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Dump your db from AWS RDS snapshot with Python and Terraform",
+  "headline": "Dump your db from AWS RDS snapshot with Python and Terraform",
+  "datePublished": "2018-10-31 00:00:00+01:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Simmessa",
+    "url": "https://www.simonemessaggi.it/author/simmessa/"
+  },
+  "image": "https://www.simonemessaggi.it/images/AWS-Feature.png",
+  "url": "https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/",
+  "description": "Okay, all of you already know about Amazon cloud prowess, so I won't bore you with the details. If your instances are on AWS it's very..."
+}
+</script><link href=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/ rel=canonical><script type=application/ld+json>{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "https://www.simonemessaggi.it"}, {"@type": "ListItem", "position": 2, "name": "2018", "item": "https://www.simonemessaggi.it/2018"}, {"@type": "ListItem", "position": 3, "name": "10", "item": "https://www.simonemessaggi.it/2018/10"}, {"@type": "ListItem", "position": 4, "name": "En", "item": "https://www.simonemessaggi.it/2018/10/en"}, {"@type": "ListItem", "position": 5, "name": "Dump rds snapshot to sql python terraform", "item": "https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform"}, {"@type": "ListItem", "position": 6, "name": "Index", "item": "https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/index.html"}]}</script><script type=application/ld+json>{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Dump your db from AWS RDS snapshot with Python and Terraform", "about": "Tech", "datePublished": "2018-10-31 00:00"}</script><meta content=summary name=twitter:card><meta content=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/ property=og:url><meta content=article property=og:type><meta content="Dump your db from AWS RDS snapshot with Python and Terraform" property=og:title><meta content=en_US property=og:locale><body class=category-template><div class=nav-header><nav aria-label=Main class=nav-wrapper><ul><li class=nav-Home role=presentation><a href=/><span>Home</span></a><li class=nav-Rants role=presentation><a href=/category/rants/><span>Rants</span></a><li class="nav-Tech active" role=presentation><a href=/category/tech/><span>Tech</span></a><li class=nav-Humans role=presentation><a href=/category/humans/><span>Humans</span></a><li role=presentation><a href=https://www.simonemessaggi.it/pages/contact/><span>Contact</span></a></ul><ul class=nav-meta><li class=nav-twitter><a aria-label=Twitter href=http://twitter.com/simmessa target=_blank><i class="icon icon-twitter" aria-hidden=true></i> <span>Twitter</span> </a><li class=nav-github><a aria-label=Github href=https://github.com/simmessa target=_blank><i class="icon icon-github" aria-hidden=true></i> <span>Github</span> </a><li class=nav-search style=display:none><a title=Search> <i class="icon icon-search" aria-hidden=true></i> <span>Search</span> </a></ul></nav><div class=nav-wrapper-control><div class=inner><a class=nav-menu role=button><i class="icon icon-menu" aria-hidden=true></i>Menu</a><a class=nav-search role=button style=display:none title=Search><i class="icon icon-search" aria-hidden=true></i></a></div></div></div><div aria-label=Close class=nav-close role=button></div><section class=page-wrapper id=wrapper><div class=progress-container><span class=progress-bar></span></div><header class="post-header has-cover"><div class=inner><span class=post-info> <a href=https://www.simonemessaggi.it><span class=post-type>Home</span></a> >  <span class=post-type>Article</span> <a href=https://www.simonemessaggi.it/category/tech/><span class=post-count>Tech</span></a> </span><h1 class=post-title>Dump your db from AWS RDS snapshot with Python and Terraform</h1><div class=post-meta><div class=post-meta-avatars><figure class="post-meta-avatar avatar"><a class=author-avatar href=https://www.simonemessaggi.it/author/simmessa/> <img alt="Simone Messaggi" class=author-profile-image src=https://www.simonemessaggi.it/images/simmessa.png> </a></figure></div><h4 class=post-meta-author>Simone Messaggi</h4><time datetime="Wed 31 October 2018">Wed 31 October 2018</time> • 9 min read <div><hr><p>Read <strong><a href=https://www.simonemessaggi.it/2018/10/dump-rds-snapshot-to-sql-python-terraform/>this article</a></strong> in Italian language <strong><a href=https://www.simonemessaggi.it/2018/10/dump-rds-snapshot-to-sql-python-terraform/> here >></a></strong></div></div><div class="post-cover cover"><img alt="Category Tech" src=https://www.simonemessaggi.it/images/AWS-Feature.png></div></div></header><main class=content role=main><article class=post><div class=inner><section class=post-content><p>Okay, all of you already know about Amazon cloud prowess, so I won't bore you with the details. If your instances are on AWS it's very probable you're already using their <em>db engine as a service</em>, or <strong>RDS</strong>* (which stands for Relational Database Service).<p><em>Repost of article first appeared on <a href=https://medium.com/@simmessa/fare-un-dump-da-uno-snapshot-rds-con-python-e-terraform-7cbd0fa026fc>Medium</a></em><p>Today we are talking about a useful hack for those who use this service, and specifically, we will go to see how to create a classic db dump ( .sql format) from a database instance.<h2>But don't backups already exist?</h2><p>RDS, among the many interesting things, offers the functionality of having automatic backups, and if you have tried it you already know it is really convenient. At any time you can restore an existing snapshot or even create a new instance of the database, of which to choose the size (understood as "power" of the server), going to fish from the snapshot data.<p><img alt="RDS has good backups, but they are not the sql dumps that serve us..." src=". /images/RDS_snapshot.png"> <em>RDS has good backups, but it's not the kind of sql dumps we need...</em><p>I often thought that these backups were already what I needed, i.e. a way like another to dump the db in compressed sql file to duplicate a service, unfortunately I realized at my expense that is not so simple, especially if you want to automate the process and you want to find the way to risk as little as possible with a live db in production.<p>The juice of the speech is that, on RDS, it is extremely easy to duplicate a database by snapshot and creating a new instance, but the portability level of this kind of "dump" is practically null, is only valid on RDS.<p>On the contrary, if you want to get a dump is not so trivial.<h2>The basic method</h2><p>The process is quite simple:<ul><li>We create a snapshot<li>We launch a new instance of "small" db (e.g. a db.t2.micro, with 1 vCPU and 1 Gb of RAM) by selecting as source the snapshot that interests us<li>We connect <strong>mysqldump</strong>* to the new instance and produce the database dump we need</ul><p>Do it manually every time, however, I find it palloetto, so I looked for (thank you Google!) and processed a more smart and automatic method of doing it<h2>Some LIVE shortcomings</h2><p>If by chance you want to have the dump of a production database and want to avoid problems, also satisfying you with not very fresh data, I recommend you to start setting up backup jobs/creation of snapshots in the band where you have fewer accesses to your service, it may be at night, but it is up to you to discover it and, in any case, if it is a public service Google Analytics is your friend, otherwise good search in logs.<h2>The Terraform + Python script method</h2><p>As a premise, please note you'll find the sample code of this article on my profile <a href=https://github.com/simmessa/rds_snaptodump>github</a>. Having sorted that out, let's now see together what we have to do to go to create the dump this way.<p>Before continuing please clone the repo and enter with:<div class=highlight><pre><span></span><code>$<span class=w> </span>git<span class=w> </span>clone<span class=w> </span>https://github.com/simmessa/rds_snaptodump
+<span class=nb>cd</span><span class=w> </span>rds_snaptodump
+</code></pre></div><h3>Some prerequisites</h3><p>To run the repository files you need:<ul><li>terraform (for installation see below)<li>mysqldump<li>an AWS account with the privileges needed to interact with RDS (reading, database lists, etc.) (motr information below)<li>python 2 (I tested with version 2.7.12)</ul><h3>Install Terraform</h3><p>First, I suggest you install <a href=https://www.terraform.io>Terraform</a>, it is a tool made by the sympathetic [Hashicorp] gentlemen (https://www.hashicorp.com/) who is very useful and will open a world about how to create command-line cloud infrastructure, but, of course, this article does not allow us to deepen the subject.<p>Know at least that, with terraform, you can launch commands that will define, based on scripts, cloud environments on AWS, GKE or other environments.<p>I have no idea if Terraform is bundled thanks to the pkg manager of your favorite Linux distro (or maybe on <a href=https://medium.com/@simmessa/install-un-ambiente-di-sviluppo-linux-su-windows-10-wsl-fc638bb4ff8e>WSL</a> under windows 10), but if you need to install it from the command line the procedure is very simple, go <a href=https://www.terraform.io/downloads.html>here</a>, download the right binary and then unzip it where you need it:<div class=highlight><pre><span></span><code>$<span class=w> </span>wget<span class=w> </span>https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip<span class=p>;</span><span class=w> </span>unzip<span class=w> </span>terraform_0.11.10_linux_amd64.zip
+</code></pre></div><p>Is that done? Great! At this point you should find yourself with the terraform binary available and inside the previously cloned github repository.<p>To check the terraform install, just try to run terraform via cli:<div class=highlight><pre><span></span><code><span class=o>./</span><span class=n>terraform</span>
+<span class=n>Usage</span><span class=p>:</span><span class=w> </span><span class=n>terraform</span><span class=w> </span><span class=p>[</span><span class=o>-</span><span class=n>version</span><span class=p>]</span><span class=w> </span><span class=p>[</span><span class=o>-</span><span class=n>help</span><span class=p>]</span><span class=w> </span><span class=o>&lt;</span><span class=n>command</span><span class=o>></span><span class=w> </span><span class=p>[</span><span class=n>args</span><span class=p>]</span>
+
+<span class=n>The</span><span class=w> </span><span class=n>available</span><span class=w> </span><span class=n>commands</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>execution</span><span class=w> </span><span class=n>are</span><span class=w> </span><span class=n>listed</span><span class=w> </span><span class=n>below</span><span class=o>.</span>
+<span class=n>The</span><span class=w> </span><span class=n>most</span><span class=w> </span><span class=n>common</span><span class=p>,</span><span class=w> </span><span class=n>useful</span><span class=w> </span><span class=n>commands</span><span class=w> </span><span class=n>are</span><span class=w> </span><span class=n>shown</span><span class=w> </span><span class=n>first</span><span class=p>,</span><span class=w> </span><span class=n>followed</span><span class=w> </span><span class=n>by</span>
+<span class=n>less</span><span class=w> </span><span class=n>common</span><span class=w> </span><span class=ow>or</span><span class=w> </span><span class=n>more</span><span class=w> </span><span class=n>advanced</span><span class=w> </span><span class=n>commands</span><span class=o>.</span><span class=w> </span><span class=n>If</span><span class=w> </span><span class=n>you</span><span class=s1>'re just getting</span>
+<span class=n>started</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=n>Terraform</span><span class=p>,</span><span class=w> </span><span class=n>stick</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>common</span><span class=w> </span><span class=n>commands</span><span class=o>.</span><span class=w> </span><span class=n>For</span><span class=w> </span><span class=n>the</span>
+<span class=n>other</span><span class=w> </span><span class=n>commands</span><span class=p>,</span><span class=w> </span><span class=n>please</span><span class=w> </span><span class=n>read</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>help</span><span class=w> </span><span class=ow>and</span><span class=w> </span><span class=n>docs</span><span class=w> </span><span class=n>before</span><span class=w> </span><span class=n>usage</span><span class=o>.</span>
+
+<span class=n>Common</span><span class=w> </span><span class=n>commands</span><span class=p>:</span>
+<span class=w>    </span><span class=n>apply</span><span class=w>              </span><span class=n>Builds</span><span class=w> </span><span class=ow>or</span><span class=w> </span><span class=n>changes</span><span class=w> </span><span class=n>infrastructure</span>
+<span class=w>    </span><span class=n>console</span><span class=w>            </span><span class=n>Interactive</span><span class=w> </span><span class=n>console</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>interpolations</span>
+<span class=w>    </span><span class=n>destroy</span><span class=w>            </span><span class=n>Destroy</span><span class=w> </span><span class=n>Terraform</span><span class=o>-</span><span class=n>managed</span><span class=w> </span><span class=n>infrastructure</span>
+<span class=w>    </span><span class=n>env</span><span class=w>                </span><span class=n>Workspace</span><span class=w> </span><span class=n>management</span>
+<span class=w>    </span><span class=n>fmt</span><span class=w>                </span><span class=n>Rewrites</span><span class=w> </span><span class=n>config</span><span class=w> </span><span class=n>files</span><span class=w> </span><span class=n>to</span><span class=w> </span><span class=n>canonical</span><span class=w> </span><span class=nb>format</span>
+<span class=w>    </span><span class=n>get</span><span class=w>                </span><span class=n>Download</span><span class=w> </span><span class=ow>and</span><span class=w> </span><span class=n>install</span><span class=w> </span><span class=n>modules</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>configuration</span>
+<span class=w>    </span><span class=n>graph</span><span class=w>              </span><span class=n>Create</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>visual</span><span class=w> </span><span class=n>graph</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>resources</span>
+<span class=w>    </span><span class=kn>import</span><span class=w>             </span><span class=nn>Import</span><span class=w> </span><span class=n>existing</span><span class=w> </span><span class=n>infrastructure</span><span class=w> </span><span class=n>into</span><span class=w> </span><span class=n>Terraform</span>
+<span class=w>    </span><span class=n>init</span><span class=w>               </span><span class=n>Initialize</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>working</span><span class=w> </span><span class=n>directory</span>
+<span class=w>    </span><span class=n>output</span><span class=w>             </span><span class=n>Read</span><span class=w> </span><span class=n>an</span><span class=w> </span><span class=n>output</span><span class=w> </span><span class=kn>from</span><span class=w> </span><span class=nn>a</span><span class=w> </span><span class=n>state</span><span class=w> </span><span class=n>file</span>
+<span class=w>    </span><span class=n>plan</span><span class=w>               </span><span class=n>Generate</span><span class=w> </span><span class=ow>and</span><span class=w> </span><span class=n>show</span><span class=w> </span><span class=n>an</span><span class=w> </span><span class=n>execution</span><span class=w> </span><span class=n>plan</span>
+<span class=w>    </span><span class=n>providers</span><span class=w>          </span><span class=n>Prints</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>tree</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>providers</span><span class=w> </span><span class=n>used</span><span class=w> </span><span class=ow>in</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>configuration</span>
+<span class=w>    </span><span class=n>push</span><span class=w>               </span><span class=n>Upload</span><span class=w> </span><span class=n>this</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>module</span><span class=w> </span><span class=n>to</span><span class=w> </span><span class=n>Atlas</span><span class=w> </span><span class=n>to</span><span class=w> </span><span class=n>run</span>
+<span class=w>    </span><span class=n>refresh</span><span class=w>            </span><span class=n>Update</span><span class=w> </span><span class=n>local</span><span class=w> </span><span class=n>state</span><span class=w> </span><span class=n>file</span><span class=w> </span><span class=n>against</span><span class=w> </span><span class=n>real</span><span class=w> </span><span class=n>resources</span>
+<span class=w>    </span><span class=n>show</span><span class=w>               </span><span class=n>Inspect</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>state</span><span class=w> </span><span class=ow>or</span><span class=w> </span><span class=n>plan</span>
+<span class=w>    </span><span class=n>taint</span><span class=w>              </span><span class=n>Manually</span><span class=w> </span><span class=n>mark</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>resource</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>recreation</span>
+<span class=w>    </span><span class=n>untaint</span><span class=w>            </span><span class=n>Manually</span><span class=w> </span><span class=n>unmark</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>resource</span><span class=w> </span><span class=k>as</span><span class=w> </span><span class=n>tainted</span>
+<span class=w>    </span><span class=n>validate</span><span class=w>           </span><span class=n>Validates</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>files</span>
+<span class=w>    </span><span class=n>version</span><span class=w>            </span><span class=n>Prints</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>Terraform</span><span class=w> </span><span class=n>version</span>
+<span class=w>    </span><span class=n>workspace</span><span class=w>          </span><span class=n>Workspace</span><span class=w> </span><span class=n>management</span>
+
+<span class=n>All</span><span class=w> </span><span class=n>other</span><span class=w> </span><span class=n>commands</span><span class=p>:</span>
+<span class=w>    </span><span class=n>debug</span><span class=w>              </span><span class=n>Debug</span><span class=w> </span><span class=n>output</span><span class=w> </span><span class=n>management</span><span class=w> </span><span class=p>(</span><span class=n>experimental</span><span class=p>)</span>
+<span class=w>    </span><span class=n>force</span><span class=o>-</span><span class=n>unlock</span><span class=w>       </span><span class=n>Manually</span><span class=w> </span><span class=n>unlock</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>terraform</span><span class=w> </span><span class=n>state</span>
+<span class=w>    </span><span class=n>state</span><span class=w>              </span><span class=n>Advanced</span><span class=w> </span><span class=n>state</span><span class=w> </span><span class=n>management</span>
+</code></pre></div><p>If your output is like what you see above you are fine, terraform should be ready to be used.<h3>Editing the main.tf script</h3><p>Now that you have Terraform available you will have to edit the script we will use to create the instance of our database to get the dump.<p>It's called main.tf and you'll find it below:<div class=highlight><pre><span></span><code>provider<span class=w> </span>"aws"<span class=w> </span>{
+<span class=w>  </span>region<span class=w> </span>=<span class=w> </span>"eu-west-1"<span class=w> </span>#<span class=w> </span>put<span class=w> </span>your<span class=w> </span>AWS<span class=w> </span>region<span class=w> </span>here!
+}
+
+#<span class=w> </span>Get<span class=w> </span>latest<span class=w> </span>snapshot<span class=w> </span>from<span class=w> </span>production<span class=w> </span>DB
+data<span class=w> </span>"aws_db_snapshot"<span class=w> </span>"latest_prod_snapshot"<span class=w> </span>{
+<span class=w>    </span>most_recent<span class=w> </span>=<span class=w> </span>true
+<span class=w>    </span>db_instance_identifier<span class=w> </span>=<span class=w> </span>"mydbname"<span class=w> </span>#<span class=w> </span>put<span class=w> </span>the<span class=w> </span>name<span class=w> </span>of<span class=w> </span>your<span class=w> </span>db<span class=w> </span>here!
+}
+#<span class=w> </span>Create<span class=w> </span>new<span class=w> </span>staging<span class=w> </span>DB
+resource<span class=w> </span>"aws_db_instance"<span class=w> </span>"db_snapshot_dumper"<span class=w> </span>{
+<span class=w>  </span>instance_class<span class=w>       </span>=<span class=w> </span>"db.t2.micro"
+<span class=w>  </span>identifier<span class=w>           </span>=<span class=w> </span>"db-snapshot-dumper"
+<span class=w>  </span>username<span class=w>             </span>=<span class=w> </span>"user"<span class=w> </span>#<span class=w> </span>necessary,<span class=w> </span>but<span class=w> </span>won't<span class=w> </span>be<span class=w> </span>used<span class=w> </span>since<span class=w> </span>a<span class=w> </span>snapshot<span class=w> </span>identifier<span class=w> </span>is<span class=w> </span>provided...
+<span class=w>  </span>password<span class=w>             </span>=<span class=w> </span>"password"<span class=w> </span>#<span class=w> </span>necessary,<span class=w> </span>but<span class=w> </span>won't<span class=w> </span>be<span class=w> </span>used<span class=w> </span>since<span class=w> </span>a<span class=w> </span>snapshot<span class=w> </span>identifier<span class=w> </span>is<span class=w> </span>provided...
+<span class=w>  </span>snapshot_identifier<span class=w>  </span>=<span class=w> </span>"<span class=cp>${</span><span class=n>data</span><span class=o>.</span><span class=n>aws_db_snapshot</span><span class=o>.</span><span class=n>latest_prod_snapshot</span><span class=o>.</span><span class=n>id</span><span class=cp>}</span>"
+<span class=w>  </span>#vpc_security_group_ids<span class=w> </span>=<span class=w> </span>["sg-12345678"]<span class=w> </span>#<span class=w> </span>if<span class=w> </span>you<span class=w> </span>are<span class=w> </span>running<span class=w> </span>inside<span class=w> </span>a<span class=w> </span>VPC<span class=w> </span>uncomment<span class=w> </span>and<span class=w> </span>put<span class=w> </span>yours<span class=w> </span>here
+<span class=w>  </span>skip_final_snapshot<span class=w> </span>=<span class=w> </span>true<span class=w> </span>#<span class=w> </span>Won't<span class=w> </span>produce<span class=w> </span>a<span class=w> </span>final<span class=w> </span>snapshot<span class=w> </span>when<span class=w> </span>disposing<span class=w> </span>of<span class=w> </span>db
+}
+
+output<span class=w> </span>"address"<span class=w> </span>{
+<span class=w>  </span>value<span class=w> </span>=<span class=w> </span>"<span class=cp>${</span><span class=n>aws_db_instance</span><span class=o>.</span><span class=n>db_snapshot_dumper</span><span class=o>.</span><span class=n>address</span><span class=cp>}</span>"
+}
+
+output<span class=w> </span>"snapshot"<span class=w> </span>{
+<span class=w>  </span>value<span class=w> </span>=<span class=w> </span>"<span class=cp>${</span><span class=n>aws_db_instance</span><span class=o>.</span><span class=n>db_snapshot_dumper</span><span class=o>.</span><span class=n>snapshot_identifier</span><span class=cp>}</span>"
+}
+</code></pre></div><p>There are various things you will need to change to suit your specific case, such as the AWS region where you're going to use the RDS service:<div class=highlight><pre><span></span><code><span class=n>provider</span><span class=w> </span><span class=s>"aws"</span><span class=w> </span><span class=p>{</span>
+<span class=w>  </span><span class=n>region</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>"eu-west-1"</span><span class=w> </span><span class=p>#</span><span class=w> </span><span class=n>put</span><span class=w> </span><span class=n>your</span><span class=w> </span><span class=n>AWS</span><span class=w> </span><span class=n>region</span><span class=w> </span><span class=n>here</span><span class=o>!</span>
+<span class=p>}</span>
+<span class=p>[...]</span>
+</code></pre></div><p>and the id of your database, as shown in the RDS panel:<div class=highlight><pre><span></span><code><span class=k>[...]</span>
+<span class=c1># Get latest snapshot from production DB</span>
+<span class=na>data "aws_db_snapshot" "latest_prod_snapshot" {</span>
+<span class=w>    </span><span class=na>most_recent</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>true</span>
+<span class=w>    </span><span class=na>db_instance_identifier</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>"mydbname"</span><span class=w> </span><span class=c1># put the name of your db here!</span>
+<span class=na>}</span>
+<span class=k>[...]</span>
+</code></pre></div><p>Finally, if your cloud infrastructure provides a vpc, I recommend you to uncomment the appropriate line and enter the id of your vpc:<div class=highlight><pre><span></span><code><span class=k>[...]</span>
+<span class=w>  </span><span class=c1>#vpc_security_group_ids = ["sg-12345678"] # if you are running inside a VPC uncomment and put yours here</span>
+<span class=k>[...]</span>
+</code></pre></div><p>I would like to take this opportunity to point out that we did not have to give Terraform the id of a specific snapshot, on the contrary, we asked him to use the latest available snapshot (most_recent = true):<div class=highlight><pre><span></span><code><span class=k>[...]</span>
+<span class=c1># Get latest snapshot from production DB</span>
+<span class=na>data "aws_db_snapshot" "latest_prod_snapshot" {</span>
+<span class=w>    </span><span class=na>most_recent</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>true</span>
+<span class=w>    </span><span class=na>db_instance_identifier</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s>"mydbname"</span><span class=w> </span><span class=c1># put the name of your db here!</span>
+<span class=na>}</span>
+<span class=k>[...]</span>
+</code></pre></div><p>I find it wonderful, for my purposes, but if you need a specific snapshot, I refer you to the pretty decent <a href=https://www.terraform.io/docs/providers/aws/db_snapshot.html>Terraform docs page</a> for the fine details.<p>Once we do this we can switch to the Python part of our dumper.<h3>Edit the Python snaptodump.py script</h3><p>The script "snaptodump.py" in its "original" form can be found below:<div class=highlight><pre><span></span><code><span class=c1>#Python</span>
+
+<span class=kn>from</span><span class=w> </span><span class=nn>sys</span><span class=w> </span><span class=kn>import</span><span class=w> </span><span class=n>argv</span>
+<span class=kn>from</span><span class=w> </span><span class=nn>datetime</span><span class=w> </span><span class=kn>import</span><span class=w> </span><span class=n>datetime</span>
+
+<span class=kn>import</span><span class=w> </span><span class=nn>sys</span><span class=o>,</span><span class=w> </span><span class=nn>os</span><span class=o>,</span><span class=w> </span><span class=nn>os.path</span>
+
+<span class=n>start_time</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span>
+
+<span class=c1># MySQL setup: put the MySQL user with dump permission and database name here</span>
+<span class=c1># password will be asked interactively later: </span>
+
+<span class=n>dbusr</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>"your_mysql_username"</span><span class=w> </span>
+<span class=n>dbname</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>"your_mysql_database_name"</span>
+
+<span class=nb>print</span><span class=w> </span><span class=s2>"""</span>
+
+<span class=s2>This script will launch Terraform to dump the latest snapshot of prod db</span>
+
+<span class=s2>PREREQUISITES:</span>
+
+<span class=s2>You need AWS tokens setup as ENV vars or Terraform won't work:</span>
+<span class=s2>export AWS_ACCESS_KEY_ID="xxx"</span>
+<span class=s2>export AWS_SECRET_ACCESS_KEY="yyy"</span>
+
+<span class=s2>USAGE:</span>
+
+<span class=s2>python snaptodump.py</span>
+
+<span class=s2>*** WARNING ***</span>
+<span class=s2>This tool requires the mysqldump binary installed on your system and the necessary free space on your local disk for dumping!</span>
+
+<span class=s2>"""</span>
+
+<span class=n>terraform_init_dir</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>"./.terraform"</span>
+
+<span class=k>if</span><span class=w> </span><span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>exists</span><span class=p>(</span><span class=n>terraform_init_dir</span><span class=p>):</span>
+<span class=w>    </span><span class=nb>print</span><span class=w> </span><span class=s2>"terraform init already ran!</span><span class=se>\n</span><span class=s2>"</span>
+<span class=k>else</span><span class=p>:</span>
+<span class=w>    </span><span class=n>os</span><span class=o>.</span><span class=n>system</span><span class=p>(</span><span class=w> </span><span class=s2>"./terraform init"</span><span class=p>)</span>
+
+<span class=k>if</span><span class=w> </span><span class=p>(</span><span class=w> </span><span class=n>os</span><span class=o>.</span><span class=n>system</span><span class=p>(</span><span class=w> </span><span class=s2>"./terraform apply"</span><span class=p>)</span><span class=w> </span><span class=o>!=</span><span class=w> </span><span class=mi>0</span><span class=w> </span><span class=p>):</span>
+<span class=w>    </span><span class=nb>print</span><span class=w> </span><span class=s2>"*** ERROR while applying terraform config, dumping stopped! ***"</span>
+<span class=w>    </span><span class=n>exit</span><span class=p>()</span>
+
+<span class=n>host</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>os</span><span class=o>.</span><span class=n>popen</span><span class=p>(</span><span class=s1>'./terraform output address'</span><span class=p>)</span><span class=o>.</span><span class=n>read</span><span class=p>()</span>
+<span class=n>filename</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>os</span><span class=o>.</span><span class=n>popen</span><span class=p>(</span><span class=s1>'./terraform output snapshot'</span><span class=p>)</span><span class=o>.</span><span class=n>read</span><span class=p>()</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=s2>".sql.gz"</span>
+
+<span class=n>dumpcmd</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>"mysqldump -h </span><span class=si>%s</span><span class=s2> -u </span><span class=si>%s</span><span class=s2> --compress -p </span><span class=si>%s</span><span class=s2> |gzip > </span><span class=si>%s</span><span class=s2>"</span><span class=w> </span><span class=o>%</span><span class=w> </span><span class=p>(</span><span class=n>host</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>'</span><span class=se>\n</span><span class=s1>'</span><span class=p>,</span><span class=s1>''</span><span class=p>),</span><span class=w> </span><span class=n>dbusr</span><span class=p>,</span><span class=w> </span><span class=n>dbname</span><span class=p>,</span><span class=w> </span><span class=n>filename</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>'</span><span class=se>\n</span><span class=s1>'</span><span class=p>,</span><span class=s1>''</span><span class=p>))</span>
+
+<span class=nb>print</span><span class=w> </span><span class=s2>"Next step is mysqldump, you will be asked for a MySQL password</span><span class=se>\n</span><span class=s2>"</span>
+
+<span class=n>dbdump_start</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span>
+
+<span class=k>if</span><span class=w> </span><span class=n>os</span><span class=o>.</span><span class=n>system</span><span class=p>(</span><span class=w> </span><span class=n>dumpcmd</span><span class=w> </span><span class=p>):</span>
+<span class=w>    </span><span class=nb>print</span><span class=w> </span><span class=s2>"An error occurred!"</span>
+<span class=w>    </span><span class=nb>print</span><span class=w> </span><span class=s2>"command was: </span><span class=si>%s</span><span class=s2>"</span><span class=w> </span><span class=o>%</span><span class=w> </span><span class=n>dumpcmd</span>
+<span class=k>else</span><span class=p>:</span>
+<span class=w>    </span><span class=nb>print</span><span class=w> </span><span class=s2>"All done!"</span>
+<span class=w>    </span><span class=nb>print</span><span class=w> </span><span class=s2>"Db dumped in </span><span class=si>%s</span><span class=s2>"</span><span class=w> </span><span class=o>%</span><span class=w> </span><span class=p>(</span><span class=w> </span><span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span><span class=w> </span><span class=o>-</span><span class=w> </span><span class=n>dbdump_start</span><span class=w> </span><span class=p>)</span>
+
+<span class=c1>#Now let's destroy our temp RDS instance</span>
+<span class=n>os</span><span class=o>.</span><span class=n>system</span><span class=p>(</span><span class=w> </span><span class=s2>"./terraform destroy "</span><span class=p>)</span>
+
+<span class=c1>#Feeling bold? comment previous command and enable this!</span>
+<span class=c1>#os.system( "./terraform destroy -auto-approve"</span>
+
+<span class=nb>print</span><span class=w> </span><span class=s2>"Total procedure completed in </span><span class=si>%s</span><span class=se>\n</span><span class=s2>"</span><span class=w> </span><span class=o>%</span><span class=w> </span><span class=p>(</span><span class=w> </span><span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span><span class=w> </span><span class=o>-</span><span class=w> </span><span class=n>start_time</span><span class=w> </span><span class=p>)</span>
+
+<span class=c1>#print dumpcmd</span>
+</code></pre></div><p>[...] dbusr = "your_mysql_username" dbname = "your_mysql_database_name" [...] ``<p>will become, for example:<p><code>[...]
+dbusr = "pete"
+dbname = "dbproduction"
+[...]</code><p>At this point, if you try to launch the script:<div class=highlight><pre><span></span><code>$<span class=w> </span>python<span class=w> </span>snaptodump.py
+</code></pre></div><p>You will notice that, in order to work, it needs the AWS authentication part, without which Terraform cannot dialogue with AWS.<h3>Authentication and AWS access keys</h3><p>To interact with the AWS cloud, you need to define two system variables, containing your RDS credentials:<div class=highlight><pre><span></span><code><span class=k>export</span><span class=w> </span><span class=n>AWS_ACCESS_KEY_ID</span><span class=o>=</span><span class=s2>"xxx"</span>
+<span class=k>export</span><span class=w> </span><span class=n>AWS_SECRET_ACCESS_KEY</span><span class=o>=</span><span class=s2>"yyyy"</span>
+</code></pre></div><p><strong>WARNING: Do not run the script using credentials with all permissions (such as root account) or in any case with credentials higher than those strictly necessary to dump RDS</strong><p>By running Terraform with all AWS privileges you might literally erase your environment in the cloud, so I thought I'd put the notice above. You've been warned!<p>In this respect, since I lost some time, it seems only appropriate to define what these AWS IAM permits are necessary for the execution of the dump, let's see them together.<p>First of all, I created a user and a specific group, the necessary permissions are obviously defined within the group, so that they can be applied faster to a new future user.<p>The group name is "db_dumpers". I then created the policies necessary to interact with RDS, specifically two of them.<p>The first is part of AmazonRDS's pre-configured policies, and it's called:<p>"AmazonRDSReadOnlyAccess"<p>in json, the content looks like this:<div class=highlight><pre><span></span><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "rds:Describe*",
+        "rds:ListTagsForResource",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeVpcs"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Action": [
+        "cloudwatch:GetMetricStatistics",
+        "logs:DescribeLogStreams",
+        "logs:GetLogEvents"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+</code></pre></div><p>As you can see, in addition to RDS this policy contains some useful privileges for ec2, including sub-networks, security groups and VPC, which are also allowed for cloudwatch logging. All of it, of course, in read only mode.<p>In addition to this policy, I had to create a second, custom policy, to allow action on the RDS service:<div class=highlight><pre><span></span><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "rds:RestoreDBInstanceFromDBSnapshot",
+        "rds:CreateDBInstance",
+        "rds:ModifyDBInstance",
+        "rds:DeleteDBInstance"
+      ],
+      "Resource": [
+        "arn:aws:rds:*:*:snapshot:*",
+        "arn:aws:rds:*:*:secgrp:*",
+        "arn:aws:rds:*:*:subgrp:*",
+        "arn:aws:rds:*:*:og:*",
+        "arn:aws:rds:eu-west-1:123456789012:db:db-snapshot-dumper",
+        "arn:aws:rds:*:*:pg:*"
+      ]
+    }
+  ]
+}
+</code></pre></div><p>As you can see, here we have the opportunity to create new instances of RDS, edit them, delete them and then restore snapshot data.<p>For further safety, I have limited RDS permissions only to some ARN (which are Amazon resource identifiers) specific to the environment on which I am operating, because I want this user to not touch or harm my main db.<p>If you do it, there is a match between the instance that terraform creates to assign the snapshot and the ARN that I defined in the policy.<p>From the main.tf script:<div class=highlight><pre><span></span><code><span class=k>[...]</span>
+<span class=na>identifier</span><span class=w>           </span><span class=o>=</span><span class=w> </span><span class=s>"db-snapshot-dumper"</span>
+<span class=k>[...]</span>
+</code></pre></div><p>While from the above-defined AWS policy:<div class=highlight><pre><span></span><code><span class=k>[...]</span>
+<span class=w>      </span><span class=na>"Resource"</span><span class=o>:</span><span class=w> </span><span class=s>[</span>
+<span class=w>        </span><span class=na>"arn</span><span class=o>:</span><span class=s>aws:rds:*:*:snapshot:*",</span>
+<span class=w>        </span><span class=na>"arn</span><span class=o>:</span><span class=s>aws:rds:*:*:secgrp:*",</span>
+<span class=w>        </span><span class=na>"arn</span><span class=o>:</span><span class=s>aws:rds:*:*:subgrp:*",</span>
+<span class=w>        </span><span class=na>"arn</span><span class=o>:</span><span class=s>aws:rds:*:*:og:*",</span>
+<span class=w>        </span><span class=na>"arn</span><span class=o>:</span><span class=s>aws:rds:eu-west-1:123456789012:db:db-snapshot-dumper",</span>
+<span class=w>        </span><span class=na>"arn</span><span class=o>:</span><span class=s>aws:rds:*:*:pg:*"</span>
+<span class=w>      </span><span class=na>]</span>
+<span class=k>[...]</span>
+</code></pre></div><p>Once you create the two policies you will just assign them to the group "db_dumpers" and then return your user, of which you will have kept the credentials.<h3>Launch the script</h3><p>At this point we have prepared everything and we just have to launch the script:<div class=highlight><pre><span></span><code>$<span class=w> </span>python<span class=w> </span>snaptodump.py
+</code></pre></div><p>You should find, within a few hours, in the same folder where you launched the script, a file with your db dump, with the desired .sql.gz format<p>If something went wrong, you will receive an error message from the script or terraform instead.<p>Thank you for your attention, of course in case of problems or possible improvements, do not hesitate to comment below.<p>p.s.: sorry no more comments (editor note)</section><section class=post-footer><div class=post-share><span class=post-info-label>Share</span><a href="https://twitter.com/share?text=Dump your db from AWS RDS snapshot with Python and Terraform&url=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label=Twitter class=twitter title=Twitter> <i class="icon icon-twitter" aria-hidden=true></i><span class=hidden>Twitter</span> </a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" aria-label=Facebook class=facebook title=Facebook> <i class="icon icon-facebook" aria-hidden=true></i><span class=hidden>Facebook</span> </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/&title=Dump your db from AWS RDS snapshot with Python and Terraform" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" aria-label=LinkedIn class=linkedin title=LinkedIn> <i class="icon icon-linkedin" aria-hidden=true></i><span class=hidden>LinkedIn</span> </a><a href="mailto:?subject=Dump your db from AWS RDS snapshot with Python and Terraform&body=https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/" aria-label=Email class=email title=Email> <i class="icon icon-mail" aria-hidden=true></i><span class=hidden>Email</span> </a><div class=clear></div></div><aside class=post-tags><a href=https://www.simonemessaggi.it/tag/aws-cloud/>AWS Cloud</a><a href=https://www.simonemessaggi.it/tag/rds/>RDS</a><a href=https://www.simonemessaggi.it/tag/mysql/>MySQL</a><a href=https://www.simonemessaggi.it/tag/terraform/>Terraform</a><a href=https://www.simonemessaggi.it/tag/python/>Python</a></aside><div class=clear></div></section><aside class=post-nav><a class=post-nav-next href=https://www.simonemessaggi.it/2018/11/la-mia-esperienza-di-lavoro-a-ilgiornaleit/> <section class=post-nav-teaser><i class="icon icon-arrow-left"></i><h2 class=post-nav-title>La mia esperienza di lavoro a ilGiornale.it</h2><p class=post-nav-excerpt>In quest'ultimo periodo, mi è capitato di riflettere a vario titolo su quello che ho...<p class=post-nav-meta><time datetime="Sun 11 November 2018">Sun 11 November 2018</time></section> </a><a class=post-nav-prev href=https://www.simonemessaggi.it/2018/08/lo-stato-della-fibra-a-rivolta-dadda/> <section class=post-nav-teaser><i class="icon icon-arrow-right"></i><h2 class=post-nav-title>Lo stato della fibra a Rivolta d'Adda</h2><p class=post-nav-excerpt>Scrivo questo post per predirre il futuro, quindi probabilmente mi sbaglierò, ma...<p class=post-nav-meta><time datetime="Tue 07 August 2018">Tue 07 August 2018</time></section> </a><div class=clear></div></aside></div></article></main><div class=nav-footer><nav aria-label=Footer class=nav-wrapper><span class=nav-copy><a href=/>SimoneMessaggi.it © 2025</a> </span><span class=nav-credits> Published with <a href=https://github.com/getpelican/pelican rel=nofollow>Pelican</a> • Theme <a href=https://github.com/arulrajnet/attila rel=nofollow>Attila</a> • <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href=#> <span class=theme-icon></span><span class=theme-text>System theme</span> </a> </span></nav></div></section><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js></script><script src="https://www.simonemessaggi.it/theme/js/jquery.fitvids.min.js?cb=122334"></script><script src="https://www.simonemessaggi.it/theme/js/script.min.js?cb=122334"></script><script src="https://www.googletagmanager.com/gtag/js?id=G-Q242MTLMK7" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q242MTLMK7', { 'anonymize_ip': true });</script><script>$(document).ready(function () {
+    var viewport = $(window);
+    var post = $('.post-content');
+    // Responsive videos with fitVids
+    post.fitVids();
+
+    var mdSelector=".highlight pre";
+    var rstSelector=".highlight pre";
+    var selector=mdSelector;
+    // Format code blocks and add line numbers
+    function codestyling() {
+      $(selector).each(function(i, e) {
+        // Code highlight
+        hljs.highlightElement(e);
+        // No lines for plain text blocks
+        if (!$(this).hasClass('language-text')) {
+          var code = $(this);
+          // Calculate amount of lines
+          var lines = code.html().split(/\n(?!$)/g).length;
+          var numbers = [];
+          if (lines > 1) {
+            lines++;
+          }
+          for (i = 1; i < lines; i++) {
+            numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+          }
+          code.parent().append('<div class="lines">' + numbers + '</div>');
+        }
+      });
+    }
+
+    // Format code blocks only
+    function codestylingWithoutLineNumbers() {
+      $(selector).each(function(i, e) {
+        // Code highlight
+        hljs.highlightElement(e);
+      });
+    }
+
+    codestylingWithoutLineNumbers();
+    // Reading progress bar on window top
+    function readingProgress() {
+      var postBottom = post.offset().top + post.height();
+      var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+    }
+    readingProgress();
+    // Trigger reading progress
+    viewport.on({
+      'scroll': function() {
+        readingProgress();
+      },
+      'resize': function() {
+        readingProgress();
+      },
+      'orientationchange': function() {
+        readingProgress();
+      }
+    });
+
+  });</script>
