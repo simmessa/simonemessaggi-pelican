@@ -1,6 +1,7 @@
 ---
 date: 2025-08-19
 title: Just your title
+slug: your-slug-here
 lang: it
 cover: images/coverimage.jpg
 author: simmessa
