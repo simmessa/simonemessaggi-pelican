@@ -61,7 +61,7 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 CSS_OVERRIDE = ['theme/css/simonemessaggi.css']
 
 SITENAME = u'SimoneMessaggi.it'
-SITESUBTITLE = u'Master at Mistakes'
+SITESUBTITLE = u'Learn the most from the worst'
 SITEURL = "http://127.0.0.1:8000"
 SITE_DESCRIPTION = "Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti."
 COPYRIGHT_YEAR = "2025"
