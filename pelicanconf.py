@@ -55,8 +55,8 @@ DEFAULT_LANG = 'it'
 #         }
 #     }
 
-STATIC_PATHS = ['images', 'extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+STATIC_PATHS = ['images', 'extra/CNAME', 'extra/ico']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, }
 
 CSS_OVERRIDE = ['theme/css/simonemessaggi.css']
 

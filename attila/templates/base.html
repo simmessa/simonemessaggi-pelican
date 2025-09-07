@@ -74,6 +74,11 @@
 
   <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" type="text/css" rel="stylesheet" />
 
+  <link rel="icon" href="{{ SITEURL }}/extra/ico/favicon.ico" />
+  <link rel="icon" href="{{ SITEURL }}/extra/ico/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ SITEURL }}/extra/ico/apple-touch-icon.png"><!-- 180×180 -->
+  <link rel="manifest" href="{{ SITEURL }}/extra/ico/site.webmanifest">
+
   {% if CSS_OVERRIDE %}
   <!-- CSS specified by the user -->
   {% for css in CSS_OVERRIDE %}
