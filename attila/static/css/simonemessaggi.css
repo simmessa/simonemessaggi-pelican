@@ -4,7 +4,8 @@
     font-style: normal;
     font-weight: 400;
     src: url("../font/LANE_A.eot");
-    src: local("Lane A Regular"),local("LaneA-Regular"),url("../font/LANE_A.eot?#iefix") format("embedded-opentype"),url("../font/LANE_A.woff") format("woff"),url("../font/LANE_A.ttf") format("truetype"),url("../font/LANE_A.svg#LANE_A") format("svg")
+    src: local("Lane A Regular"),local("LaneA-Regular"),url("../font/LANE_A.eot?#iefix") format("embedded-opentype"),url("../font/LANE_A.woff") format("woff"),url("../font/LANE_A.ttf") format("truetype"),url("../font/LANE_A.svg#LANE_A") format("svg");
+    font-display: optional;
 }
 
 @font-face {
@@ -17,7 +18,7 @@
         url('../font/Freehand-Regular.svg#Freehand-Regular') format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: optional;
 }
 
 :root {
