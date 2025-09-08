@@ -7,7 +7,7 @@ cover: images/self-hosted-throwaway-email.jpeg
 author: simmessa
 status: published
 category: Tech
-tags: Tutorial, Email, Hack
+tags: Tutorial, Email, Hack, Howto
 ---
 
 Hai un server email privato? Bene! Vuoi avere un'email che puoi dare via per le registrazioni senza preoccuparti della quantità infinita di spam che finirai per ricevere?

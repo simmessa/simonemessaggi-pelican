@@ -7,7 +7,7 @@ cover: images/AWS-Feature.png
 status: published
 canonical: https://medium.com/@simmessa/fare-un-dump-da-uno-snapshot-rds-con-python-e-terraform-7cbd0fa026fc
 category: Tech
-tags: AWS Cloud, RDS, MySQL, Terraform, Python
+tags: AWS Cloud, RDS, MySQL, Terraform, Python, Howto
 ---
 
 Ok, già tutti voi conoscete le prodezze del cloud di Amazon, per cui non vi annoio con i dettagli, e se i vostri server si trovano su AWS è molto facile che già utilizziate il loro *db engine as a service*, ovvero **RDS** (che sta per Relational Database Service).

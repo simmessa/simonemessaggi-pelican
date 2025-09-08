@@ -6,7 +6,7 @@ slug: bruteforce-ssh-server
 cover: images/K-Line.jpg
 status: published
 category: Tech
-tags: SSH, Fail2ban, Security
+tags: SSH, Fail2ban, Security, Howto
 ---
 
 Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito.

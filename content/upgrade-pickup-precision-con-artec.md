@@ -7,7 +7,7 @@ cover: images/artec_pickups.jpg
 author: simmessa
 status: published
 category: Music
-tags: p-bass, bass pickups, upgrades
+tags: P-bass, Bass pickups, Upgrades, Howto
 ---
 
 *Are you stuck on a bass that is a blast to play but has a bad sound? Here's a quick test and the resulting experience of upgrading the stock pickups to the Artec POA4 Precision bass pickups for an HB DIY bass kit I built. The difference with the stock pickups is very detectable, in my opinion, but the newer pickups come with their own issue... Luckily, it's an easy fix! Check out the video for sound samples, my opinions and a before / after comparison of the bass sound.*
