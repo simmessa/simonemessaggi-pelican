@@ -60,15 +60,27 @@ h1.post-title{
     text-shadow: 5px 5px 15px #222;
 }
 
+.post-tags {
+    font-family: var(--font-primary);
+}
+
 @media only screen and (max-width: 480px) {
 /* Mobile responsiveness tweaks */
 
+    .blog-header {
+        position: relative;
+        padding-top: calc(8rem + 4vw);
+    }
+
+    .blog-header .blog-box {
+        padding-bottom: calc(2rem + 2vw);
+    }
     .post-header .post-title {
         font-size: 4em;
     }
 
     .blog-name {
-        font-size: 3.5em;
+        font-size: 4em;
     }
     .blog-description {
         font-size: 2em;
@@ -91,6 +103,15 @@ h1.post-title{
         font-size: 1.4em;
     }
 
+    .post-title {
+        margin: 2rem 0 2rem;
+    }
+
+    .container .post .post-box {
+        padding-top: calc(4rem + 2vw);
+        padding-bottom: calc(2rem + 2vw);
+    }
+    
     .post-content {
         font-size: 1.55em;
         line-height: 1.75em;
