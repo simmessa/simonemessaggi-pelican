@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>SimoneMessaggi.it - Tech</title><link href="https://www.simonemessaggi.it/" rel="alternate"/><link href="https://www.simonemessaggi.it/feeds/tech.atom.xml" rel="self"/><id>https://www.simonemessaggi.it/</id><updated>2020-12-25T00:00:00+01:00</updated><subtitle>Learn the most from the worst</subtitle><entry><title>La mia breve storia di tastiere meccaniche - parte 1</title><link href="https://www.simonemessaggi.it/2020/12/my-brief-history-mechanical-keyboards-part1/" rel="alternate"/><published>2020-12-25T00:00:00+01:00</published><updated>2020-12-25T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2020-12-25:/2020/12/my-brief-history-mechanical-keyboards-part1/</id><summary type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>SimoneMessaggi.it - tech</title><link href="https://www.simonemessaggi.it/" rel="alternate"/><link href="https://www.simonemessaggi.it/feeds/tech.atom.xml" rel="self"/><id>https://www.simonemessaggi.it/</id><updated>2025-09-08T00:00:00+02:00</updated><subtitle>Learn the most from the worst</subtitle><entry><title>Calibre-web, how to fix being locked out and reset password from shell</title><link href="https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/" rel="alternate"/><published>2025-09-08T00:00:00+02:00</published><updated>2025-09-08T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2025-09-08:/2025/09/en/calibre-web-fix-account-lockout/</id><summary type="html">&lt;p&gt;I totally love &lt;a href="https://github.com/janeczku/calibre-web/"&gt;Calibre-web&lt;/a&gt;, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've download from the web.&lt;/p&gt;
+&lt;p&gt;Here's an example screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Calibre-web gui" src="/images/calibre-web-gui.png"&gt;&lt;/p&gt;
+&lt;p&gt;Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I totally love &lt;a href="https://github.com/janeczku/calibre-web/"&gt;Calibre-web&lt;/a&gt;, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've download from the web.&lt;/p&gt;
+&lt;p&gt;Here's an example screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Calibre-web gui" src="/images/calibre-web-gui.png"/&gt;&lt;/p&gt;
+&lt;p&gt;Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your review, load metadata from the internet, and the list goes on... here's what listed on the github page:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modern and responsive Bootstrap 3 HTML5 interface&lt;/li&gt;
+&lt;li&gt;Full graphical setup&lt;/li&gt;
+&lt;li&gt;Comprehensive user management with fine-grained per-user permissions&lt;/li&gt;
+&lt;li&gt;Admin interface&lt;/li&gt;
+&lt;li&gt;Multilingual user interface supporting 20+ languages (&lt;a href="https://github.com/janeczku/calibre-web/wiki/Translation-Status"&gt;supported languages&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;OPDS feed for eBook reader apps&lt;/li&gt;
+&lt;li&gt;Advanced search and filtering options&lt;/li&gt;
+&lt;li&gt;Custom book collection (shelves) creation&lt;/li&gt;
+&lt;li&gt;eBook metadata editing and deletion support&lt;/li&gt;
+&lt;li&gt;Metadata download from various sources (extensible via plugins)&lt;/li&gt;
+&lt;li&gt;eBook conversion through Calibre binaries&lt;/li&gt;
+&lt;li&gt;eBook download restriction to logged-in users&lt;/li&gt;
+&lt;li&gt;Public user registration support&lt;/li&gt;
+&lt;li&gt;Send eBooks to E-Readers with a single click&lt;/li&gt;
+&lt;li&gt;Sync Kobo devices with your Calibre library&lt;/li&gt;
+&lt;li&gt;In-browser eBook reading support for multiple formats&lt;/li&gt;
+&lt;li&gt;Upload new books in various formats, including audio formats&lt;/li&gt;
+&lt;li&gt;Calibre Custom Columns support&lt;/li&gt;
+&lt;li&gt;Content hiding based on categories and Custom Column content per user&lt;/li&gt;
+&lt;li&gt;Self-update capability&lt;/li&gt;
+&lt;li&gt;"Magic Link" login for easy access on eReaders&lt;/li&gt;
+&lt;li&gt;LDAP, Google/GitHub OAuth, and proxy authentication support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can even read books directly from the web interface, but I must admit the resulting experience is everything but stellar...&lt;/p&gt;
+&lt;p&gt;I run my own via docker container, using the image provided by the excellent &lt;a href="https://docs.linuxserver.io/images/docker-calibre-web"&gt;linux-server&lt;/a&gt;. Setup is pretty straightforward&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;-d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;--name&lt;span class="o"&gt;=&lt;/span&gt;calibre-web&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PGID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;TZ&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Etc/UTC&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;DOCKER_MODS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;linuxserver/mods:universal-calibre&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c1"&gt;#optional` \&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;OAUTHLIB_RELAX_TOKEN_SCOPE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c1"&gt;#optional` \&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8083&lt;/span&gt;:8083&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-v&lt;span class="w"&gt; &lt;/span&gt;/path/to/calibre-web/data:/config&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-v&lt;span class="w"&gt; &lt;/span&gt;/path/to/calibre/library:/books&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;--restart&lt;span class="w"&gt; &lt;/span&gt;unless-stopped&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;lscr.io/linuxserver/calibre-web:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And I love the fact this is a single container without a separate db or anything like that, it's very selfhosting friendy and easy to use.&lt;/p&gt;
+&lt;h2&gt;The lockout problem&lt;/h2&gt;
+&lt;p&gt;Let's say you're logging in from mobile and you accidentally click on the "Forgot Password?" button...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Don't click the forgot password button" src="/images/calibre-web-forgot-password.png"/&gt;&lt;/p&gt;
+&lt;p&gt;And well, by design calibreweb will then set a &lt;em&gt;random password&lt;/em&gt; for the user you selected and send it via email to the email address linked to that user.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Except that your calibreweb install might not be allowed to send email in ANY WAY&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I know that's what mine does, as I don't let docker containers send mail in normal conditions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;WELL, You just LOCKED yourself out of your calibre-web instance my friend :/&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Is there a way we can fix this without re-creating the calibre-web instance from scratch?&lt;/p&gt;
+&lt;h2&gt;Solution: reset that password from inside&lt;/h2&gt;
+&lt;p&gt;Assuming that you're using docker, enter the calibreweb container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-it&lt;span class="w"&gt; &lt;/span&gt;calibre-web&lt;span class="w"&gt; &lt;/span&gt;bash
+
+&lt;span class="c1"&gt;#now that you're in just run this command:&lt;/span&gt;
+root@xxx:/app/calibre-web#&lt;span class="w"&gt; &lt;/span&gt;python3&lt;span class="w"&gt; &lt;/span&gt;cps.py&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;myuser:myvery_STRONG_password789
+Password&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'myuser'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;changed
+root@xxx:/app/calibre-web#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And that's all! You should now be able to login with your user and the new password.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;p.s.: Thanks to this Reddit thread for the info: &lt;a href="https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in"&gt;https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in_&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="tech"/><category term="eBook"/><category term="Selfhosted"/><category term="Howto"/></entry><entry><title>La mia breve storia di tastiere meccaniche - parte 1</title><link href="https://www.simonemessaggi.it/2020/12/my-brief-history-mechanical-keyboards-part1/" rel="alternate"/><published>2020-12-25T00:00:00+01:00</published><updated>2020-12-25T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2020-12-25:/2020/12/my-brief-history-mechanical-keyboards-part1/</id><summary type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Se avete usato un pc negli anni '90 sapete gia' di cosa sto parlando... Nell'epoca in cui mi sono avvicinato per la prima volta al mondo dei personal …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Se avete usato un pc negli anni '90 sapete gia' di cosa sto parlando... Nell'epoca in cui mi sono avvicinato per la prima volta al mondo dei personal computer, quando ancora li chiamavamo PC IBM compatibili... le tastiere erano molto meglio di adesso.&lt;/p&gt;
 &lt;p&gt;E davvero mi capitava spesso di usarle, su MS-DOS 3.30, erano imprescindibili, non essendo ancora diffuse le interfacce grafiche di Windows.&lt;/p&gt;
