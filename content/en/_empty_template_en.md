@@ -5,7 +5,7 @@ slug: your-slug-here
 lang: en
 cover: images/coverimage.jpg
 author: simmessa
-status: published
+status: hidden
 category: none
 tags: tag1, tag2
 ---
