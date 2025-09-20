@@ -23,7 +23,7 @@ Quello che segue è quanto ho scoperto dopo varie ricerche, sul destino della fi
 
 Questa riflessione parte, prima di tutto da una constatazione, tutti (o quasi) i comuni che confinano con Rivolta d'Adda hanno già la connettività in fibra ottica di TIM.
 
-![Rivolta d'Adda uno dei comuni in ritardo sulla fibra ottica](./images/fibra_rivolta.png)
+![Rivolta d'Adda uno dei comuni in ritardo sulla fibra ottica](/images/fibra_rivolta.png)
 *I comuni limitrofi sono quasi tutti serviti dalla rete in fibra...*
 
 Ecco una lista:
@@ -64,7 +64,7 @@ Fortunatamente ho scoperto che i piani esistono, anche se non sono troppo chiari
 
 ## La convenzione dei 48 comuni
 
-Andando a spulciare qua e la, mi sono trovato davanti le liste che il portale wholesale di TIM e la pagina di ["analisi vendibilità"](http://80.19.49.141/) mettono a disposizione per la consultazione dei lavori. Su questi giganteschi fogli excel ho trovato parecchie informazioni, tra cui gli armadi pianificati e il calendario delle installazioni, ma purtroppo ho notato che alcuni comuni per telecom proprio NON ESISTONO.
+Andando a spulciare qua e la, mi sono trovato davanti le liste che il portale wholesale di TIM e la pagina di analisi vendibilità (il link non e' piu' valido, 404) mettono a disposizione per la consultazione dei lavori. Su questi giganteschi fogli excel ho trovato parecchie informazioni, tra cui gli armadi pianificati e il calendario delle installazioni, ma purtroppo ho notato che alcuni comuni per telecom proprio NON ESISTONO.
 
 Ad esempio Rivolta d'Adda, che non è pianificato, non è già realizzato, proprio non è compreso nelle liste.
 
@@ -112,7 +112,7 @@ Parte di questa ricerca è nata dalla curiosità che mi è scattata nel vedere v
 
 Da poco hanno sostituito i vecchi lampioni con quelli nuovi a LED, hanno creato nuove cabine elettriche (della socierà Hera) e contemporaneamente qualcuno sostiene che TIM se ne sia avvalsa o abbia fatto lavori analoghi per la posa di fasci di fibre ottiche.
 
-![Le cabine Hera sembrano un po grandi per quello che fanno](./images/hera.jpg)
+![Le cabine Hera sembrano un po grandi per quello che fanno](/images/hera.jpg)
 *La speranza ha la forma di cabina elettrica*
 
 Questo avveniva un anno fa, durante l'estate del 2017.

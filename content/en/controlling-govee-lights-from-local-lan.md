@@ -6,7 +6,7 @@ lang: en
 cover: images/govee_lan_led_light_dbz_lookalike.jpeg
 author: simmessa
 status: published
-category: none
+category: Tech
 tags: Govee, Led lights, Home Assistant, DIY, Home automation, Tech
 ---
 

@@ -11,7 +11,7 @@ category: Rants
 tags: CMS, Wordpress
 ---
 
-*Of course, as is appropriate, my prediction is far from true, and after a number of years Ghost seems more dead than alive, the original article was dated August 21, 2014 when it appeared on [Simmessa.com](Simmessa.com), yet, in 2025 I feel like the "omen" is actually becoming a lot closer to reality...*
+*Of course, as is appropriate, my prediction is far from true, and after a number of years Ghost seems more dead than alive, the original article was dated August 21, 2014 when it appeared on [Simmessa.com](http://www.simmessa.com), yet, in 2025 I feel like the "omen" is actually becoming a lot closer to reality...*
 
 I'm writing this post from the bed of a mountain attic. I don't feel no remorse. I don't need an app, just a smartphone browser. Of course my knowledge of **markdown** is quite limited at the moment, so I don't expect this to become my greatest looking post to date.
 

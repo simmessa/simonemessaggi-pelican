@@ -36,7 +36,7 @@ I'm sorry to tell you... It is true that they update each year, but this is the 
 
 # So, what about tomorrow?
 Tomorrow perhaps we will have something better, the most adventurous have jumped to fish on **jQuery** and **Ruby on Rails,** while someone else tries his luck with **nodejs**, and in the meantime the "big" sites and networks continue to grow decrepit code and renewed templates.
-Today for this reason I opened a blog on [https://www.kickstarter.com/projects/johnolan/ghost-just-a-blogging-platform](Ghost), a project born from a 2013 kickstarter.
+Today for this reason I opened a blog on [Ghost](https://www.kickstarter.com/projects/johnolan/ghost-just-a-blogging-platform), a project born from a 2013 kickstarter.
 
 I will need to study this technology and understand its potential, I do not want to stay back and age with Italian web, I hope you will understand my motivations...
 

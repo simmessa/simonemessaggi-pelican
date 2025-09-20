@@ -30,7 +30,7 @@ If you aim to create a team of "toste" people (differently you wouldn't be here)
 
 ## Testing 1,2,3
 
-My [personal experience](/la-mia-experience-of-work-a-il-giornale-it) as manager of the website theGiornale.it has allowed me to experience a little regarding the selection of people for the development team, and taught me that to attract talents often a normal announcement is not enough, because there is a real filter that can make the difference between those who camp work with the real passion.
+My [personal experience](/2018/11/la-mia-esperienza-di-lavoro-a-ilgiornaleit) as manager of the website theGiornale.it has allowed me to experience a little regarding the selection of people for the development team, and taught me that to attract talents often a normal announcement is not enough, because there is a real filter that can make the difference between those who camp work with the real passion.
 
 The first selections I faced, in fact, had all the same problem, it took time and many resources to see so many candidates who perhaps did not have half of the skills they carried to CV, and this fact generally came out after much of this very *time consuming* process had already ended.
 
