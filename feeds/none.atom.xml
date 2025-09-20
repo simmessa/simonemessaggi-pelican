@@ -69,12 +69,4 @@ This choice also appeared as the best one since Govee LAN control doesn't even w
 &lt;p&gt;Ok, it's not really well documented but the docker container will also expose a decent enough HTTP interface, here's an example:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Govee MQTT gui" src="/images/govee_lan_gui.png"/&gt;&lt;/p&gt;
 &lt;p&gt;I especially like the fact that you can check what's being controlled via LAN API vs Govee (somewhat unreliable) cloud.&lt;/p&gt;
-&lt;p&gt;That's all, I hope your govee experience will be smooth as mine (or even smoother :) )&lt;/p&gt;</content><category term="none"/><category term="Govee"/><category term="Led lights"/><category term="Home Assistant"/><category term="DIY"/><category term="Home automation"/><category term="Tech"/></entry><entry><title>Just your title</title><link href="https://www.simonemessaggi.it/2025/08/en/your-slug-here/" rel="alternate"/><published>2025-08-19T00:00:00+02:00</published><updated>2025-08-19T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2025-08-19:/2025/08/en/your-slug-here/</id><content type="html">&lt;p&gt;&lt;em&gt;Just an empty template!&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Your text&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ALT text" src="./images/coverimage.jpg"/&gt;&lt;/p&gt;
-&lt;h2&gt;Title&lt;/h2&gt;
-&lt;h3&gt;Subtitle&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;One:&lt;/strong&gt; One thing&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Two:&lt;/strong&gt; Another&lt;/li&gt;
-&lt;/ul&gt;</content><category term="none"/><category term="tag1"/><category term="tag2"/></entry></feed>
+&lt;p&gt;That's all, I hope your govee experience will be smooth as mine (or even smoother :) )&lt;/p&gt;</content><category term="none"/><category term="Govee"/><category term="Led lights"/><category term="Home Assistant"/><category term="DIY"/><category term="Home automation"/><category term="Tech"/></entry></feed>
