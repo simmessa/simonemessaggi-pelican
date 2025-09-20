@@ -193,7 +193,7 @@ Viviamo nell'era della container revolution e questo trend già diffuso esploder
 &lt;p&gt;Oggi parliamo proprio di un hack utile per chi usa questo servizio, e nello specifico, andremo a vedere come creare un classico dump del db (formato .sql) da un'istanza di database.&lt;/p&gt;
 &lt;h2&gt;Ma non esistono già i backup?&lt;/h2&gt;
 &lt;p&gt;RDS, tra le tante cose interessanti, offre la funzionalità di avere dei backup automatici, ed se lo avete provato sapete già che è davvero comodo. In ogni momento potete ripristinare uno snapshot esistente o anche creare una nuova istanza del database, di cui scegliere la dimensione (intesa come "potenza" del server), andando a pescare dai dati dello snapshot.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="RDS ha degli ottimi backup, ma non sono i dump sql che servono a noi…" src="./images/RDS_snapshot.png"/&gt;
+&lt;p&gt;&lt;img alt="RDS ha degli ottimi backup, ma non sono i dump sql che servono a noi…" src="/images/RDS_snapshot.png"/&gt;
 &lt;em&gt;RDS ha degli ottimi backup, ma non sono i dump sql che servono a noi…&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Spesso mi è capitato di pensare che questi backup fossero già quello che mi serviva, ovvero un modo come un altro di dumpare il db in file sql compresso per duplicare un servizio, purtroppo mi sono accorto a mie spese che non è così semplice, soprattutto se vi va di automatizzare il processo e volete trovare il modo di rischiare il meno possibile con un db live in produzione.&lt;/p&gt;
 &lt;p&gt;Il succo del discorso è che, su RDS, è estremamente facile duplicare un database tramite snapshot e creando una nuova istanza, ma il livello di portabilità di questo genere di "dump" è praticamente nullo, vale solo su RDS.&lt;/p&gt;
