@@ -1,6 +1,6 @@
 ---
 date: 2007-05-23
-title: The Manowar "epic" years
+title: The Manowar 'epic' years
 slug: manowar-the-epic-years
 lang: en
 cover: images/manowar-band-playing-to-crowd.jpeg
