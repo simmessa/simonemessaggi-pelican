@@ -31,4 +31,4 @@ GOOGLE_ANALYTICS = "G-Q242MTLMK7"
 
 # Random cache breakers
 JSMIN = ".min"
-CB = "?cb=122334"
+CB = "?cb=122445"
