@@ -20,7 +20,7 @@ Today we are talking about a useful hack for those who use this service, and spe
 
 RDS, among the many interesting things, offers the functionality of having automatic backups, and if you have tried it you already know it is really convenient. At any time you can restore an existing snapshot or even create a new instance of the database, of which to choose the size (understood as "power" of the server), going to fish from the snapshot data.
 
-![RDS has good backups, but they are not the sql dumps that serve us...](. /images/RDS_snapshot.png)
+![RDS has good backups, but they are not the sql dumps that serve us...](. /images/webp/RDS_snapshot.webp)
 *RDS has good backups, but it's not the kind of sql dumps we need...*
 
 I often thought that these backups were already what I needed, i.e. a way like another to dump the db in compressed sql file to duplicate a service, unfortunately I realized at my expense that is not so simple, especially if you want to automate the process and you want to find the way to risk as little as possible with a live db in production.

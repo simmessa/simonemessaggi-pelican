@@ -28,7 +28,7 @@ Per supportare questo protocollo (IP) il gruppo KNX ha sviluppato il telegramma 
 
 E’ importante capire però che se anche le reti LAN hanno molti benefici, i requisiti di avere un’infrastruttura controllata e definita necessitano di mantenere KNX TP1 come base.
 
-![Il cavo KNX TP1](/images/KNX-cable.jpg)
+![Il cavo KNX TP1](/images/webp/KNX-cable.webp)
 *fig.1 - Il cavo KNX TP1*
 
 ## Il telegramma KNX/IP
@@ -70,7 +70,7 @@ Il router IP gestirà anche la tabella dei filtri per gestire il traffico (conge
 
 Chiaramente, trattandosi di multicast, abbiamo che per contattare più dispositivi punteremo ad un indirizzo multicast standard, in qusto modo abbiamo una comunicazione uno a molti, la KNX association ha riservato l’indirizzo di multicast 224.0.23.12 per comodità ma qualsiasi altro indirizzo può essere impiegato, basta che sia lo steso su tutti i dispositivi.
 
-![Usiamo un router IP come backbone e line coupler](/images/KNX-IP-network.jpg)
+![Usiamo un router IP come backbone e line coupler](/images/KNX-IP-network.webp)
 
 *fig.2 - Usiamo un router IP come backbone e line coupler*
 
@@ -96,7 +96,7 @@ Il routing invece, per sua stessa natura, non ha limiti al numero di connessioni
 
 Alcuni device hanno inoltre time server e schede di memoria per registrare il bus.
 
-![Questo è il router KNXnet / IP Gira 2167 00](/images/Gira-KNX-IP-router.jpg)
+![Questo è il router KNXnet / IP Gira 2167 00](/images/webp/Gira-KNX-IP-router.webp)
 *fig.3 - Questo è il router KNXnet / IP Gira 2167 00*
 
 **Nota Bene:**

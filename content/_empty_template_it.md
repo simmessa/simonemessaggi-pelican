@@ -14,7 +14,7 @@ tags: tag1, tag2
 
 Testo
 
-![ALT text](./images/coverimage.jpg)
+![ALT text](./images/webp/coverimage.webp)
 
 ## Titolo
 

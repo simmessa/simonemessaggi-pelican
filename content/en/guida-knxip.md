@@ -28,7 +28,7 @@ To support this protocol (IP) the KNX group has developed the KNX/IP telegram, n
 
 But it is important to understand that if LAN networks also have many benefits, the requirements of having a controlled and defined infrastructure need to maintain KNX TP1 as a basis.
 
-![The KNX TP1 cable](/images/KNX-cable.jpg)
+![The KNX TP1 cable](/images/webp/KNX-cable.wbp)
 *fig.1 - The KNX TP1 cable*
 
 ## The KNX/IP telegram
@@ -70,7 +70,7 @@ The IP router will also manage the filter table to manage traffic ( congestion, 
 
 Clearly, being multicasts, we have that to contact multiple devices we will aim at a standard multicast address, in which way we have a communication one to many, the KNX association has reserved the address of multicast 224.0.23.12 for convenience but any other address can be used, as long as it is laid on all devices.
 
-![We use an IP router like backbone and line coupler](/images/KNX-IP-network.jpg)
+![We use an IP router like backbone and line coupler](/images/webp/KNX-IP-network.webp)
 
 *fig.2 - We use an IP router like backbone and line coupler*
 
@@ -96,7 +96,7 @@ The routing, however, by its very nature, has no limits to the number of connect
 
 Some devices also have time servers and memory cards to record the bus.
 
-![This is the router KNXnet / IP Gira 2167 00](/images/Gira-KNX-IP-router.jpg)
+![This is the router KNXnet / IP Gira 2167 00](/images/webp/Gira-KNX-IP-router.webp)
 *fig.3 - This is the router KNXnet / IP Gira 2167 00*
 
 **Please note:***

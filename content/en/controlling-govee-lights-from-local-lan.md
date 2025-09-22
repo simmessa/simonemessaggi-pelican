@@ -107,7 +107,7 @@ One of the good news is that the MQTT devices will be auto discovered on Home As
 
 Ok, it's not really well documented but the docker container will also expose a decent enough HTTP interface, here's an example:
 
-![Govee MQTT gui](/images/govee_lan_gui.png)
+![Govee MQTT gui](/images/webp/govee_lan_gui.webp)
 
 I especially like the fact that you can check what's being controlled via LAN API vs Govee (somewhat unreliable) cloud.
 

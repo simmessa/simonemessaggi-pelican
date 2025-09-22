@@ -14,7 +14,7 @@ I totally love [Calibre-web](https://github.com/janeczku/calibre-web/), over the
 
 Here's an example screenshot:
 
-![Calibre-web gui](/images/calibre-web-gui.png)
+![Calibre-web gui](/images/webp/calibre-web-gui.webp)
 
 Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your review, load metadata from the internet, and the list goes on... here's what listed on the github page:
 
@@ -65,7 +65,7 @@ And I love the fact this is a single container without a separate db or anything
 
 Let's say you're logging in from mobile and you accidentally click on the "Forgot Password?" button...
 
-![Don't click the forgot password button](/images/calibre-web-forgot-password.png)
+![Don't click the forgot password button](/images/webp/calibre-web-forgot-password.webp)
 
 And well, by design calibreweb will then set a *random password* for the user you selected and send it via email to the email address linked to that user.
 

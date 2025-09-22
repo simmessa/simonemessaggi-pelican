@@ -22,7 +22,7 @@ If I sound like an old man who complains about the good times gone, well, that's
 
 Running a game meant running the commands from a terminal, first of all, and in some cases the keyboard was the center of the interaction with the UI of the game itself.
 
-![Quest for Glory, a great example of text parser](/images/quest_for_glory.png)
+![Quest for Glory, a great example of text parser](/images/webp/quest_for_glory.webp)
 
 The first keyboard that I got my hands on a PC was not bad, in the sense that the average quality was more than acceptable, unfortunately later in the years the average quality of keyboard and mouse declined quickly. So I often received, with the purchase of a new PC, objects that seemed destined to the garbage bin. Of course, I'm still talking about those classic computers "assembled" by some component vendors, but not even the brands, such as Compaq, HP, Acer and Dell were completely immune to this phenomenon, 'cause they also needed to cut costs on a segment that ensured increasingly reduced earnings.
 
@@ -30,14 +30,14 @@ So many of us were replacing these disastrous accessories (keyboard and mouse) w
 
 Let's talk a bit about the recent past, almost all of us went from a desktop PC to a laptop, keyboard wise, this was for the worst, laptops generally have some of the cheapest keyboards out there, with island layouts, butterfly switches and the cheap keys tend to fade within a few years and respond to a keypress about 80% of the time. Do you want a great example of this? Just look at those previous-gen Mac nightmare keyboards. If we needed a true demonstration of a large company (Apple, in this case) cutting corners while sacrificing their esteemed consumer experience, we don't need to look further.
 
-![Example of Macbook with abundantly consumed keys](/images/macbook-worn-keys.jpg)
+![Example of Macbook with abundantly consumed keys](/images/webp/macbook-worn-keys.webp)
 
 ## Membrane keyboard
 There's a factor that almost all of the "old times" economic keyboards have in common: Most of them are **NOT** mechanical keyboards, apart from rare exceptions (such as the [Model M](https://en.wikipedia.org/wiki/Model_M_keyboard) by IBM, but that's the legendary material). Most of the keyboards we used with our PCs employed way cheaper rubber membranes.
 
 The keyboards based on this rubber membrane were among the most widespread, at least until today, especially because they are among the cheapest to produce. Their mechanism is based on a single rubber membrane as wide as all the keyboard that is the part that opposes pressure resistance for each key. As they say a photo is worth a thousand words so let's look at one and I'm pretty sure you'll understand what I'm talking about:
 
-![Section of a membrane keyboard](/images/membrane_keyboard.jpg)
+![Section of a membrane keyboard](/images/webp/membrane_keyboard.webp)
 
 So, let's summarize a bit, our finger presses on a key that is mounted on the top of a small rubber cylinder, overcoming a certain force (the resistance of rubber) we apply pressure directly to the sensor that records a keystroke which, in turn, communicates an electrical signal the keyboard controller and finally to the PC.
 
@@ -55,7 +55,7 @@ Another kind of keyboards is the one we find on the majority of laptops, with is
 
 And again, if well executed there are some pretty decent laptop kkeyboards out there. It's only when producers decide to really cut some spending that bad surprises come in spades. That's especially true when we think in terms of duration over time.
 
-![Switch butterfly and scissors, even Apple admits to having made a mistake](/images/scissors-vs-butterfly-keyboard-switch.jpg)*Switch with scissors or butterfly, not exactly the best typing experience or duration*
+![Switch butterfly and scissors, even Apple admits to having made a mistake](/images/webp/scissors-vs-butterfly-keyboard-switch.webp)*Switch with scissors or butterfly, not exactly the best typing experience or duration*
 
 On these keyboards the keys have a very limited run, due to the very tiny space tolerance of a laptop. This is where the typing satisfaction can really suffer plenty. Anyway, if the membrane keyboards are generally more suited to heavy handed typers, those with scissors/butterfly switched seem more targeted at those with light fingers.
 
@@ -106,7 +106,7 @@ These blue switches are the ones that are more frequently lined to mechanical ke
 
 Because the most famous mechanical keyboard of all time, i.e. the M model manufactured by IBM since 1985 is equipped with cherry mx blue.
 
-![the original with blue switches, the mechanical keyboard for antonomasia, the IBM Model M](/images/model_m.jpg)
+![the original with blue switches, the mechanical keyboard for antonomasia, the IBM Model M](/images/webp/model_m.webp)
 
 The main feature of blue switches, therefore, is - pass me the term - the *clickety noise* they produce when we press them. From the point of view of the feeling, the blue switches are ideal for those who love further feedback and want to be really sure to have pressed the button. It's just perfect for those who have a heavy touch and do not share office space with others.
 
@@ -136,7 +136,7 @@ The characteristics are basically the same as the "non-silent" kind, but interna
 
 However, the noise produced by a keyboard does not depend on the switch alone, as surely the other components pay a huge role in sound production. For one, the keyboard chassis acts as a real resonance box and should also be considered primary in the sound generated by a keyboard.
 
-![O-rings are the cheapest solution to the noise problem of switches](/images/o_ring_dampeners.jpg)
+![O-rings are the cheapest solution to the noise problem of switches](/images/webp/o_ring_dampeners.webp)
 
 The silent switches are usually more expensive than the "standard" versions, but there are other kind of adjustments, including mainly the use of *o-rings*, to silence classic switches. These usually are cheap enough that a few euros invested allow us to achieve interesting results.
 
@@ -153,7 +153,7 @@ In my opinion, the real innovation introduced by low-profile switches is maybe t
 
 Probably one day we will get there, but for the time being the only commercial laptops with mechanical keyboard are  models dedicated to the world of gaming... *What about us computer scientist? Where's the love for programmers?*
 
-![MSI Titan or the world's first laptop with mechanical keyboard - source: TheVerge](/images/msi_titan_laptop_mechanical.jpg)
+![MSI Titan or the world's first laptop with mechanical keyboard - source: TheVerge](/images/webp/msi_titan_laptop_mechanical.webp)
 
 I still think there'll be huge news in regard to mechanical keyboards, and if that happens, we'll probably have to thank  the innovations of low-profile mechanical switches.
 
