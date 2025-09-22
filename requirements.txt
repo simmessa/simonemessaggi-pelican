@@ -37,3 +37,14 @@ soupsieve==2.7
 typing_extensions==4.14.1
 Unidecode==1.4.0
 watchfiles==1.1.0
+
+# WEBP conversion tool:
+# Core dependencies
+Pillow
+psutil
+tqdm  # For CLI progress bars
+
+# GUI dependencies
+#tkinter
+#tkinterdnd2  # For drag-and-drop
+#pystray  # For system tray

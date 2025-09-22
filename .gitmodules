@@ -1,0 +1,3 @@
+[submodule "image-to-webp-converter"]
+	path = image-to-webp-converter
+	url = https://github.com/NazzarenoGiannelli/image-to-webp-converter

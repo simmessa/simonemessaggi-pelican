@@ -7,9 +7,9 @@
     {% endif %}
 {% elif article.cover %}
     {% if article.cover|lower|truncate(4, True, '') == "http" %}
-        {% set default_cover = article.cover %}
+        {% set default_cover = article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
     {% else %}
-        {% set default_cover = SITEURL+"/"+article.cover %}
+        {% set default_cover = SITEURL+"/"+article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
     {% endif %}
 {% elif HEADER_COVER %}
   {% set default_cover = SITEURL+"/"+HEADER_COVER %}

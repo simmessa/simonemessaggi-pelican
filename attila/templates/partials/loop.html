@@ -15,9 +15,9 @@
         <div class="inner">
             <div class="box post-box">
                 {% if article.cover|lower|truncate(4, True, '') == "http" %}
-                    {% set selected_cover = article.cover %}
+                    {% set selected_cover = article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
                 {% else %}
-                    {% set selected_cover = SITEURL+"/"+article.cover %}
+                    {% set selected_cover = SITEURL+"/"+article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
                     <img src="{{ selected_cover }}" class="boh" alt="{{ article.summary|striptags|truncate(100) }}"/>
                 {% endif %}
                 <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>

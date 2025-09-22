@@ -54,33 +54,39 @@ html:
 clean:
 	[ ! -d "$(OUTPUTDIR)" ] || rm -rf "$(OUTPUTDIR)"
 
-regenerate:
-	"$(PELICAN)" -r "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
+# regenerate:
+# 	"$(PELICAN)" -r "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 
-serve:
-	"$(PELICAN)" -l "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
+# serve:
+# 	"$(PELICAN)" -l "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 
-serve-global:
-	"$(PELICAN)" -l "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b $(SERVER)
+# serve-global:
+# 	"$(PELICAN)" -l "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS) -b $(SERVER)
 
 devserver:
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
+	rm content/images/webp/*.webp
+	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/
 	"$(PELICAN)" -lr
 
 devserver-global:
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
+	rm content/images/webp/*.webp
+	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/
 	"$(PELICAN)" -lr -b 0.0.0.0
 
-publish:
-	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
+# publish:
+# 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
 
 github: publish
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
+	rm content/images/webp/*.webp
+	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/
 	ghp-import -m "$(GITHUB_PAGES_COMMIT_MESSAGE)" -b $(GITHUB_PAGES_BRANCH) "$(OUTPUTDIR)" --no-jekyll
 	git push origin $(GITHUB_PAGES_BRANCH)
 

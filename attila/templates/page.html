@@ -9,15 +9,15 @@
 {# <!-- Choosing cover image --> #}
 {% if page.cover %}
   {% if page.cover|lower|truncate(4, True, '') == "http" %}
-    {% set selected_cover = page.cover %}
+    {% set selected_cover = page.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% else %}
-    {% set selected_cover = SITEURL+"/"+page.cover %}
+    {% set selected_cover = SITEURL+"/"+page.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% endif %}
 {% elif page.og_image %}
   {% if page.og_image|lower|truncate(4, True, '') == "http" %}
-    {% set selected_cover = page.og_image %}
+    {% set selected_cover = page.og_image|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% else %}
-    {% set selected_cover = SITEURL+"/"+page.og_image %}
+    {% set selected_cover = SITEURL+"/"+page.og_image|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% endif %}
 {% elif HEADER_COVER %}
   {% if HEADER_COVER|lower|truncate(4, True, '') == "http" %}

@@ -3,17 +3,18 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {# <!-- Choosing cover image --> #}
+{# <!-- For this to work you need to make sure there's a web converted image in images/webp/ --> #}
 {% if article.cover %}
   {% if article.cover|lower|truncate(4, True, '') == "http" %}
-    {% set selected_cover = article.cover %}
+    {% set selected_cover = article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% else %}
-    {% set selected_cover = SITEURL+"/"+article.cover %}
+    {% set selected_cover = SITEURL+"/"+article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% endif %}
 {% elif article.og_image %}
   {% if article.og_image|lower|truncate(4, True, '') == "http" %}
-    {% set selected_cover = article.og_image %}
+    {% set selected_cover = article.og_image|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% else %}
-    {% set selected_cover = SITEURL+"/"+article.og_image %}
+    {% set selected_cover = SITEURL+"/"+article.og_image|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
   {% endif %}
 {% elif article.color %}
   {% set selected_color = article.color %}
