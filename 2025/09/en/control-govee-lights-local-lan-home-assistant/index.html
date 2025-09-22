@@ -1,4 +1,39 @@
-<!doctype html><html lang=it><meta charset=utf-8><meta charset=utf-8 content=text/html http-equiv=Content-Type><meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible><title>Controlling Govee lights from your LAN in Home Assistant</title><meta content="Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti." name=description><meta content=True name=HandheldFriendly><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=origin name=referrer><meta content=Pelican name=generator><link href=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/ rel=canonical><link title="SimoneMessaggi.it Full Atom Feed" href=https://www.simonemessaggi.it/feeds/all.atom.xml rel=alternate type=application/atom+xml><link title="SimoneMessaggi.it Categories Atom Feed" href=https://www.simonemessaggi.it/feeds/tech.atom.xml rel=alternate type=application/atom+xml><link href=https://www.simonemessaggi.it/theme/css/style.css rel=stylesheet><link href=https://www.simonemessaggi.it/extra/ico/favicon.ico rel=icon><link href=https://www.simonemessaggi.it/extra/ico/favicon.svg rel=icon type=image/svg+xml><link href=https://www.simonemessaggi.it/extra/ico/apple-touch-icon.png rel=apple-touch-icon><link href=https://www.simonemessaggi.it/extra/ico/site.webmanifest rel=manifest><link href=https://www.simonemessaggi.it/theme/css/simonemessaggi.css rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Lato" rel=stylesheet><script>var siteUrl = 'https://www.simonemessaggi.it';</script><script>var localTheme = localStorage.getItem('attila_theme');
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta charset="utf-8" content="text/html" http-equiv="Content-Type"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<title>Controlling Govee lights from your LAN in Home Assistant</title>
+<meta content="Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti." name="description"/>
+<meta content="True" name="HandheldFriendly"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="origin" name="referrer"/>
+<meta content="Pelican" name="generator"/>
+<link href="http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" rel="canonical"/>
+<!-- Feed -->
+<link href="http://127.0.0.1:8000/theme/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="http://127.0.0.1:8000/extra/ico/favicon.ico" rel="icon"/>
+<link href="http://127.0.0.1:8000/extra/ico/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="http://127.0.0.1:8000/extra/ico/apple-touch-icon.png" rel="apple-touch-icon"/><!-- 180×180 -->
+<link href="http://127.0.0.1:8000/extra/ico/site.webmanifest" rel="manifest"/>
+<!-- CSS specified by the user -->
+<link href="http://127.0.0.1:8000/theme/css/simonemessaggi.css" rel="stylesheet" type="text/css"/>
+<!-- Custom fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<script>
+    var siteUrl = 'http://127.0.0.1:8000';
+  </script>
+<script>
+    var localTheme = localStorage.getItem('attila_theme');
     switch (localTheme) {
       case 'dark':
         document.documentElement.classList.add('theme-dark');
@@ -8,7 +43,42 @@
         break;
       default:
         break;
-    }</script><meta content="I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..." name=description><meta content=simmessa name=author><meta content=Govee name=tags><meta content="Led lights" name=tags><meta content="Home Assistant" name=tags><meta content=DIY name=tags><meta content="Home automation" name=tags><meta content=Tech name=tags><meta prefix="og: http://ogp.me/ns#" content=SimoneMessaggi.it property=og:site_name><meta content="Controlling Govee lights from your LAN in Home Assistant" prefix="og: http://ogp.me/ns#" property=og:title><meta content="I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..." prefix="og: http://ogp.me/ns#" property=og:description><meta prefix="og: http://ogp.me/ns#" content=en_US property=og:locale><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/ property=og:url><meta prefix="og: http://ogp.me/ns#" content=article property=og:type><meta content="2025-09-20 00:00:00+02:00" prefix="og: http://ogp.me/ns#" property=article:published_time><meta prefix="og: http://ogp.me/ns#" property=article:modified_time><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/author/simmessa/ property=article:author><meta prefix="og: http://ogp.me/ns#" content=Tech property=article:section><meta prefix="og: http://ogp.me/ns#" content=Govee property=article:tag><meta content="Led lights" prefix="og: http://ogp.me/ns#" property=article:tag><meta content="Home Assistant" prefix="og: http://ogp.me/ns#" property=article:tag><meta prefix="og: http://ogp.me/ns#" content=DIY property=article:tag><meta content="Home automation" prefix="og: http://ogp.me/ns#" property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Tech property=article:tag><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/images/govee_lan_led_light_dbz_lookalike.jpeg property=og:image><meta content=summary_large_image name=twitter:card><meta content=@simmessa name=twitter:site><meta content="Controlling Govee lights from your LAN in Home Assistant" name=twitter:title><meta content=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/ name=twitter:url><meta content=https://www.simonemessaggi.it/images/govee_lan_led_light_dbz_lookalike.jpeg name=twitter:image:src><meta content="I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..." name=twitter:description><script type=application/ld+json>
+    }
+  </script>
+<meta content="I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..." name="description"/>
+<meta content="simmessa" name="author"/>
+<meta content="Govee" name="tags"/>
+<meta content="Led lights" name="tags"/>
+<meta content="Home Assistant" name="tags"/>
+<meta content="DIY" name="tags"/>
+<meta content="Home automation" name="tags"/>
+<meta content="Tech" name="tags"/>
+<!-- Open Graph -->
+<meta content="SimoneMessaggi.it" prefix="og: http://ogp.me/ns#" property="og:site_name"/>
+<meta content="Controlling Govee lights from your LAN in Home Assistant" prefix="og: http://ogp.me/ns#" property="og:title"/>
+<meta content="I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..." prefix="og: http://ogp.me/ns#" property="og:description"/>
+<meta content="en_US" prefix="og: http://ogp.me/ns#" property="og:locale"/>
+<meta content="http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" prefix="og: http://ogp.me/ns#" property="og:url"/>
+<meta content="article" prefix="og: http://ogp.me/ns#" property="og:type"/>
+<meta content="2025-09-20 00:00:00+02:00" prefix="og: http://ogp.me/ns#" property="article:published_time"/>
+<meta content="" prefix="og: http://ogp.me/ns#" property="article:modified_time"/>
+<meta content="http://127.0.0.1:8000/author/simmessa/" prefix="og: http://ogp.me/ns#" property="article:author">
+<meta content="Tech" prefix="og: http://ogp.me/ns#" property="article:section"/>
+<meta content="Govee" prefix="og: http://ogp.me/ns#" property="article:tag">
+<meta content="Led lights" prefix="og: http://ogp.me/ns#" property="article:tag">
+<meta content="Home Assistant" prefix="og: http://ogp.me/ns#" property="article:tag">
+<meta content="DIY" prefix="og: http://ogp.me/ns#" property="article:tag">
+<meta content="Home automation" prefix="og: http://ogp.me/ns#" property="article:tag">
+<meta content="Tech" prefix="og: http://ogp.me/ns#" property="article:tag">
+<meta content="http://127.0.0.1:8000/images/webp/govee_lan_led_light_dbz_lookalike.webp" prefix="og: http://ogp.me/ns#" property="og:image">
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@simmessa" name="twitter:site"/>
+<meta content="Controlling Govee lights from your LAN in Home Assistant" name="twitter:title"/>
+<meta content="http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" name="twitter:url"/>
+<meta content="http://127.0.0.1:8000/images/webp/govee_lan_led_light_dbz_lookalike.webp" name="twitter:image:src"/>
+<meta content="I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..." name="twitter:description"/>
+<script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Article",
@@ -19,26 +89,131 @@
   "author": {
     "@type": "Person",
     "name": "Simmessa",
-    "url": "https://www.simonemessaggi.it/author/simmessa/"
+    "url": "http://127.0.0.1:8000/author/simmessa/"
   },
-  "image": "https://www.simonemessaggi.it/images/govee_lan_led_light_dbz_lookalike.jpeg",
-  "url": "https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/",
+  "image": "http://127.0.0.1:8000/images/webp/govee_lan_led_light_dbz_lookalike.webp",
+  "url": "http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/",
   "description": "I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate..."
 }
-</script><link href=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/ rel=canonical><script type=application/ld+json>{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "https://www.simonemessaggi.it"}, {"@type": "ListItem", "position": 2, "name": "2025", "item": "https://www.simonemessaggi.it/2025"}, {"@type": "ListItem", "position": 3, "name": "09", "item": "https://www.simonemessaggi.it/2025/09"}, {"@type": "ListItem", "position": 4, "name": "En", "item": "https://www.simonemessaggi.it/2025/09/en"}, {"@type": "ListItem", "position": 5, "name": "Control govee lights local lan home assistant", "item": "https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant"}, {"@type": "ListItem", "position": 6, "name": "Index", "item": "https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/index.html"}]}</script><script type=application/ld+json>{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Controlling Govee lights from your LAN in Home Assistant", "about": "Tech", "datePublished": "2025-09-20 00:00"}</script><meta content=summary name=twitter:card><meta content=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/ property=og:url><meta content=article property=og:type><meta content="Controlling Govee lights from your LAN in Home Assistant" property=og:title><meta content=en_US property=og:locale><body class=category-template><div class=nav-header><nav aria-label=Main class=nav-wrapper><ul><li class=nav-Home role=presentation><a href=/><span>Home</span></a><li class=nav-Rants role=presentation><a href=/category/rants/><span>Rants</span></a><li class="nav-Tech active" role=presentation><a href=/category/tech/><span>Tech</span></a><li class=nav-Humans role=presentation><a href=/category/humans/><span>Humans</span></a><li class=nav-Music role=presentation><a href=/category/music/><span>Music</span></a><li role=presentation><a href=https://www.simonemessaggi.it/pages/contact/><span>Contact</span></a></ul><ul class=nav-meta><li class=nav-twitter><a aria-label=Twitter href=http://twitter.com/simmessa target=_blank><i class="icon icon-twitter" aria-hidden=true></i> <span>Twitter</span> </a><li class=nav-github><a aria-label=Github href=https://github.com/simmessa target=_blank><i class="icon icon-github" aria-hidden=true></i> <span>Github</span> </a><li class=nav-search style=display:none><a title=Search> <i class="icon icon-search" aria-hidden=true></i> <span>Search</span> </a></ul></nav><div class=nav-wrapper-control><div class=inner><a class=nav-menu role=button><i class="icon icon-menu" aria-hidden=true></i>Menu</a><a class=nav-search role=button style=display:none title=Search><i class="icon icon-search" aria-hidden=true></i></a></div></div></div><div aria-label=Close class=nav-close role=button></div><section class=page-wrapper id=wrapper><div class=progress-container><span class=progress-bar></span></div><header class="post-header has-cover"><div class=inner><span class=post-info> <a href=https://www.simonemessaggi.it><span class=post-type>Home</span></a> >  <span class=post-type>Article</span> <a href=https://www.simonemessaggi.it/category/tech/><span class=post-count>Tech</span></a> </span><h1 class=post-title>Controlling Govee lights from your LAN in Home Assistant</h1><div class=post-meta><div class=post-meta-avatars><figure class="post-meta-avatar avatar"><a class=author-avatar href=https://www.simonemessaggi.it/author/simmessa/> <img alt="Simone Messaggi" class=author-profile-image src=https://www.simonemessaggi.it/images/simmessa.png> </a></figure></div><h4 class=post-meta-author>Simone Messaggi</h4><time datetime="Sat 20 September 2025">Sat 20 September 2025</time> • 4 min read</div><div class="post-cover cover"><img alt="Category Tech" src=https://www.simonemessaggi.it/images/govee_lan_led_light_dbz_lookalike.jpeg></div></div></header><main class=content role=main><article class=post><div class=inner><section class=post-content><p>I'm a big fan of Govee lights (<a href=https://amzn.to/3KcybEE>this</a> is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate them with your home automation.<p>By the way, I'm using home assistant to control my smart home.<h2>API key from China?</h2><p>I used to apply for an API key in order to interact with the Govee ecosystem, Govee are more than happy to hand out API keys to interact with their cloud services but in my experience they sometimes fail or the Home Assistant extensions stop working and in that case, it's a mess.<p>Finally someone at Govee understood this and decided to enable a feature on some of their products (the most recent ones, to be fair) that would make life slightly easier for the smart home owners: <strong>local LAN control</strong> of Govee lights!<h2>What extension in Home Assistant?</h2><p>There are many integrations for Govee light control, and I found this pretty confusing at first, so here's a list:<ul><li>Govee on HACS <a href=https://www.home-assistant.io/integrations/govee_light_local>link</a> now discontinued :(<li>GoveeLife <a href=https://github.com/disforw/goveelife>link</a> which seems more of a <em>work in progress</em> at the moment<li>Govee LAN control <a href=https://www.home-assistant.io/integrations/govee_light_local>link</a> / <a href=https://github.com/home-assistant/core/tree/dev/homeassistant/components/govee_light_local>link</a> last commit about 1 year ago :(<li>Govee MQTT <a href=https://github.com/wez/govee2mqtt>link</a> last commit about 5 months ago :S</ul><p>It's quite messy, I know, and if you care about integrations that are properly maintained, the situation looks a bit dire I'm afraid.<p>After a bit of struggle I decided to go with GoveeMQTT which should be preferable to Govee LAN control (both from the same author). At the same time I stopped using the original Govee integration found on HACS, which had issues from time to time. Smart life is complicated, you know :| This choice also appeared as the best one since Govee LAN control doesn't even work with recent home assistant versions (the issue is very similar to this one here: <a href=https://github.com/LaggAt/hacs-govee/issues/234>issue</a>)<h2>Docker install</h2><p>I run everything on Docker in my home lab, so I started from this guide: <a href=https://github.com/wez/govee2mqtt/blob/main/docs/DOCKER.md>Docker.md</a><div class=highlight><pre><span></span><code><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s>'3.8'</span>
-<span class=nt>services</span><span class=p>:</span>
-<span class=w>  </span><span class=nt>pv2mqtt</span><span class=p>:</span>
-<span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/wez/govee2mqtt:latest</span>
-<span class=w>    </span><span class=nt>container_name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">govee2mqtt</span>
-<span class=w>    </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class=w>    </span><span class=nt>env_file</span><span class=p>:</span>
-<span class=w>      </span><span class="p p-Indicator">-</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
-<span class=w>    </span><span class=c1># Host networking is required</span>
-<span class=w>    </span><span class=nt>network_mode</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
-</code></pre></div><p>And converted to something that would run on k8s, for my convenience.<p>Keep in mind an .env file is required to set a bunch of env variables, older versions also used a <em>config.yaml</em> file but recent ones don't need it so don't bother.<p>Is this able to control from LAN? Well, let me cite the project developer, when he speaks about the project features:<p><em>Robust LAN-first design. Not all of Govee's devices support LAN control, but for those that do, you'll have the lowest latency and ability to control them even when your primary internet connection is offline.</em><p>So, that's basically what we're looking for, great news!<p>After you have installed and run the docker container and you're sure it's up and running with the config.yaml you just created, you can install the Govee2Mqtt Add-on, here's a guide: <a href=https://github.com/wez/govee2mqtt/blob/main/docs/ADDON.md>Link</a><p>This works only if you're on HAOS or HA supervised, since I don't do that, I need to use the alternative way, described here: <a href=https://github.com/wez/govee2mqtt/blob/main/docs/DOCKER.md>Link</a><p>Oh, if I had a dime for every time somebody created HA integrations via Add-ons and forget to give other users a way to make'em work... but this is an example of how this can usually be figured out.<p>Ok, we need to add those env vars, use a .env file if that suits you, while I put them in the k8s yaml manifest, details are irrelevant here.<div class=highlight><pre><span></span><code><span class=c1># Optional, but strongly recommended</span>
-<span class="l l-Scalar l-Scalar-Plain">GOVEE_EMAIL=user@example.com</span><span class=w> </span><span class=c1># DON'T PUT THIS!!!</span>
-<span class="l l-Scalar l-Scalar-Plain">GOVEE_PASSWORD=secret</span><span class=w> </span><span class=c1># DON'T PUT THIS!!!</span>
-<span class=c1># Optional, but recommended</span>
+</script>
+</meta></meta></meta></meta></meta></meta></meta></meta></meta></meta><link href="http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" rel="canonical"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "http://127.0.0.1:8000"}, {"@type": "ListItem", "position": 2, "name": "2025", "item": "http://127.0.0.1:8000/2025"}, {"@type": "ListItem", "position": 3, "name": "09", "item": "http://127.0.0.1:8000/2025/09"}, {"@type": "ListItem", "position": 4, "name": "En", "item": "http://127.0.0.1:8000/2025/09/en"}, {"@type": "ListItem", "position": 5, "name": "Control govee lights local lan home assistant", "item": "http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant"}, {"@type": "ListItem", "position": 6, "name": "Index", "item": "http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/index.html"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Controlling Govee lights from your LAN in Home Assistant", "about": "Tech", "datePublished": "2025-09-20 00:00"}</script><meta content="summary" name="twitter:card"/><meta content="http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" property="og:url"/><meta content="article" property="og:type"/><meta content="Controlling Govee lights from your LAN in Home Assistant" property="og:title"/><meta content="en_US" property="og:locale"/></head>
+<body class="category-template">
+<div class="nav-header">
+<nav aria-label="Main" class="nav-wrapper">
+<ul>
+<li class="nav-Home" role="presentation"><a href="/"><span>Home</span></a></li>
+<li class="nav-Rants" role="presentation"><a href="/category/rants/"><span>Rants</span></a></li>
+<li class="nav-Tech active" role="presentation"><a href="/category/tech/"><span>Tech</span></a></li>
+<li class="nav-Humans" role="presentation"><a href="/category/humans/"><span>Humans</span></a></li>
+<li class="nav-Music" role="presentation"><a href="/category/music/"><span>Music</span></a></li>
+<li role="presentation"><a href="http://127.0.0.1:8000/pages/contact/"><span>Contact</span></a></li>
+</ul>
+<ul class="nav-meta">
+<li class="nav-twitter"><a aria-label="Twitter" href="http://twitter.com/simmessa" target="_blank"><i aria-hidden="true" class="icon icon-twitter"></i>
+<span>Twitter</span>
+</a></li>
+<li class="nav-github"><a aria-label="Github" href="https://github.com/simmessa" target="_blank"><i aria-hidden="true" class="icon icon-github"></i>
+<span>Github</span>
+</a></li>
+<li class="nav-search" style="display: none;">
+<a title="Search">
+<i aria-hidden="true" class="icon icon-search"></i>
+<span>Search</span>
+</a>
+</li>
+</ul> </nav>
+<div class="nav-wrapper-control">
+<div class="inner">
+<a class="nav-menu" role="button"><i aria-hidden="true" class="icon icon-menu"></i>Menu</a>
+<a class="nav-search" role="button" style="display: none;" title="Search"><i aria-hidden="true" class="icon icon-search"></i></a>
+</div>
+</div>
+</div>
+<div aria-label="Close" class="nav-close" role="button"></div>
+<section class="page-wrapper" id="wrapper">
+<!-- Progressbar -->
+<div class="progress-container">
+<span class="progress-bar"></span>
+</div>
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="post-header has-cover">
+<div class="inner">
+<span class="post-info">
+<a href="http://127.0.0.1:8000"><span class="post-type">Home</span></a> &gt; 
+          <span class="post-type">Article</span>
+<a href="http://127.0.0.1:8000/category/tech/"><span class="post-count">Tech</span></a>
+</span>
+<h1 class="post-title">Controlling Govee lights from your LAN in Home Assistant</h1>
+<div class="post-meta">
+<div class="post-meta-avatars">
+<figure class="post-meta-avatar avatar">
+<a class="author-avatar" href="http://127.0.0.1:8000/author/simmessa/">
+<img alt="Simone Messaggi" class="author-profile-image" fetchpriority="high" rel="preload" src="http://127.0.0.1:8000/images/simmessa.png"/>
+</a>
+</figure>
+</div>
+<h4 class="post-meta-author">
+            Simone Messaggi
+          </h4>
+<time datetime="Sat 20 September 2025">Sat 20 September 2025</time>
+          • 4 min read
+        </div>
+<div class="post-cover cover">
+<img alt="Category Tech" fetchpriority="high" rel="preload" src="http://127.0.0.1:8000/images/webp/govee_lan_led_light_dbz_lookalike.webp"/>
+</div>
+</div>
+</header>
+<!-- Post content -->
+<main class="content" role="main">
+<article class="post">
+<div class="inner">
+<section class="post-content">
+<p>I'm a big fan of Govee lights (<a href="https://amzn.to/3KcybEE">this</a> is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate them with your home automation.</p>
+<p>By the way, I'm using home assistant to control my smart home.</p>
+<h2>API key from China?</h2>
+<p>I used to apply for an API key in order to interact with the Govee ecosystem, Govee are more than happy to hand out API keys to interact with their cloud services but in my experience they sometimes fail or the Home Assistant extensions stop working and in that case, it's a mess.</p>
+<p>Finally someone at Govee understood this and decided to enable a feature on some of their products (the most recent ones, to be fair) that would make life slightly easier for the smart home owners: <strong>local LAN control</strong> of Govee lights!</p>
+<h2>What extension in Home Assistant?</h2>
+<p>There are many integrations for Govee light control, and I found this pretty confusing at first, so here's a list:</p>
+<ul>
+<li>Govee on HACS <a href="https://www.home-assistant.io/integrations/govee_light_local">link</a> now discontinued :(</li>
+<li>GoveeLife <a href="https://github.com/disforw/goveelife">link</a> which seems more of a <em>work in progress</em> at the moment</li>
+<li>Govee LAN control <a href="https://www.home-assistant.io/integrations/govee_light_local">link</a> / <a href="https://github.com/home-assistant/core/tree/dev/homeassistant/components/govee_light_local">link</a> last commit about 1 year ago :(</li>
+<li>Govee MQTT <a href="https://github.com/wez/govee2mqtt">link</a> last commit about 5 months ago :S</li>
+</ul>
+<p>It's quite messy, I know, and if you care about integrations that are properly maintained, the situation looks a bit dire I'm afraid.</p>
+<p>After a bit of struggle I decided to go with GoveeMQTT which should be preferable to Govee LAN control (both from the same author). At the same time I stopped using the original Govee integration found on HACS, which had issues from time to time. Smart life is complicated, you know :|
+This choice also appeared as the best one since Govee LAN control doesn't even work with recent home assistant versions (the issue is very similar to this one here: <a href="https://github.com/LaggAt/hacs-govee/issues/234">issue</a>)</p>
+<h2>Docker install</h2>
+<p>I run everything on Docker in my home lab, so I started from this guide:
+<a href="https://github.com/wez/govee2mqtt/blob/main/docs/DOCKER.md">Docker.md</a></p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.8'</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pv2mqtt</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/wez/govee2mqtt:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">govee2mqtt</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="w">    </span><span class="c1"># Host networking is required</span>
+<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
+</code></pre></div>
+<p>And converted to something that would run on k8s, for my convenience.</p>
+<p>Keep in mind an .env file is required to set a bunch of env variables, older versions also used a <em>config.yaml</em> file but recent ones don't need it so don't bother.</p>
+<p>Is this able to control from LAN? Well, let me cite the project developer, when he speaks about the project features:</p>
+<p><em>Robust LAN-first design. Not all of Govee's devices support LAN control, but for those that do, you'll have the lowest latency and ability to control them even when your primary internet connection is offline.</em></p>
+<p>So, that's basically what we're looking for, great news!</p>
+<p>After you have installed and run the docker container and you're sure it's up and running with the config.yaml you just created, you can install the Govee2Mqtt Add-on, here's a guide:
+<a href="https://github.com/wez/govee2mqtt/blob/main/docs/ADDON.md">Link</a></p>
+<p>This works only if you're on HAOS or HA supervised, since I don't do that, I need to use the alternative way, described here:
+<a href="https://github.com/wez/govee2mqtt/blob/main/docs/DOCKER.md">Link</a></p>
+<p>Oh, if I had a dime for every time somebody created HA integrations via Add-ons and forget to give other users a way to make'em work... but this is an example of how this can usually be figured out.</p>
+<p>Ok, we need to add those env vars, use a .env file if that suits you, while I put them in the k8s yaml manifest, details are irrelevant here.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optional, but strongly recommended</span>
+<span class="l l-Scalar l-Scalar-Plain">GOVEE_EMAIL=user@example.com</span><span class="w"> </span><span class="c1"># DON'T PUT THIS!!!</span>
+<span class="l l-Scalar l-Scalar-Plain">GOVEE_PASSWORD=secret</span><span class="w"> </span><span class="c1"># DON'T PUT THIS!!!</span>
+<span class="c1"># Optional, but recommended</span>
 <span class="l l-Scalar l-Scalar-Plain">GOVEE_API_KEY=UUID</span>
 
 <span class="l l-Scalar l-Scalar-Plain">GOVEE_MQTT_HOST=mqtt</span>
@@ -59,10 +234,76 @@
 
 <span class="l l-Scalar l-Scalar-Plain"># Set the timezone for timestamps in the log</span>
 <span class="l l-Scalar l-Scalar-Plain">TZ=America/Phoenix</span>
-</code></pre></div><p>You should absolutely avoid putting your govee credentials in the env, or it might not even work (see <a href=https://github.com/wez/govee2mqtt/issues/141#issuecomment-1957655671>issue</a>).<p>Come on this addon has pretty bad issues with docs... well I guess we can't complain given it's free and it works in the end, we're almost there!<p>One of the good news is that the MQTT devices will be auto discovered on Home Assistant, provided that you have the MQTT integration installed, that is. If you don't already have it you really should, trust me.<p>Ok, it's not really well documented but the docker container will also expose a decent enough HTTP interface, here's an example:<p><img alt="Govee MQTT gui" src=/images/govee_lan_gui.png><p>I especially like the fact that you can check what's being controlled via LAN API vs Govee (somewhat unreliable) cloud.<p>That's all, I hope your govee experience will be smooth as mine (or even smoother :) )<div id=back_home><p><a href=https://www.simonemessaggi.it>done reading? go back to the homepage ></a></div></section><section class=post-footer><div class=post-share><span class=post-info-label>Share</span><a href="https://twitter.com/share?text=Controlling Govee lights from your LAN in Home Assistant&url=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label=Twitter class=twitter title=Twitter> <i class="icon icon-twitter" aria-hidden=true></i><span class=hidden>Twitter</span> </a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" aria-label=Facebook class=facebook title=Facebook> <i class="icon icon-facebook" aria-hidden=true></i><span class=hidden>Facebook</span> </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/&title=Controlling Govee lights from your LAN in Home Assistant" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" aria-label=LinkedIn class=linkedin title=LinkedIn> <i class="icon icon-linkedin" aria-hidden=true></i><span class=hidden>LinkedIn</span> </a><a href="mailto:?subject=Controlling Govee lights from your LAN in Home Assistant&body=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/" aria-label=Email class=email title=Email> <i class="icon icon-mail" aria-hidden=true></i><span class=hidden>Email</span> </a><div class=clear></div></div><aside class=post-tags><a href=https://www.simonemessaggi.it/tag/govee/>Govee</a><a href=https://www.simonemessaggi.it/tag/led-lights/>Led lights</a><a href=https://www.simonemessaggi.it/tag/home-assistant/>Home Assistant</a><a href=https://www.simonemessaggi.it/tag/diy/>DIY</a><a href=https://www.simonemessaggi.it/tag/home-automation/>Home automation</a><a href=https://www.simonemessaggi.it/tag/tech/>Tech</a></aside><div class=clear></div></section><aside class=post-nav><a class=post-nav-prev href=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/> <section class=post-nav-teaser><i class="icon icon-arrow-right"></i><h2 class=post-nav-title>Calibre-web, how to fix being locked out and reset password from shell</h2><p class=post-nav-excerpt>I totally love Calibre-web, over the years it's become my go to repository / archive...<p class=post-nav-meta><time datetime="Mon 08 September 2025">Mon 08 September 2025</time></section> </a><div class=clear></div></aside></div></article></main><div class=nav-footer><nav aria-label=Footer class=nav-wrapper><span class=nav-copy><a href=/>SimoneMessaggi.it © 2025</a> </span><span class=nav-credits> Published with <a href=https://github.com/getpelican/pelican rel=nofollow>Pelican</a> • Theme <a href=https://github.com/arulrajnet/attila rel=nofollow>Attila</a> • <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href=#> <span class=theme-icon></span><span class=theme-text>System theme</span> </a> </span></nav></div></section><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js></script><script src="https://www.simonemessaggi.it/theme/js/jquery.fitvids.min.js?cb=122334"></script><script src="https://www.simonemessaggi.it/theme/js/script.min.js?cb=122334"></script><script src="https://www.googletagmanager.com/gtag/js?id=G-Q242MTLMK7" async></script><script>window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-Q242MTLMK7', { 'anonymize_ip': true });</script><script>$(document).ready(function () {
+</code></pre></div>
+<p>You should absolutely avoid putting your govee credentials in the env, or it might not even work (see <a href="https://github.com/wez/govee2mqtt/issues/141#issuecomment-1957655671">issue</a>).</p>
+<p>Come on this addon has pretty bad issues with docs... well I guess we can't complain given it's free and it works in the end, we're almost there!</p>
+<p>One of the good news is that the MQTT devices will be auto discovered on Home Assistant, provided that you have the MQTT integration installed, that is. If you don't already have it you really should, trust me.</p>
+<p>Ok, it's not really well documented but the docker container will also expose a decent enough HTTP interface, here's an example:</p>
+<p><img alt="Govee MQTT gui" src="/images/govee_lan_gui.png"/></p>
+<p>I especially like the fact that you can check what's being controlled via LAN API vs Govee (somewhat unreliable) cloud.</p>
+<p>That's all, I hope your govee experience will be smooth as mine (or even smoother :) )</p>
+<div id="back_home">
+<p><a href="http://127.0.0.1:8000">done reading? go back to the homepage &gt;</a></p>
+</div>
+</section>
+<section class="post-footer">
+<div class="post-share">
+<span class="post-info-label">Share</span>
+<a aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Controlling Govee lights from your LAN in Home Assistant&amp;url=http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Twitter">
+<i aria-hidden="true" class="icon icon-twitter"></i><span class="hidden">Twitter</span>
+</a>
+<a aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Facebook">
+<i aria-hidden="true" class="icon icon-facebook"></i><span class="hidden">Facebook</span>
+</a>
+<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/&amp;title=Controlling Govee lights from your LAN in Home Assistant" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" title="LinkedIn">
+<i aria-hidden="true" class="icon icon-linkedin"></i><span class="hidden">LinkedIn</span>
+</a>
+<a aria-label="Email" class="email" href="mailto:?subject=Controlling Govee lights from your LAN in Home Assistant&amp;body=http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/" title="Email">
+<i aria-hidden="true" class="icon icon-mail"></i><span class="hidden">Email</span>
+</a>
+<div class="clear"></div>
+</div>
+<aside class="post-tags">
+<a href="http://127.0.0.1:8000/tag/govee/">Govee</a><a href="http://127.0.0.1:8000/tag/led-lights/">Led lights</a><a href="http://127.0.0.1:8000/tag/home-assistant/">Home Assistant</a><a href="http://127.0.0.1:8000/tag/diy/">DIY</a><a href="http://127.0.0.1:8000/tag/home-automation/">Home automation</a><a href="http://127.0.0.1:8000/tag/tech/">Tech</a> </aside>
+<div class="clear"></div>
+</section>
+<aside class="post-nav">
+<a class="post-nav-prev" href="http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/">
+<section class="post-nav-teaser">
+<i class="icon icon-arrow-right"></i>
+<h2 class="post-nav-title">Calibre-web, how to fix being locked out and reset password from shell</h2>
+<p class="post-nav-excerpt">I totally love Calibre-web, over the years it's become my go to repository / archive...</p>
+<p class="post-nav-meta"><time datetime="Mon 08 September 2025">Mon 08 September 2025</time></p>
+</section>
+</a>
+<div class="clear"></div>
+</aside>
+</div>
+</article>
+</main>
+<div class="nav-footer">
+<nav aria-label="Footer" class="nav-wrapper">
+<span class="nav-copy"><a href="/">SimoneMessaggi.it © 2025</a>
+</span>
+<span class="nav-credits">
+
+
+
+          Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a> • Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a> •
+          <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href="#">
+<span class="theme-icon"></span><span class="theme-text">System theme</span>
+</a>
+</span>
+</nav>
+</div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="http://127.0.0.1:8000/theme/js/jquery.fitvids.min.js?cb=123" type="text/javascript"></script>
+<script src="http://127.0.0.1:8000/theme/js/script.min.js?cb=123" type="text/javascript"></script>
+<!-- 	The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in article.html, but it needs to be included down here, after jQuery has already loaded. -->
+<script>
+  $(document).ready(function () {
     var viewport = $(window);
     var post = $('.post-content');
     // Responsive videos with fitVids
@@ -124,4 +365,7 @@
       }
     });
 
-  });</script>
+  });
+</script>
+</body>
+</html>
