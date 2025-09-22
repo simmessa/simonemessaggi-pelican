@@ -18,7 +18,7 @@
                     {% set selected_cover = article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
                 {% else %}
                     {% set selected_cover = SITEURL+"/"+article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
-                    <img src="{{ selected_cover }}" class="boh" alt="{{ article.summary|striptags|truncate(100) }}"/>
+                    <img src="{{ selected_cover }}" class="boh" alt="{{ article.summary|striptags|truncate(100) }}" rel="preload" fetchpriority="high"/>
                 {% endif %}
                 <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>

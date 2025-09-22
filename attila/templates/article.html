@@ -98,7 +98,7 @@
 
             <figure class="post-meta-avatar avatar">
               <a class="author-avatar" href="{{ SITEURL }}/{{ author.url }}">
-                <img class="author-profile-image" src="{{author_avatar}}" alt="{{ author_name }}" />
+                <img class="author-profile-image" src="{{author_avatar}}" alt="{{ author_name }}" rel="preload" fetchpriority="high" />
               </a>
             </figure>
           {% endfor %}
@@ -138,7 +138,7 @@
         </div>
         {% if selected_cover %}
           <div class="post-cover cover">
-            <img src="{{ selected_cover }}" alt="{{ current_title }}" />
+            <img src="{{ selected_cover }}" alt="{{ current_title }}" rel="preload" fetchpriority="high" />
           </div>
         {% elif selected_color %}
           <div class="post-cover cover" style="background-color: {{ selected_color }}">
@@ -206,7 +206,7 @@
                 {% endif %}
 
                 <figure class="post-author-avatar">
-                  <img src="{{author_avatar}}" alt="{{author_name}}" />
+                  <img src="{{author_avatar}}" alt="{{author_name}}" rel="preload" fetchpriority="high" />
                 </figure>
               {% endif %}
                 <div class="post-author-bio">

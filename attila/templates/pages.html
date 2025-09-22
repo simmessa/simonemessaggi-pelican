@@ -37,7 +37,7 @@
         <span class="blog-description">Pages: {{ pages|count }}</span>
         {% if selected_cover %}
           <div class="post-cover cover">
-            <img src="{{ selected_cover }}" alt="{{ current_title }}" />
+            <img src="{{ selected_cover }}" alt="{{ current_title }}" rel="preload" fetchpriority="high" />
           </div>
         {% elif selected_color %}
           <div class="post-cover cover" style="background-color: {{ selected_color }}">
