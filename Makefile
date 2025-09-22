@@ -79,8 +79,8 @@ devserver-global:
 	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/
 	"$(PELICAN)" -lr -b 0.0.0.0
 
-# publish:
-# 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
+publish:
+	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(PUBLISHCONF)" $(PELICANOPTS)
 
 github: publish
 	css-html-js-minify output/theme/js/jquery.fitvids.js
