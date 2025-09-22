@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>SimoneMessaggi.it - Tech</title><link href="https://www.simonemessaggi.it/" rel="alternate"/><link href="https://www.simonemessaggi.it/feeds/tech.atom.xml" rel="self"/><id>https://www.simonemessaggi.it/</id><updated>2025-09-20T00:00:00+02:00</updated><subtitle>Learn the most from the worst</subtitle><entry><title>Controlling Govee lights from your LAN in Home Assistant</title><link href="https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/" rel="alternate"/><published>2025-09-20T00:00:00+02:00</published><updated>2025-09-20T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2025-09-20:/2025/09/en/control-govee-lights-local-lan-home-assistant/</id><summary type="html">&lt;p&gt;I'm a big fan of Govee lights (&lt;a href="https://amzn.to/3KcybEE"&gt;this&lt;/a&gt; is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate them with your home automation.&lt;/p&gt;
+&lt;p&gt;By the way, I'm using home assistant to control my smart home.&lt;/p&gt;
+&lt;h2&gt;API key from China?&lt;/h2&gt;
+&lt;p&gt;I used to apply …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm a big fan of Govee lights (&lt;a href="https://amzn.to/3KcybEE"&gt;this&lt;/a&gt; is the latest I've bought, and it's excellent), they're cheap, work well and you can also integrate them with your home automation.&lt;/p&gt;
+&lt;p&gt;By the way, I'm using home assistant to control my smart home.&lt;/p&gt;
+&lt;h2&gt;API key from China?&lt;/h2&gt;
+&lt;p&gt;I used to apply for an API key in order to interact with the Govee ecosystem, Govee are more than happy to hand out API keys to interact with their cloud services but in my experience they sometimes fail or the Home Assistant extensions stop working and in that case, it's a mess.&lt;/p&gt;
+&lt;p&gt;Finally someone at Govee understood this and decided to enable a feature on some of their products (the most recent ones, to be fair) that would make life slightly easier for the smart home owners: &lt;strong&gt;local LAN control&lt;/strong&gt; of Govee lights!&lt;/p&gt;
+&lt;h2&gt;What extension in Home Assistant?&lt;/h2&gt;
+&lt;p&gt;There are many integrations for Govee light control, and I found this pretty confusing at first, so here's a list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Govee on HACS &lt;a href="https://www.home-assistant.io/integrations/govee_light_local"&gt;link&lt;/a&gt; now discontinued :(&lt;/li&gt;
+&lt;li&gt;GoveeLife &lt;a href="https://github.com/disforw/goveelife"&gt;link&lt;/a&gt; which seems more of a &lt;em&gt;work in progress&lt;/em&gt; at the moment&lt;/li&gt;
+&lt;li&gt;Govee LAN control &lt;a href="https://www.home-assistant.io/integrations/govee_light_local"&gt;link&lt;/a&gt; / &lt;a href="https://github.com/home-assistant/core/tree/dev/homeassistant/components/govee_light_local"&gt;link&lt;/a&gt; last commit about 1 year ago :(&lt;/li&gt;
+&lt;li&gt;Govee MQTT &lt;a href="https://github.com/wez/govee2mqtt"&gt;link&lt;/a&gt; last commit about 5 months ago :S&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's quite messy, I know, and if you care about integrations that are properly maintained, the situation looks a bit dire I'm afraid.&lt;/p&gt;
+&lt;p&gt;After a bit of struggle I decided to go with GoveeMQTT which should be preferable to Govee LAN control (both from the same author). At the same time I stopped using the original Govee integration found on HACS, which had issues from time to time. Smart life is complicated, you know :|
+This choice also appeared as the best one since Govee LAN control doesn't even work with recent home assistant versions (the issue is very similar to this one here: &lt;a href="https://github.com/LaggAt/hacs-govee/issues/234"&gt;issue&lt;/a&gt;)&lt;/p&gt;
+&lt;h2&gt;Docker install&lt;/h2&gt;
+&lt;p&gt;I run everything on Docker in my home lab, so I started from this guide:
+&lt;a href="https://github.com/wez/govee2mqtt/blob/main/docs/DOCKER.md"&gt;Docker.md&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;'3.8'&lt;/span&gt;
+&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;pv2mqtt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ghcr.io/wez/govee2mqtt:latest&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;container_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;govee2mqtt&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;restart&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;unless-stopped&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;env_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;.env&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Host networking is required&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;network_mode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;host&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And converted to something that would run on k8s, for my convenience.&lt;/p&gt;
+&lt;p&gt;Keep in mind an .env file is required to set a bunch of env variables, older versions also used a &lt;em&gt;config.yaml&lt;/em&gt; file but recent ones don't need it so don't bother.&lt;/p&gt;
+&lt;p&gt;Is this able to control from LAN? Well, let me cite the project developer, when he speaks about the project features:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Robust LAN-first design. Not all of Govee's devices support LAN control, but for those that do, you'll have the lowest latency and ability to control them even when your primary internet connection is offline.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;So, that's basically what we're looking for, great news!&lt;/p&gt;
+&lt;p&gt;After you have installed and run the docker container and you're sure it's up and running with the config.yaml you just created, you can install the Govee2Mqtt Add-on, here's a guide:
+&lt;a href="https://github.com/wez/govee2mqtt/blob/main/docs/ADDON.md"&gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This works only if you're on HAOS or HA supervised, since I don't do that, I need to use the alternative way, described here:
+&lt;a href="https://github.com/wez/govee2mqtt/blob/main/docs/DOCKER.md"&gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Oh, if I had a dime for every time somebody created HA integrations via Add-ons and forget to give other users a way to make'em work... but this is an example of how this can usually be figured out.&lt;/p&gt;
+&lt;p&gt;Ok, we need to add those env vars, use a .env file if that suits you, while I put them in the k8s yaml manifest, details are irrelevant here.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Optional, but strongly recommended&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GOVEE_EMAIL=user@example.com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# DON'T PUT THIS!!!&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GOVEE_PASSWORD=secret&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# DON'T PUT THIS!!!&lt;/span&gt;
+&lt;span class="c1"&gt;# Optional, but recommended&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GOVEE_API_KEY=UUID&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GOVEE_MQTT_HOST=mqtt&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GOVEE_MQTT_PORT=1883&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;# Uncomment if your mqtt broker requires authentication&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;#GOVEE_MQTT_USER=user&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;#GOVEE_MQTT_PASSWORD=password&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;# Specify the temperature scale to use, either C for Celsius&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;# or F for Fahrenheit&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GOVEE_TEMPERATURE_SCALE=C&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;# Always use colorized output&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;RUST_LOG_STYLE=always&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;# If you are asked to set the debug level, uncomment the next line&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;#RUST_LOG=govee=trace&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;# Set the timezone for timestamps in the log&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;TZ=America/Phoenix&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should absolutely avoid putting your govee credentials in the env, or it might not even work (see &lt;a href="https://github.com/wez/govee2mqtt/issues/141#issuecomment-1957655671"&gt;issue&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Come on this addon has pretty bad issues with docs... well I guess we can't complain given it's free and it works in the end, we're almost there!&lt;/p&gt;
+&lt;p&gt;One of the good news is that the MQTT devices will be auto discovered on Home Assistant, provided that you have the MQTT integration installed, that is. If you don't already have it you really should, trust me.&lt;/p&gt;
+&lt;p&gt;Ok, it's not really well documented but the docker container will also expose a decent enough HTTP interface, here's an example:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Govee MQTT gui" src="/images/govee_lan_gui.png"/&gt;&lt;/p&gt;
+&lt;p&gt;I especially like the fact that you can check what's being controlled via LAN API vs Govee (somewhat unreliable) cloud.&lt;/p&gt;
+&lt;p&gt;That's all, I hope your govee experience will be smooth as mine (or even smoother :) )&lt;/p&gt;</content><category term="Tech"/><category term="Govee"/><category term="Led lights"/><category term="Home Assistant"/><category term="DIY"/><category term="Home automation"/><category term="Tech"/></entry><entry><title>Calibre-web, how to fix being locked out and reset password from shell</title><link href="https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/" rel="alternate"/><published>2025-09-08T00:00:00+02:00</published><updated>2025-09-08T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2025-09-08:/2025/09/en/calibre-web-fix-account-lockout/</id><summary type="html">&lt;p&gt;I totally love &lt;a href="https://github.com/janeczku/calibre-web/"&gt;Calibre-web&lt;/a&gt;, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've download from the web.&lt;/p&gt;
+&lt;p&gt;Here's an example screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Calibre-web gui" src="/images/calibre-web-gui.png"&gt;&lt;/p&gt;
+&lt;p&gt;Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I totally love &lt;a href="https://github.com/janeczku/calibre-web/"&gt;Calibre-web&lt;/a&gt;, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've download from the web.&lt;/p&gt;
+&lt;p&gt;Here's an example screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Calibre-web gui" src="/images/calibre-web-gui.png"/&gt;&lt;/p&gt;
+&lt;p&gt;Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your review, load metadata from the internet, and the list goes on... here's what listed on the github page:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modern and responsive Bootstrap 3 HTML5 interface&lt;/li&gt;
+&lt;li&gt;Full graphical setup&lt;/li&gt;
+&lt;li&gt;Comprehensive user management with fine-grained per-user permissions&lt;/li&gt;
+&lt;li&gt;Admin interface&lt;/li&gt;
+&lt;li&gt;Multilingual user interface supporting 20+ languages (&lt;a href="https://github.com/janeczku/calibre-web/wiki/Translation-Status"&gt;supported languages&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;OPDS feed for eBook reader apps&lt;/li&gt;
+&lt;li&gt;Advanced search and filtering options&lt;/li&gt;
+&lt;li&gt;Custom book collection (shelves) creation&lt;/li&gt;
+&lt;li&gt;eBook metadata editing and deletion support&lt;/li&gt;
+&lt;li&gt;Metadata download from various sources (extensible via plugins)&lt;/li&gt;
+&lt;li&gt;eBook conversion through Calibre binaries&lt;/li&gt;
+&lt;li&gt;eBook download restriction to logged-in users&lt;/li&gt;
+&lt;li&gt;Public user registration support&lt;/li&gt;
+&lt;li&gt;Send eBooks to E-Readers with a single click&lt;/li&gt;
+&lt;li&gt;Sync Kobo devices with your Calibre library&lt;/li&gt;
+&lt;li&gt;In-browser eBook reading support for multiple formats&lt;/li&gt;
+&lt;li&gt;Upload new books in various formats, including audio formats&lt;/li&gt;
+&lt;li&gt;Calibre Custom Columns support&lt;/li&gt;
+&lt;li&gt;Content hiding based on categories and Custom Column content per user&lt;/li&gt;
+&lt;li&gt;Self-update capability&lt;/li&gt;
+&lt;li&gt;"Magic Link" login for easy access on eReaders&lt;/li&gt;
+&lt;li&gt;LDAP, Google/GitHub OAuth, and proxy authentication support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can even read books directly from the web interface, but I must admit the resulting experience is everything but stellar...&lt;/p&gt;
+&lt;p&gt;I run my own via docker container, using the image provided by the excellent &lt;a href="https://docs.linuxserver.io/images/docker-calibre-web"&gt;linux-server&lt;/a&gt;. Setup is pretty straightforward&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;-d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;--name&lt;span class="o"&gt;=&lt;/span&gt;calibre-web&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PGID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;TZ&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Etc/UTC&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;DOCKER_MODS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;linuxserver/mods:universal-calibre&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c1"&gt;#optional` \&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;OAUTHLIB_RELAX_TOKEN_SCOPE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c1"&gt;#optional` \&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8083&lt;/span&gt;:8083&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-v&lt;span class="w"&gt; &lt;/span&gt;/path/to/calibre-web/data:/config&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;-v&lt;span class="w"&gt; &lt;/span&gt;/path/to/calibre/library:/books&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;--restart&lt;span class="w"&gt; &lt;/span&gt;unless-stopped&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;lscr.io/linuxserver/calibre-web:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And I love the fact this is a single container without a separate db or anything like that, it's very selfhosting friendy and easy to use.&lt;/p&gt;
+&lt;h2&gt;The lockout problem&lt;/h2&gt;
+&lt;p&gt;Let's say you're logging in from mobile and you accidentally click on the "Forgot Password?" button...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Don't click the forgot password button" src="/images/calibre-web-forgot-password.png"/&gt;&lt;/p&gt;
+&lt;p&gt;And well, by design calibreweb will then set a &lt;em&gt;random password&lt;/em&gt; for the user you selected and send it via email to the email address linked to that user.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Except that your calibreweb install might not be allowed to send email in ANY WAY&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I know that's what mine does, as I don't let docker containers send mail in normal conditions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;WELL, You just LOCKED yourself out of your calibre-web instance my friend :/&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Is there a way we can fix this without re-creating the calibre-web instance from scratch?&lt;/p&gt;
+&lt;h2&gt;Solution: reset that password from inside&lt;/h2&gt;
+&lt;p&gt;Assuming that you're using docker, enter the calibreweb container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exec&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-it&lt;span class="w"&gt; &lt;/span&gt;calibre-web&lt;span class="w"&gt; &lt;/span&gt;bash
+
+&lt;span class="c1"&gt;#now that you're in just run this command:&lt;/span&gt;
+root@xxx:/app/calibre-web#&lt;span class="w"&gt; &lt;/span&gt;python3&lt;span class="w"&gt; &lt;/span&gt;cps.py&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;myuser:myvery_STRONG_password789
+Password&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'myuser'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;changed
+root@xxx:/app/calibre-web#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And that's all! You should now be able to login with your user and the new password.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;p.s.: Thanks to this Reddit thread for the info: &lt;a href="https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in"&gt;https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in_&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><category term="tech"/><category term="eBook"/><category term="Selfhosted"/><category term="Howto"/></entry><entry><title>La mia breve storia di tastiere meccaniche - parte 1</title><link href="https://www.simonemessaggi.it/2020/12/my-brief-history-mechanical-keyboards-part1/" rel="alternate"/><published>2020-12-25T00:00:00+01:00</published><updated>2020-12-25T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2020-12-25:/2020/12/my-brief-history-mechanical-keyboards-part1/</id><summary type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Se avete usato un pc negli anni '90 sapete gia' di cosa sto parlando... Nell'epoca in cui mi sono avvicinato per la prima volta al mondo dei personal …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Questo articolo e' il primo di una serie di post originali che parla delle mie esperienze con le tastiere meccaniche, buona lettura!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Se avete usato un pc negli anni '90 sapete gia' di cosa sto parlando... Nell'epoca in cui mi sono avvicinato per la prima volta al mondo dei personal computer, quando ancora li chiamavamo PC IBM compatibili... le tastiere erano molto meglio di adesso.&lt;/p&gt;
+&lt;p&gt;E davvero mi capitava spesso di usarle, su MS-DOS 3.30, erano imprescindibili, non essendo ancora diffuse le interfacce grafiche di Windows.&lt;/p&gt;
+&lt;p&gt;Se devo essere sincero a me principalmente servivano ad editare due file: AUTOEXEC.BAT e CONFIG.SYS... ma quando hai un solo modo di interagire con il tuo PC, di certo non dovrebbe essere un'agonia, questo e' un fatto.&lt;/p&gt;
+&lt;p&gt;Se vi suono come un vecchio che si lamenta dei bei tempi andati, beh, probabilmente lo sono... fatto sta' che a quei tempi tastiera e mouse (incredibile a dirsi, proprio in quest'ordine!) erano i protagonisti dell'uso quotidiano del PC.&lt;/p&gt;
+&lt;p&gt;Lanciare un gioco significava lanciare comandi da un terminale, prima di tutto, e in alcuni casi la tastiera era proprio il centro dell'interazione con la UI del gioco stesso.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Quest for Glory, un ottimo esempio di parser testuale" src="/images/quest_for_glory.png"/&gt;&lt;/p&gt;
+&lt;p&gt;La prima tastiera che mi e' capitato di usare con il PC non era male, nel senso che la  qualita' media era piu' che accettabile, purtroppo piu' tardi negli anni la qualita' media di tastiera e mouse declino' rapidamente e capitava spesso di ricevere, con l'acquisto di un PC nuovo, oggetti che sembravano destinati alla spazzatura. Ovviamente vi parlo sempre dei classici computer "assemblati" da qualche venditore di componenti, ma nemmeno i marchi, come Compaq, HP, Acer e Dell erano completamente immuni a questo fenomeno, complice la necessita' di tagliare i costi su un segmento che assicurava guadagni sempre piu' risicati.&lt;/p&gt;
+&lt;p&gt;Quindi molti di noi si trovavano a sostituire questi disastrosi accessori con qualcosa di decente fatto da Logitech ed ecco che tutto tornava ad essere normale.&lt;/p&gt;
+&lt;p&gt;Arriviamo a ieri, tutti noi o quasi ci siamo trovati tra le mani un portatile, con la sua economicissima tastiera ad isola, switch a farfalla, e se va bene nel giro di qualche anno tasti scoloriti che registrano la pressione l'80% delle volte. Un esempio su tutti quelle tastiere da incubo dei portatili Mac di penultima generazione, dimostrazione del fatto che quando una grande azienda (Apple, in questo caso) vuole risparmiare a danno dei consumatori ci riesce sempre benissimo.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Esempio di Macbook con tasti abbondantemente consumati" src="/images/macbook-worn-keys.jpg"/&gt;&lt;/p&gt;
+&lt;h2&gt;Tastiere a membrana&lt;/h2&gt;
+&lt;p&gt;C'e' un fattore che quasi tutte le tastiere economiche "di una volta" hanno in comune: &lt;strong&gt;non&lt;/strong&gt; sono tastiere meccaniche, a parte rarissime eccezioni (come la &lt;a href="https://en.wikipedia.org/wiki/Model_M_keyboard"&gt;Model M&lt;/a&gt; di IBM). La maggior parte delle tastiere che abbiamo utilizzato con il PC sfruttavano infatti la costruzione basata sull'utilizzo di membrane di gomma.&lt;/p&gt;
+&lt;p&gt;Le tastiere basate su questa membrana di gomma sono infatti tra le piu' diffuse, almeno fino ad oggi, anche perche' sono tra le piu' economiche da produrre. Il loro meccanismo e' basato su una singola membrana gommosa larga quanto tutta la tastiera che e' la parte che oppone resistenza alla pressione di ciascun tasto. Come si dice una foto vale mille parole per cui:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sezione di una tastiera a membrana" src="/images/membrane_keyboard.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;Quindi, riassumiamo, il nostro dito preme su un tasto che e' montato sulla sommita' di un cilindretto cavo di gomma, superando una certa forza il cilindro di gomma non oppone piu' una resistenza sufficiente per cui il tasto arriva a fine corsa dove fa contatto con un sensore che ne registra la pressione per comunicarla al controller della tastiera e infine al PC.&lt;/p&gt;
+&lt;p&gt;Personalmente non ho nulla contro le tastiere a membrana, anzi, una tastiera a membrana, se ben costruita, puo' essere anche molto piacevole da utilizzare, risultando, a mio avviso, la tipologia piu' "tattile" in assoluto.&lt;/p&gt;
+&lt;p&gt;Questo perche' a me piace che ciascun tasto opponga una certa resistenza alla pressione, questa resistenza mi serve ad avere la certezza di averlo premuto prima di poter proseguire con il resto della digitazione.&lt;/p&gt;
+&lt;p&gt;Per molti altri, al contrario, questo fatto della resistenza e' &lt;strong&gt;estremamente spiacevole&lt;/strong&gt;, una sorta di impedimento.&lt;/p&gt;
+&lt;p&gt;Alla fine, dipende tutto dal tocco di ciascuno, visto che non siamo tutti uguali. C'e' chi ha le dita leggere e preferisce "volare" su una tastiera che registra la pressione al minimo tocco, c'e' chi ha invece le mani pesanti e pigia i tasti come se dovesse martellare talpe sul whack-a-mole...&lt;/p&gt;
+&lt;h2&gt;Altre tastiere strane: da laptop e a farfalla&lt;/h2&gt;
+&lt;p&gt;Un'altra tipologia di tastiere parecchio diffusa e' quella che troviamo sulla maggioranza dei portatili, con tastiere ad isola. La tipologia costruttiva e' quella degli &lt;em&gt;scissors switch&lt;/em&gt; (a forbice), con tutte le varianti del caso ovvero i "fantasmagorici" switch butterfly (a farfalla) brevettati da Apple.&lt;/p&gt;
+&lt;p&gt;Anche qui, se va tutto bene ci sono soluzioni decenti, ma quando i produttori decidono di risparmiare arrivano le (brutte) sorprese, soprattutto in termini di durata nel tempo.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Switch a farfalla e a forbice, anche Apple ammette di aver sbagliato" src="/images/scissors-vs-butterfly-keyboard-switch.jpg"/&gt;&lt;em&gt;Switch a forbice o a farfalla, non esattamente il massimo&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Su queste tastiere i tasti hanno una corsa molto limitata, complici gli spazi esigui di un portatile, e la soddisfazione durante la digitazione puo' risentirne parecchio, ma se le tastiere a membrana generalmente facilitano chi ha un tocco pesante quelle a forbice/farfalla sembrano piu' indicate per chi ha dita leggere.&lt;/p&gt;
+&lt;h2&gt;Tastiere meccaniche? Si, grazie&lt;/h2&gt;
+&lt;p&gt;Purtroppo, spesso non abbiamo la possibilita' di scegliere la tastiera piu' adatta alle nostre esigenze, e ci affidiamo a quello che "passa in convento", a maggior ragione se si tratta di un portatile. Fortunatamente, esiste una tipologia di tastiere completamente diversa da quelle analizzate sino ad ora, ovvero le famose "tastiere meccaniche", ma perche' si chiamano cosi'?&lt;/p&gt;
+&lt;p&gt;Le tastiere meccaniche prendono il nome da un particolare tipo di switch utilizzato per ciascun tasto, che e' appunto di tipo "meccanico".&lt;/p&gt;
+&lt;p&gt;Il funzionamento di questi switch e' infatti diverso da quello degli switch a membrana o a forbice, vediamone alcuni da vicino:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Le tre principali tipologie di switch meccanico riassunti in una animazione" src="/images/cherry_switch_animation.gif"/&gt;&lt;/p&gt;
+&lt;p&gt;Come potete vedere, questi sono i tre fondamentali switch meccanici visti nel dettaglio del loro funzionamento, e sono contraddistinti da 3 colori diversi, in base al funzionamento interno.&lt;/p&gt;
+&lt;p&gt;Il colore di riferimento, anche se con eventuali variazioni, e' dovuto al fatto che questi sono i colori del principale produttore di switch meccanici, ovvero &lt;a href="https://www.cherrymx.de/en"&gt;Cherry Mx&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vediamo allora le tre principali tipologie di switch per tastiera meccanica&lt;/p&gt;
+&lt;h3&gt;Gli switch lineari "rossi"&lt;/h3&gt;
+&lt;p&gt;Questi switch sono di tipo lineare, ovvero, quando una forza viene impressa sullo switch, si comportano linearmente. In breve, significa che la pressione di attuazione, ovvero la pressione minima con cui il tasto registra un segnale, e' piuttosto bassa, e questo rende gli switch rossi particolarmente indicati per due tipologie di utilizzatori:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;i gamer:&lt;/strong&gt; che necessitano dei tempi di risposta piu' rapidi in assoluto&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;i typer "leggeri":&lt;/strong&gt; dato che questi switch richiedono di una pressione minima per essere attivati&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Gli switch tattili "marroni"&lt;/h3&gt;
+&lt;p&gt;Questi switch sono di tipo tattile, la differenza tra brown e red puo' sembrare minima dall'animazione che avete visto poco sopra, ma in realta' il feeling e' molto diverso. Uno switch tattile, infatti, non ha un comportamento lineare, ma registra la pressione solo quando questa supera una certa soglia.&lt;/p&gt;
+&lt;p&gt;I brown sono forse gli switch che assomigliano di piu' a quelli delle tastiere a membrana, oppongono una resistenza sensibile, anche se mediamente inferiore, e danno una feeling ideale per la digitazione, quando questa avviene con un tocco medio / pesante.&lt;/p&gt;
+&lt;p&gt;Per questa ragione sono quelli piu' indicati per chi si trova, per lavoro o per altra ragione, a dover scrivere molto alla tastiera del suo computer.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Se siete programmatori o per un normale lavoro da ufficio, gli switch brown sono tra quelli piu' indicati per voi&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;Gli switch blu, ovvero i "rumorosi"&lt;/h3&gt;
+&lt;p&gt;I blue sono senza dubbio gli switch meccanici piu' riconoscibili del trio, questo perche' hanno una caratteristica unica: se ci fate caso c'e' una parte di switch separata dal corpo blu a contatto con il tasto.&lt;/p&gt;
+&lt;p&gt;Questa parte dello switch durante la pressione va a fare contatto con il fondo producendo un tipico suono "click" che e' la caratteristica distintiva dei blue.&lt;/p&gt;
+&lt;p&gt;Gli switch di questo tipo sono gli unici che producono questo suono quando il tasto viene effettivamente premuto, restituendo all'utente un ulteriore feedback uditivo dell'avvenuta pressione.&lt;/p&gt;
+&lt;p&gt;Sembra una piccola differenza, ma vi assicuro che il feeling e' unico e molto diverso da quello di tastiere dotate di red o brown.&lt;/p&gt;
+&lt;p&gt;I blue sono gli switch che molti da sempre collegano alle tastiere meccaniche, sapete perche'?&lt;/p&gt;
+&lt;p&gt;Perche' la tastiera meccanica piu' famosa di tutti i tempi, ovvero il modello M fabbricato da IBM a partire dal 1985 e' dotato proprio di cherry mx blue.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="l'originale con gli switch blue, la tastiera meccanica per antonomasia, il Model M di IBM" src="/images/model_m.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;La caratteristica principale degli switch blu, quindi, e' - passatemi il termine - la &lt;em&gt;cliccosita'&lt;/em&gt; che producono quando li premiamo. Dal punto di vista del feeling, gli switch blu sono ideali per chi ama un ulteriore feedback e vuole essere certo di aver premuto il tasto, perfetto per chi possiede un tocco pesante e non frequenta ambienti troppo affolati.&lt;/p&gt;
+&lt;p&gt;La principale controindicazione dei blu, a mio avviso, e' la rumorosita' durante l'utilizzo, questi switch sono assolutamente da sconsigliare per chi si trova a lavorare in un ufficio con dei colleghi, ad esempio in un open space, e di questi giorni, chi non lavora in un open space?&lt;/p&gt;
+&lt;p&gt;Certo, sempre per rimanere (pandemicamente) attuali, le tastiere con cherry blue non hanno controindicazioni per chi lavora da casa e ha il lusso di non avere vicino altre persone che potrebbero esserne disturbate.&lt;/p&gt;
+&lt;h2&gt;Switch esotici e altre tipologie&lt;/h2&gt;
+&lt;p&gt;Come avrete gia' notato, il bello degli switch meccanici e' che ci sono grandi possibilita' di personalizzazione della tastiera, non male per un accessorio che da sempre consideravamo "standard".&lt;/p&gt;
+&lt;p&gt;In particolare, non ci fermiamo ai soli tre tipi di switch visti qui sopra, esistono infatti moltissimi produttori e, data la recente domanda del mercato, centinaia se non migliaia di variazioni dei tre switch classici red, brown &amp;amp; blue.&lt;/p&gt;
+&lt;p&gt;Vederli tutti e' semplicemente impossibile per cui cercheremo di parlare di quelli piu' interessanti e/o originali.&lt;/p&gt;
+&lt;h3&gt;Silenzio, entra lo switch silenziato&lt;/h3&gt;
+&lt;p&gt;Il suono delle tastiere meccaniche senza dubbio richiede un capitolo speciale di questa serie di articoli, perche' per molti, incluso chi scrive, il sound di una tastiera meccanica e' una componente fondamentale nella scelta.&lt;/p&gt;
+&lt;p&gt;In generale, rispetto alle normali tastiere a membrana considerate come la tipologia di tastiera piu' diffusa e comune in un ufficio, le tastiere meccaniche sono mediamente piu' rumorose.&lt;/p&gt;
+&lt;p&gt;Questa loro caratteristica, che deriva direttamente dagli switch utilizzati, ha portato i produttori ad ideare una prima variante, sono gli switch cosiddetti "silent".&lt;/p&gt;
+&lt;p&gt;E' stata proprio la Cherry MX &lt;a href="https://www.anandtech.com/show/9498/corsair-and-cherry-introduce-new-quieter-mechanical-keyboard-switches"&gt;nel 2015&lt;/a&gt; la prima ad introdurre questa nuova tipologia di switch silenzati con i suoi silent MX, offerti nelle colorazioni standard, ovvero red, brown e black (una variante lineare dotata di una molla che richiede una forza di attuazione superiore rispetto ai red). Per ovvie ragioni non esiste una versione silent dei blue.&lt;/p&gt;
+&lt;p&gt;Le caratteristiche sono fondamentalmente le stesse dei corrispettivi "non silent", ma internamente ci sono alcuni accorgimenti utili a ridurre in modo significativo il rumore. Non e' questa la sede per parlare delle tecniche costruttive in dettaglio ma esistono numerosi articoli dedicati all'argomento (&lt;a href="https://switchandclick.com/2020/06/20/are-silent-switches-worth-it/#:~:text=Silent%20Switch%20Construction&amp;amp;text=The%20rubber%20limits%20the%20amount,more%20rubbery%20and%20mushy%20response."&gt;un esempio&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Attenzione pero', il rumore di una tastiera non dipende dal solo switch, andrebbero considerati anche altri componenti tra cui, fondamentale, lo chassis che funge da vera e propria cassa di risonanza.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Gli O-ring sono la soluzione piu' economica al problema di rumorosita' degli switch" src="/images/o_ring_dampeners.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;Gli switch silent solitamente sono piu' cari delle versioni "standard", esistono pero' alcuni accorgimenti, tra cui principalmente l'utilizzo di &lt;em&gt;o-ring&lt;/em&gt;, per silenziare gli switch classici che con pochi euro permettono di raggiungere risultati interessanti.&lt;/p&gt;
+&lt;h3&gt;Switch low profile&lt;/h3&gt;
+&lt;p&gt;Altra variante molto diffusa dei singoli switch e' quella dei &lt;em&gt;low profile&lt;/em&gt; che sono sostanzialmente delle versioni ridotte degli switch standard.&lt;/p&gt;
+&lt;p&gt;I low profile nascono come variante per due ragioni storiche:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Permettere un tocco piu' veloce, avendo una corsa minore dello switch&lt;/li&gt;
+&lt;li&gt;Rendere possibile la costruzione di tastiere meno alte, quindi piu' ergonomiche e trasportabili&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Secondo me la reale innovazione introdotta dagli switch low profile e' quella di avvicinare anche i portatili/laptop ad avere tastiere meccaniche.&lt;/p&gt;
+&lt;p&gt;Probabilmente un giorno ci arriveremo, ma per il momento gli unici laptop in commercio dotati di tastiera meccanica sono tutti modelli dedicati al mondo del gaming... &lt;em&gt;E a noi computer scientist? chi ci pensa?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MSI Titan ovvero il primo laptop al mondo dotato di tastiera meccanica - source: TheVerge" src="/images/msi_titan_laptop_mechanical.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;Credo comunque che presto arriveranno delle novita' in questo senso e, se succedera', lo dovremo alle innovazioni degli switch meccanici low profile.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;~ Continua ~&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Spero vi sia piaciuto l'articolo! ci ritroviamo presto con la seconda parte&lt;/em&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Mechanical Keyboards"/><category term="Cherry MX"/></entry><entry><title>Container security: migliorare la sicurezza con i distroless container</title><link href="https://www.simonemessaggi.it/2019/09/distroless-containers-improve-security/" rel="alternate"/><published>2019-09-01T00:00:00+02:00</published><updated>2019-09-01T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2019-09-01:/2019/09/distroless-containers-improve-security/</id><summary type="html">&lt;p&gt;&lt;em&gt;Segue un breve riassunto di un talk che ho composto durante la mia collaborazione con Mia Platform&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bio:&lt;/strong&gt;
+La mia storia d'amore con i computer è iniziata ad 8 anni, grazie al Commodore64, poi ho fatto di questa passione la mia professione.&lt;/p&gt;
+&lt;p&gt;Ho lavorato su reti, sviluppo web (back &amp;amp; front …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Segue un breve riassunto di un talk che ho composto durante la mia collaborazione con Mia Platform&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bio:&lt;/strong&gt;
+La mia storia d'amore con i computer è iniziata ad 8 anni, grazie al Commodore64, poi ho fatto di questa passione la mia professione.&lt;/p&gt;
+&lt;p&gt;Ho lavorato su reti, sviluppo web (back &amp;amp; front), come sysadm Linux, technical project manager e ho creato e guidato team tecnologici nelle aziende di cui ho fatto parte.&lt;/p&gt;
+&lt;p&gt;Negli ultimi anni ho iniziato ad adottare la filosofia DevOps con grande soddisfazione.&lt;/p&gt;
+&lt;p&gt;Adoro Docker, Kubernetes ed Elasticsearch.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Job Title:&lt;/strong&gt;
+Devops e Operation Master presso Mia-Platform, &lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;&lt;strong&gt;Titolo:&lt;/strong&gt;
+Rafforzare la security con i distroless container&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Breve Descrizione:&lt;/strong&gt;
+Viviamo nell'era della container revolution e questo trend già diffuso esploderà ulteriormente nei prossimi anni.&lt;/p&gt;
+&lt;p&gt;I container continuano ad essere uno dei trend più caldi del momento, ma se con i container progettiamo, sviluppiamo e deployamo applicazioni, perché spesso non dedichiamo più di 5 minuti alla sicurezza dei container?&lt;/p&gt;
+&lt;p&gt;Parliamo di distroless container, una tecnica promettente ideata da Google con cui è possibile limitare al massimo la superficie di attacco delle nostre applicazioni containerizzate. Vedremo i principali metodi per realizzare distroless container e impareremo ad:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Analizzare container con tool per individuarne le vulnerabilità di sicurezza&lt;/li&gt;
+&lt;li&gt;Ottenere immagini snelle attraverso le build multi-stage &lt;/li&gt;
+&lt;li&gt;Fare il debugging di container distroless in modo efficace&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr/&gt;
+&lt;p&gt;Siamo nel 2019, e viviamo ormai nell'era della &lt;em&gt;Container revolution&lt;/em&gt;, nel giro di pochi anni siamo passati dallo shared hosting alle VPS fino al cloud e ai container dei giorni nostri.&lt;/p&gt;
+&lt;p&gt;L'utilizzo dei container in produzione e' ormai un fenomeno "normale" e consolidato, secondo &lt;a href="https://www.gartner.com/smarterwithgartner/6-best-practices-for-creating-a-container-platform-strategy/"&gt;Gartner&lt;/a&gt; entro il 2022 il 75% delle aziende utilizzera' in produzione applicazioni containerizzate (la percentuale nel 2019 e' di circa il 30% e in crescita).&lt;/p&gt;
+&lt;p&gt;Come sempre succede, quando emergono nuove tecnologie, la prima preoccupazione e' fare in modo che "funzionino" e alcuni aspetti vengono tralasciati, per questa ragione docker e i container si sono fatti una reputazione tutt'altro che buona per quanto riguarda gli aspetti di &lt;strong&gt;cybersecurity.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Molte realta', per la fretta di inseguire l'ultimo trend tecnologico/informatico (oggi sono i container, domani...chissa'!), hanno tralasciato in parte o del tutto la parte di sicurezza, e sottovalutato il fatto che, alcune caratteristiche di isolamento dei processi a cui ci avevano abituato le VM nei container nemmeno esistono!&lt;/p&gt;
+&lt;p&gt;Volendo vedere, il ridotto grado di isolamento offerto dai container non deriva da un disinteresse verso il tema security ma, piu' semplicemente, e' una feature della containerizzazione che serve a guadagnare in termini di flessibilita'.&lt;/p&gt;
+&lt;h2&gt;Distroless container&lt;/h2&gt;
+&lt;p&gt;Proprio per approfondire il tema security, oggi vi voglio proporre una tecnica per la messa in sicurezza di container che utilizza l'approccio &lt;em&gt;distroless&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Se con le VM il focus era su istanze di macchine virtuali isolate e ciascuna "dedicata" ad una certa applicazione, con i container arriviamo ad avere quasi un'identita' tra l'applicazione stessa e il container in cui gira. Arriviamo a dire che &lt;strong&gt;il container, in fondo e' l'applicazione.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Chiunque di voi si sia preso la briga di scrivere un &lt;em&gt;Dockerfile&lt;/em&gt; o due sa pero' bene che non e' cosi' semplice. &lt;/p&gt;
+&lt;p&gt;Perche' oltre all'applicazione nel container e' presente una base costituita dal sistema operativo sottostante, leggero quanto volete, ma comunque sempre presente.&lt;/p&gt;
+&lt;p&gt;Per i miei primi Dockerfile, ad esempio, mi sono sempre affidato ad una base &lt;strong&gt;debian&lt;/strong&gt; (debian:stretch) perche' avevo buona confidenza con questo OS e sapevo quanti e quali pacchetti potevo installare, inoltre avevo a disposizione software testato e stabile, anche se a discapito del numero di versione. Immagini basate su debian pesavano facilmente centinaia di MB ma erano piu' facili da usare e da debuggare.&lt;/p&gt;
+&lt;p&gt;Poi nel tempo, sono passato alla &lt;a href="https://hub.docker.com/_/debian"&gt;&lt;strong&gt;stretch-slim&lt;/strong&gt;&lt;/a&gt;, una distribuzione debian minimale che pero' garantiva l'80% degli strumenti di debian, in un formato piu' compatto ed efficiente.&lt;/p&gt;
+&lt;p&gt;Con gli anni, sono venuto a conoscenza di &lt;a href="https://hub.docker.com/_/alpine"&gt;&lt;strong&gt;Alpine&lt;/strong&gt;&lt;/a&gt;, una distro Linux estremamente minimale e dal peso irrisorio, perfetta per mantenere leggeri e performanti i container. Alpine e' davvero la versione di Linux piu' ristretta all'osso che mi sia capitata di vedere, si tratta in pratica di un &lt;a href="https://hub.docker.com/_/busybox"&gt;&lt;strong&gt;busybox&lt;/strong&gt;&lt;/a&gt; (usato nel mondo embedded) con l'aggiunta del package manager minimale apk. Le immagini basate su Alpine tendono a pesare anche meno di 100 MB il che comporta un bel guadagno in termini risparmio di banda e tempo.&lt;/p&gt;
+&lt;p&gt;I distroless, se volete, sono un ulteriore passo avanti verso container efficienti dove il sistema operativo scompare e sono presenti solo le librerie minime necessarie ad eseguire la nostra applicazione.&lt;/p&gt;
+&lt;p&gt;Questa tecnica non e' nuova, ma esiste da qualche anno ed e' stata introdotta da Google, che si trova da tempo nella situazione di avere molte applicazioni containerizzate deployate in produzione.&lt;/p&gt;
+&lt;p&gt;In poche parole, un container distroless fa a meno del sistema operativo e contiene solo il kernel linux e le librerie necessarie all'applicazione che vogliamo deployare...&lt;/p&gt;
+&lt;h2&gt;Slide&lt;/h2&gt;
+&lt;p&gt;Seguono le slide del talk, nella versione per il &lt;a href="https://www.meetup.com/kubernetes-milano/"&gt;meetup di Kubernetes Milano&lt;/a&gt;:&lt;/p&gt;
+&lt;iframe allowfullscreen="true" frameborder="0" height="569" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/e/2PACX-1vQFRtZvdtt2Scc4cQM4m4vnOtn-Lvvz0OVnEBE8_hCVE05A0heatr6RG1rR-goLckrqxhPF287dL9Or/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000" webkitallowfullscreen="true" width="960"&gt;&lt;/iframe&gt;</content><category term="Tech"/><category term="Docker"/><category term="Kubernetes"/><category term="Distroless"/><category term="Security"/><category term="Talk"/></entry><entry><title>Fare un dump da uno snapshot RDS con Python e Terraform</title><link href="https://www.simonemessaggi.it/2018/10/dump-rds-snapshot-to-sql-python-terraform/" rel="alternate"/><published>2018-10-31T00:00:00+01:00</published><updated>2018-10-31T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2018-10-31:/2018/10/dump-rds-snapshot-to-sql-python-terraform/</id><summary type="html">&lt;p&gt;Ok, già tutti voi conoscete le prodezze del cloud di Amazon, per cui non vi annoio con i dettagli, e se i vostri server si trovano su AWS è molto facile che già utilizziate il loro &lt;em&gt;db engine as a service&lt;/em&gt;, ovvero &lt;strong&gt;RDS&lt;/strong&gt; (che sta per Relational Database Service).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Repost …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ok, già tutti voi conoscete le prodezze del cloud di Amazon, per cui non vi annoio con i dettagli, e se i vostri server si trovano su AWS è molto facile che già utilizziate il loro &lt;em&gt;db engine as a service&lt;/em&gt;, ovvero &lt;strong&gt;RDS&lt;/strong&gt; (che sta per Relational Database Service).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Repost di articolo apparso per la prima volta su &lt;a href="https://medium.com/@simmessa/fare-un-dump-da-uno-snapshot-rds-con-python-e-terraform-7cbd0fa026fc"&gt;Medium&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Oggi parliamo proprio di un hack utile per chi usa questo servizio, e nello specifico, andremo a vedere come creare un classico dump del db (formato .sql) da un'istanza di database.&lt;/p&gt;
+&lt;h2&gt;Ma non esistono già i backup?&lt;/h2&gt;
+&lt;p&gt;RDS, tra le tante cose interessanti, offre la funzionalità di avere dei backup automatici, ed se lo avete provato sapete già che è davvero comodo. In ogni momento potete ripristinare uno snapshot esistente o anche creare una nuova istanza del database, di cui scegliere la dimensione (intesa come "potenza" del server), andando a pescare dai dati dello snapshot.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="RDS ha degli ottimi backup, ma non sono i dump sql che servono a noi…" src="/images/RDS_snapshot.png"/&gt;
+&lt;em&gt;RDS ha degli ottimi backup, ma non sono i dump sql che servono a noi…&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Spesso mi è capitato di pensare che questi backup fossero già quello che mi serviva, ovvero un modo come un altro di dumpare il db in file sql compresso per duplicare un servizio, purtroppo mi sono accorto a mie spese che non è così semplice, soprattutto se vi va di automatizzare il processo e volete trovare il modo di rischiare il meno possibile con un db live in produzione.&lt;/p&gt;
+&lt;p&gt;Il succo del discorso è che, su RDS, è estremamente facile duplicare un database tramite snapshot e creando una nuova istanza, ma il livello di portabilità di questo genere di "dump" è praticamente nullo, vale solo su RDS.&lt;/p&gt;
+&lt;p&gt;Al contrario, se volete ottenere un dump non è così banale.&lt;/p&gt;
+&lt;h2&gt;Il metodo basic&lt;/h2&gt;
+&lt;p&gt;Il processo è abbastanza semplice:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creiamo uno snapshot&lt;/li&gt;
+&lt;li&gt;Lanciamo una nuova istanza di db "piccola" a piacere (ad esempio una db.t2.micro, con 1 vCPU e 1 Gb di RAM) selezionando come source lo snapshot che ci interessa&lt;/li&gt;
+&lt;li&gt;Ci colleghiamo via &lt;strong&gt;mysqldump&lt;/strong&gt; alla nuova istanza e produciamo il dump del database che ci serve&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Farlo manualmente ogni volta, però, lo trovo pallosetto, per cui ho cercato (grazie Google!) ed elaborato un metodo più furbo ed automatico di farlo&lt;/p&gt;
+&lt;h2&gt;Alcune accortezze LIVE&lt;/h2&gt;
+&lt;p&gt;Se per caso volete avere il dump di un database di produzione e volete evitare problemi, accontentandovi anche di dati non freschissimi, vi consiglio per cominciare di impostare i job di backup / creazione degli snapshot nella fascia dove avete meno accessi al vostro servzio, potrebbe essere in fascia notturna, ma sta a voi scoprirlo e, in ogni caso, se è un servizio pubblico Google Analytics è vostro amico, altrimenti buona ricerca nei log.&lt;/p&gt;
+&lt;h2&gt;Il metodo Terraform + Python script&lt;/h2&gt;
+&lt;p&gt;Premetto che trovate il codice di esempio di questo articolo sul mio profilo &lt;a href="https://github.com/simmessa/rds_snaptodump"&gt;github&lt;/a&gt;, e ora andiamo a vedere con ordine cosa dobbiamo fare per andare a creare il dump in questo modo.&lt;/p&gt;
+&lt;p&gt;Prima di proseguire clonate il repo ed entrateci con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/simmessa/rds_snaptodump
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;rds_snaptodump
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Prerequisiti vari&lt;/h3&gt;
+&lt;p&gt;Per eseguire i file del repository vi serve:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;terraform (per l'installazione vedete qui sotto)&lt;/li&gt;
+&lt;li&gt;mysqldump&lt;/li&gt;
+&lt;li&gt;un account AWS con i privilegi necessari per interagire con RDS (lettura, list dei database, ecc) (altre informazioni qui sotto)&lt;/li&gt;
+&lt;li&gt;python 2 (ho testato con la versione 2.7.12)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Installare Terraform&lt;/h3&gt;
+&lt;p&gt;Per prima cosa vi consiglio di installare &lt;a href="https://www.terraform.io"&gt;Terraform&lt;/a&gt;, è un tool fatto dai simpatici signori di &lt;a href="https://www.hashicorp.com/"&gt;Hashicorp&lt;/a&gt; che è molto utile e vi aprirà un mondo sul modo di creare infrastrutture in cloud da riga di comando, ma, ovviamente, lo scope di questo articolo non ci consente di approfondire l'argomento.&lt;/p&gt;
+&lt;p&gt;Sappiate almeno che, con terraform, potrete lanciare comandi che andranno a definire, in base a degli script, ambienti in cloud su AWS, GKE o altro.&lt;/p&gt;
+&lt;p&gt;Non ho idea se Terraform sia in bundle grazie al pkg manager della vostra distro Linux preferita (o magari su &lt;a href="https://medium.com/@simmessa/installare-un-ambiente-di-sviluppo-linux-su-windows-10-wsl-fc638bb4ff8e"&gt;WSL&lt;/a&gt; sotto windows 10), ma per installarlo da riga di comando la procedura è molto semplice, andate &lt;a href="https://www.terraform.io/downloads.html"&gt;qui&lt;/a&gt;, scaricatevi il binario adeguato e poi unzippatelo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;wget&lt;span class="w"&gt; &lt;/span&gt;https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;unzip&lt;span class="w"&gt; &lt;/span&gt;terraform_0.11.10_linux_amd64.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ottimo a questo punto vi dovreste trovare con il binario di terraform dentro il repository github precedentemente clonato.&lt;/p&gt;
+&lt;p&gt;Per verificare l'install di terraform non vi resta che provare ad eseguire terraform:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;terraform&lt;/span&gt;
+&lt;span class="n"&gt;Usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;The&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;execution&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;are&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;listed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;below&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;The&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;useful&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;are&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shown&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;followed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;
+&lt;span class="n"&gt;less&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;more&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;advanced&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;If&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="s1"&gt;'re just getting&lt;/span&gt;
+&lt;span class="n"&gt;started&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;stick&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;For&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;
+&lt;span class="n"&gt;other&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;please&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;docs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;before&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Common&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Builds&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;changes&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;infrastructure&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;console&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Interactive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;console&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;interpolations&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;destroy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Destroy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;managed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;infrastructure&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Workspace&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;management&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fmt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Rewrites&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;canonical&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Download&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;configuration&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Create&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;visual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resources&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;Import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;existing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;infrastructure&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Initialize&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;working&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;plan&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Generate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;execution&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;plan&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;providers&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Prints&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;providers&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;used&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;configuration&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Atlas&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Update&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;against&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;real&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resources&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Inspect&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;plan&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;taint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Manually&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mark&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;recreation&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;untaint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Manually&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;unmark&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tainted&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;validate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Validates&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Prints&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;workspace&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Workspace&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;management&lt;/span&gt;
+&lt;span class="n"&gt;All&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;other&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Debug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;management&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;experimental&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;force&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;unlock&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Manually&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;unlock&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;terraform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Advanced&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;management&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se l'output è come quello che vedete qui sopra siete a posto, terraform è pronto per essere usato.&lt;/p&gt;
+&lt;h3&gt;Editare lo script main.tf&lt;/h3&gt;
+&lt;p&gt;Ora che avete Terraform a disposizione dovrete editare lo script che useremo per creare l'istanza del nostro database di cui ottenere il dump.&lt;/p&gt;
+&lt;p&gt;Si chiama main.tf e lo trovate qui sotto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;provider&lt;span class="w"&gt; &lt;/span&gt;"aws"&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt; &lt;/span&gt;region&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"eu-west-1"&lt;span class="w"&gt; &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;put&lt;span class="w"&gt; &lt;/span&gt;your&lt;span class="w"&gt; &lt;/span&gt;AWS&lt;span class="w"&gt; &lt;/span&gt;region&lt;span class="w"&gt; &lt;/span&gt;here!
+}
+
+#&lt;span class="w"&gt; &lt;/span&gt;Get&lt;span class="w"&gt; &lt;/span&gt;latest&lt;span class="w"&gt; &lt;/span&gt;snapshot&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;production&lt;span class="w"&gt; &lt;/span&gt;DB
+data&lt;span class="w"&gt; &lt;/span&gt;"aws_db_snapshot"&lt;span class="w"&gt; &lt;/span&gt;"latest_prod_snapshot"&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt; &lt;/span&gt;most_recent&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;true
+&lt;span class="w"&gt; &lt;/span&gt;db_instance_identifier&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"mydbname"&lt;span class="w"&gt; &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;put&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;name&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;your&lt;span class="w"&gt; &lt;/span&gt;db&lt;span class="w"&gt; &lt;/span&gt;here!
+}
+#&lt;span class="w"&gt; &lt;/span&gt;Create&lt;span class="w"&gt; &lt;/span&gt;new&lt;span class="w"&gt; &lt;/span&gt;staging&lt;span class="w"&gt; &lt;/span&gt;DB
+resource&lt;span class="w"&gt; &lt;/span&gt;"aws_db_instance"&lt;span class="w"&gt; &lt;/span&gt;"db_snapshot_dumper"&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt; &lt;/span&gt;instance_class&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"db.t2.micro"
+&lt;span class="w"&gt; &lt;/span&gt;identifier&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"db-snapshot-dumper"
+&lt;span class="w"&gt; &lt;/span&gt;username&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"user"&lt;span class="w"&gt; &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;necessary,&lt;span class="w"&gt; &lt;/span&gt;but&lt;span class="w"&gt; &lt;/span&gt;won't&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;used&lt;span class="w"&gt; &lt;/span&gt;since&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;snapshot&lt;span class="w"&gt; &lt;/span&gt;identifier&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;provided...
+&lt;span class="w"&gt; &lt;/span&gt;password&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"password"&lt;span class="w"&gt; &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;necessary,&lt;span class="w"&gt; &lt;/span&gt;but&lt;span class="w"&gt; &lt;/span&gt;won't&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;used&lt;span class="w"&gt; &lt;/span&gt;since&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;snapshot&lt;span class="w"&gt; &lt;/span&gt;identifier&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;provided...
+&lt;span class="w"&gt; &lt;/span&gt;snapshot_identifier&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;aws_db_snapshot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;latest_prod_snapshot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+&lt;span class="w"&gt; &lt;/span&gt;#vpc_security_group_ids&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;["sg-12345678"]&lt;span class="w"&gt; &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;if&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;are&lt;span class="w"&gt; &lt;/span&gt;running&lt;span class="w"&gt; &lt;/span&gt;inside&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;VPC&lt;span class="w"&gt; &lt;/span&gt;uncomment&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;put&lt;span class="w"&gt; &lt;/span&gt;yours&lt;span class="w"&gt; &lt;/span&gt;here
+&lt;span class="w"&gt; &lt;/span&gt;skip_final_snapshot&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;true&lt;span class="w"&gt; &lt;/span&gt;#&lt;span class="w"&gt; &lt;/span&gt;Won't&lt;span class="w"&gt; &lt;/span&gt;produce&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="w"&gt; &lt;/span&gt;final&lt;span class="w"&gt; &lt;/span&gt;snapshot&lt;span class="w"&gt; &lt;/span&gt;when&lt;span class="w"&gt; &lt;/span&gt;disposing&lt;span class="w"&gt; &lt;/span&gt;of&lt;span class="w"&gt; &lt;/span&gt;db
+}
+
+output&lt;span class="w"&gt; &lt;/span&gt;"address"&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt; &lt;/span&gt;value&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;aws_db_instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db_snapshot_dumper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;address&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+}
+
+output&lt;span class="w"&gt; &lt;/span&gt;"snapshot"&lt;span class="w"&gt; &lt;/span&gt;{
+&lt;span class="w"&gt; &lt;/span&gt;value&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;aws_db_instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db_snapshot_dumper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;snapshot_identifier&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ci sono varie cose che dovrete cambiare per adattarle al vostro caso specifico, come la regione AWS in cui usate il servizio RDS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;provider&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"aws"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"eu-west-1"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;region&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e l'identificativo del vostro database, come risulta dal pannello di RDS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="c1"&gt;# Get latest snapshot from production DB&lt;/span&gt;
+&lt;span class="na"&gt;data "aws_db_snapshot" "latest_prod_snapshot" {&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;most_recent&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;true&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;db_instance_identifier&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"mydbname"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# put the name of your db here!&lt;/span&gt;
+&lt;span class="na"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Infine, se la vostra infrastruttura sul cloud prevede una vpc, vi consiglio di decommentare l'apposita riga e di inserire l'id della vostra vpc:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#vpc_security_group_ids = ["sg-12345678"] # if you are running inside a VPC uncomment and put yours here&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vorrei cogliere l'occasione per farvi notare che non abbiamo dovuto dare a Terraform l'id di uno snapshot specifico, al contrario, gli abbiamo chiesto di usare l'ultimo a disposizione (most_recent = true):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="c1"&gt;# Get latest snapshot from production DB&lt;/span&gt;
+&lt;span class="na"&gt;data "aws_db_snapshot" "latest_prod_snapshot" {&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;most_recent&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;true&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;db_instance_identifier&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"mydbname"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# put the name of your db here!&lt;/span&gt;
+&lt;span class="na"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lo trovo fantastico, per i miei scopi, ma se per caso avete bisogno di uno snapshot specifico,  vi rimando all'ottima &lt;a href="https://www.terraform.io/docs/providers/aws/d/db_snapshot.html"&gt;documentazione di Terraform&lt;/a&gt; per i dettagli.&lt;/p&gt;
+&lt;p&gt;Una volta fatte queste operazioni possiamo passare a modificare la parte Python del nostro dumper.&lt;/p&gt;
+&lt;h3&gt;Editare lo script Python snaptodump.py&lt;/h3&gt;
+&lt;p&gt;Lo script "snaptodump.py" nella sua forma "originale" lo trovate qui sotto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;#Python&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;sys&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;datetime&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;os&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;os.path&lt;/span&gt;
+&lt;span class="n"&gt;start_time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c1"&gt;# MySQL setup: put the MySQL user with dump permission and database name here&lt;/span&gt;
+&lt;span class="c1"&gt;# password will be asked interactively later: &lt;/span&gt;
+&lt;span class="n"&gt;dbusr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"your_mysql_username"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="n"&gt;dbname&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"your_mysql_database_name"&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"""&lt;/span&gt;
+&lt;span class="s2"&gt;This script will launch Terraform to dump the latest snapshot of prod db&lt;/span&gt;
+&lt;span class="s2"&gt;PREREQUISITES:&lt;/span&gt;
+&lt;span class="s2"&gt;You need AWS tokens setup as ENV vars or Terraform won't work:&lt;/span&gt;
+&lt;span class="s2"&gt;export AWS_ACCESS_KEY_ID="xxx"&lt;/span&gt;
+&lt;span class="s2"&gt;export AWS_SECRET_ACCESS_KEY="yyy"&lt;/span&gt;
+&lt;span class="s2"&gt;USAGE:&lt;/span&gt;
+&lt;span class="s2"&gt;python snaptodump.py&lt;/span&gt;
+&lt;span class="s2"&gt;*** WARNING ***&lt;/span&gt;
+&lt;span class="s2"&gt;This tool requires the mysqldump binary installed on your system and the necessary free space on your local disk for dumping!&lt;/span&gt;
+&lt;span class="s2"&gt;"""&lt;/span&gt;
+&lt;span class="n"&gt;terraform_init_dir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"./.terraform"&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;terraform_init_dir&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"terraform init already ran!&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"./terraform init"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"./terraform apply"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"*** ERROR while applying terraform config, dumping stopped! ***"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;popen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'./terraform output address'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;popen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'./terraform output snapshot'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;".sql.gz"&lt;/span&gt;
+&lt;span class="n"&gt;dumpcmd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"mysqldump -h &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; -u &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; --compress -p &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; |gzip &amp;gt; &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dbusr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dbname&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Next step is mysqldump, you will be asked for a MySQL password&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="n"&gt;dbdump_start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dumpcmd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"An error occurred!"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"command was: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dumpcmd&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"All done!"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Db dumped in &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dbdump_start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;#Now let's destroy our temp RDS instance&lt;/span&gt;
+&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"./terraform destroy "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;#Feeling bold? comment previous command and enable this!&lt;/span&gt;
+&lt;span class="c1"&gt;#os.system( "./terraform destroy -auto-approve"&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Total procedure completed in &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;start_time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;#print dumpcmd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dovrete modificare alcune variabili per farlo girare sulle vostre istanze di db, prima di tutto, è necessario inserire user e nome del database mysql che volete dumpare:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="na"&gt;dbusr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"your_mysql_username"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="na"&gt;dbname&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"your_mysql_database_name"&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;diventerà, ad esempio:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="na"&gt;dbusr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"pippo"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="na"&gt;dbname&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"dbproduzione"&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A questo punto, se provate a lanciare lo script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;snaptodump.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vi accorgerete che, per funzionare, necessita della parte di autenticazione AWS, senza di cui Terraform non può dialogare con AWS.&lt;/p&gt;
+&lt;h3&gt;Autenticazione e chiavi di accesso AWS&lt;/h3&gt;
+&lt;p&gt;Per poter interagire con il cloud AWS vi serve definire due variabili di sistema, contenenti le vostre credenziali con cui configurare RDS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"xxx"&lt;/span&gt;
+&lt;span class="k"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"yyy"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;ATTENZIONE: Non fate girare lo script utilizzando credenziali con tutti i permessi (come il root account) o comunque con credenziali superiori a quelle strettamente necessarie per fare il dump di database RDS&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Facendo girare Terraform con tutti i privilegi AWS potreste letteramente cancellarvi il vostro ambiente in cloud, per cui ho pensato di mettere l'avviso qui sopra.&lt;/p&gt;
+&lt;p&gt;A questo titolo, visto che ci ho perso un po' di tempo, mi sembra opportuno definire quali siano questi permessi di AWS IAM necessari all'esecuzione del dump, vediamoli assieme.&lt;/p&gt;
+&lt;p&gt;Prima di tutto ho creato un utente e un gruppo appositi, i permessi necessari sono ovviamente definiti all'interno del gruppo, per poterli applicare più velocemente ad un eventuale nuovo utente futuro.&lt;/p&gt;
+&lt;p&gt;Definito il gruppo "db_dumpers", ho poi creato le policy necessarie ad interagire con RDS, e sono due.&lt;/p&gt;
+&lt;p&gt;La prima, fa parte delle policy pre-configurate di AmazonRDS, e si chiama:&lt;/p&gt;
+&lt;p&gt;"AmazonRDSReadOnlyAccess"&lt;/p&gt;
+&lt;p&gt;in json, il contenuto è questo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "rds:Describe*",
+        "rds:ListTagsForResource",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeVpcs"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Action": [
+        "cloudwatch:GetMetricStatistics",
+        "logs:DescribeLogStreams",
+        "logs:GetLogEvents"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Come potete vedere, oltre a RDS contiene alcuni privilegi utili per ec2, tra cui sottoreti, security group e VPC, a cui si aggiungono permessi per il logging cloudwatch. Il tutto, ovviamente, in sola lettura.&lt;/p&gt;
+&lt;p&gt;Oltre a questa policy, ne ho dovuta creare una seconda, customizzata, per permettere di agire sul servizio RDS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "rds:RestoreDBInstanceFromDBSnapshot",
+        "rds:CreateDBInstance",
+        "rds:ModifyDBInstance",
+        "rds:DeleteDBInstance"
+      ],
+      "Resource": [
+        "arn:aws:rds:*:*:snapshot:*",
+        "arn:aws:rds:*:*:secgrp:*",
+        "arn:aws:rds:*:*:subgrp:*",
+        "arn:aws:rds:*:*:og:*",
+        "arn:aws:rds:eu-west-1:123456789012:db:db-snapshot-dumper",
+        "arn:aws:rds:*:*:pg:*"
+      ]
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Come vedete, qui dentro si ha la possibilità di andare a creare nuove istanze di RDS, modificarle, cancellarle e su cui poi ripristinare i dati degli snapshot.&lt;/p&gt;
+&lt;p&gt;Per un'ulteriore sicurezza, ho limitato i permessi di RDS solo ad alcuni ARN (che sono identificatori di risorse Amazon) specifici dell'ambiente su cui sto operando, questo perché voglio far si che questa utenza non possa fare danni sul mio db principale.&lt;/p&gt;
+&lt;p&gt;Se ci fate caso, c'è una corrispondenza uno ad uno tra l'istanza che terraform crea per assegnargli lo snapshot e l'ARN che ho definito nella policy.&lt;/p&gt;
+&lt;p&gt;Dallo script main.tf:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="na"&gt;identifier&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;"db-snapshot-dumper"&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Mentre dalla policy AWS sopra definita:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"Resource"&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"arn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;aws:rds:*:*:snapshot:*",&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"arn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;aws:rds:*:*:secgrp:*",&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"arn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;aws:rds:*:*:subgrp:*",&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"arn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;aws:rds:*:*:og:*",&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"arn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;aws:rds:eu-west-1:123456789012:db:db-snapshot-dumper",&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;"arn&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;aws:rds:*:*:pg:*"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;[...]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Una volta create le due policy vi basterà assegnarle al gruppo "db_dumpers" per poi farci rientrare il vostro utente, di cui avrete conservato le credenziali.&lt;/p&gt;
+&lt;h3&gt;Lanciare lo script&lt;/h3&gt;
+&lt;p&gt;A questo punto abbiamo preparato tutto e non ci resta che lanciare lo script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;snaptodump.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dovreste trovarvi, nel giro di qualche oretta, ad avere, nella cartella in cui avete lanciato lo script, un file con il vostro dump del db, con il formato .sql.gz&lt;/p&gt;
+&lt;p&gt;Se invece qualcosa dovesse essere andato storto, riceverete un messaggio d'errore dallo script o da terraform.&lt;/p&gt;
+&lt;p&gt;Vi ringrazio dell'attenzione, ovviamente in caso di problemi o di possibili migliorie, non esitate a commentare qui sotto.&lt;/p&gt;
+&lt;p&gt;p.s.: commenti disabilitati (n.d.a)&lt;/p&gt;</content><category term="Tech"/><category term="AWS Cloud"/><category term="RDS"/><category term="MySQL"/><category term="Terraform"/><category term="Python"/><category term="Howto"/></entry><entry><title>Perché Wordpress non è adatto ai siti di grosse dimensioni</title><link href="https://www.simonemessaggi.it/2018/06/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/" rel="alternate"/><published>2018-06-13T00:00:00+02:00</published><updated>2018-06-13T00:00:00+02:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2018-06-13:/2018/06/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/</id><summary type="html">&lt;p&gt;Era un po' che volevo scrivere questo articolo, per varie ragioni, ma soprattutto per chiarire alcuni concetti che spesso mi trovo a ribadire in ambito professionale.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Repost di articolo apparso per la prima volta su &lt;a href="https://medium.com/@simmessa/perch%C3%A9-wordpress-non-%C3%A8-adatto-ai-siti-di-grosse-dimensioni-890be4e320a8"&gt;Medium&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Wordpress è un cesso&lt;/h2&gt;
+&lt;p&gt;Ma come?! Il CMS del popolo, il più usato (secondo …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Era un po' che volevo scrivere questo articolo, per varie ragioni, ma soprattutto per chiarire alcuni concetti che spesso mi trovo a ribadire in ambito professionale.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Repost di articolo apparso per la prima volta su &lt;a href="https://medium.com/@simmessa/perch%C3%A9-wordpress-non-%C3%A8-adatto-ai-siti-di-grosse-dimensioni-890be4e320a8"&gt;Medium&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Wordpress è un cesso&lt;/h2&gt;
+&lt;p&gt;Ma come?! Il CMS del popolo, il più usato (secondo &lt;a href="https://thenextweb.com/dd/2018/03/05/30-of-the-web-now-runs-on-wordpress/"&gt;una ricerca&lt;/a&gt; a Marzo 2018 il 30% dei siti di Internet utilizza Wordpress), il più sviluppato e quello con il maggior numero di plugin di successo, come può essere un bidone? Sicuramente ti stai sbagliando.&lt;/p&gt;
+&lt;p&gt;Non vorrei essere fraintesto, lavoro dal 2005 nel Web e dall'inizio della mia attività ho realizzato, gestito e mantenuto online centinaia di siti Wordpress, tanto per darvi un'idea la prima versione io abbia mai installato è stata la 1.5, 13 anni fa.&lt;/p&gt;
+&lt;p&gt;Ho scritto temi, plugin, ne ho installati varie centinaia di già fatti, free e a pagamento, quindi penso di poter tranquillamente smentire chi crede che questa mia critica nasca dall'ignoranza di questo CMS.&lt;/p&gt;
+&lt;p&gt;Ma allora, qual'è il vero problema di Wordpress?&lt;/p&gt;
+&lt;p&gt;Il più grave difetto di Wordpress, che lo rende di fatto inutilizzabile per siti di dimensioni "importanti" sono le performance, e il problema nasce dal modello che gli sviluppatori hanno utilizzato per salvare i dati nel database relazionale (in genere MySQl).&lt;/p&gt;
+&lt;h3&gt;La maledizione dell'EAV&lt;/h3&gt;
+&lt;p&gt;Non è possibile valutare le performance di un CMS nel vuoto assoluto, perché trattandosi, appunto, di un problema di risorse, per farlo è necessario considerare un sistema fatto da:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Il CMS usato, nel nostro caso Wordpress ([latest] (https://wordpress.org/latest.zip), nel momento in cui scrivo è la versione 4.9.6)&lt;/li&gt;
+&lt;li&gt;l'hardware su cui questo CMS gira&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ora, qualsiasi sia l'hardware preso in esame, Wordpress è un CMS estremamente affamato in termini di memoria e CPU, questo è un dato di fatto, il problema può sembrare meno grave impiegando un server più potente ma, in ultima analisi, il vero problema di Wordpress &lt;strong&gt;sta nel modo in cui usa il database.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Wordpress, infatti, impiega per i suoi dati un modello detto EAV, ovvero Entity Attribute Value, la forza di questo modello è sicuramente la flessibilità, la debolezza, senza dubbio sono le scarse performance.&lt;/p&gt;
+&lt;p&gt;In cosa consiste EAV? Vediamolo.&lt;/p&gt;
+&lt;p&gt;In condizioni normali, una tabella su un database SQL segue una struttura di questo tipo:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;workers table, non EAV&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;id&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;nome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;cognome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;lavoro&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;età&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;--&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;-------&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;-------&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;---------:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;---:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Simone&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Messaggi&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Ops&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Mario&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Rossi&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Dev&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Zio&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Ntunello&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Dev&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Questo è lo standard, e, se volete, il modello per cui i database relazionali sono stati creati ed ottimizzati nel tempo.&lt;/p&gt;
+&lt;p&gt;Al contrario, in EAV, ogni colonna viene salvata in una riga:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;workersmeta table, EAV&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;pseudo_id&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;id&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;chiave&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;val&lt;/span&gt;&lt;span class="s s-Atom"&gt;ore&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;---------&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;-:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;-------&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;--------:&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;nome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Simone&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;cognome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Messaggi&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;lavoro&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Devops&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;età&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;nome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Mario&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;cognome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Rossi&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;lavoro&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Soubrette&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;età&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;nome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Zio&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;cognome&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Ntunello&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;lavoro&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;Baguette&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;età&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Questo approccio, come dicevo, di esprimere le colonne come righe, ha il vantaggio di permettere facilmente la rimozione o l'inserimento di nuove "colonne" senza dover stravolgere la struttura delle tabelle. Inoltre, modificare le colonne è un'operazione costosa, a livello di performance, mentre i cambiamenti nelle righe sono il pane quotidiano di SQL e molto più veloci da effettuare.&lt;/p&gt;
+&lt;p&gt;Nel caso di Wordpress, questo approccio EAV è stato scelto proprio perché è un CMS dinamico e deve modificarsi nella struttura e nelle funzionalità costantemente, quindi il fatto di non aver particolari vincoli sulle colonne è abbastanza strategico.&lt;/p&gt;
+&lt;p&gt;Peccato però che questo approccio sia un totale disastro in termini di performance, per vedere la differenza immaginiamoci di fare una semplice query che trovi tutti i Dev che hanno più di 30 anni,&lt;/p&gt;
+&lt;p&gt;con la tabella normale, la query sarebbe:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;select * from lavoratori where 'età' &amp;gt; 30 and 'lavoro'='Dev'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;mentre, in caso di tabella con struttura EAV avremmo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;select età.id, nome.valore as nome, età.valore as età
+from workersmeta età, workersmeta nome, workersmeta lavoro
+where età.chiave='età' and età.valore&amp;gt;'50'
+and età.id=nome.id
+and lavoro.id=età.id
+and lavoro.chiave='lavoro' and lavoro.valore='Dev'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E questa query ricostruisce una tabella con più colonne creando &lt;strong&gt;varie tabelle temporanee&lt;/strong&gt; che poi vengono "joinate" tramite un valore "id" comune.&lt;/p&gt;
+&lt;p&gt;Ora, più operazioni si fanno sul DB e più una query diventa costosa, ma il vero problema è che ci sono alzune operazioni su DB che sono ben più costose di altre, e in questo caso ne abbiamo due:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;creazione di tabelle (temporanee)&lt;/li&gt;
+&lt;li&gt;join di tabelle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Parametrizzando il costo computazionale possiamo dire che, se una tabella come quella vista ha N righe, la query EAV ha un costo di NxN, questo significa che al crescere del numero di dati nel nostro database il costo computazionale, quindi la lentezza delle query, cresce a dismisura.&lt;/p&gt;
+&lt;p&gt;MySQL fornisce parecchie ottimizzazioni per le performance, ma nel caso del modella EAV stiamo avvicinandoci parecchio al "caso peggiore" dal punto di vista del costo computazionale.&lt;/p&gt;
+&lt;p&gt;Se ci addentriamo in una classica query di join, le cose si fanno anche peggiori.&lt;/p&gt;
+&lt;p&gt;Ad esempio, se prendiamo questa struttura del DB con i dati dei turni dei nostri lavoratori:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Turns table, non EAV:&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;worker_id&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;turn_date&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="s s-Atom"&gt;---------&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="o"&gt;:-&lt;/span&gt;&lt;span class="s s-Atom"&gt;--------&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2018&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2018&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;2018&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;e facciamo la query per trovare i lavoratori di turno il giorno 2 giugno 2018:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;select * from turns, workers where turns.worker_id=workers.id and turn_date='2018-6-2'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;con la tabella in forma EAV, le cose si fanno ancora più complesse:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;select * from workersmeta,
+(select worker_id,
+from turnsmeta o1, turnsmeta o2, workers
+where o1.worker_id=o2.worker_id
+and o1.worker_id=workers.ID
+and o2.turn_date='2018-6-2') t
+where workersmeta.worker_id=t.ID 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cioè la &lt;em&gt;join&lt;/em&gt; vista sopra diventa una &lt;em&gt;self-inner join&lt;/em&gt; più una &lt;em&gt;table join&lt;/em&gt; annidata.&lt;/p&gt;
+&lt;p&gt;Nel caso di M turni su N lavoratori avremo una complessità di &lt;strong&gt;MxNxN&lt;/strong&gt;, che è davvero mostruosa.&lt;/p&gt;
+&lt;h2&gt;Wordpress e tipi di record MySQL&lt;/h2&gt;
+&lt;p&gt;Un altro problemino di Wordpress nella struttura del DB consiste nell'uso spregiudicato che fa del tipo &lt;em&gt;Longtext&lt;/em&gt;, che è tra i più generici.&lt;/p&gt;
+&lt;p&gt;Wordpress salva numeri, date, stringhe e oggetti serializzati in questo tipo di record, andando di fatto ad annullare alcune delle ottimizzazioni che MySQL fa sulle query, senza avere nemmeno una buona ragione per farlo!&lt;/p&gt;
+&lt;p&gt;A causa di questa &lt;em&gt;bad practice&lt;/em&gt; di Wordpress tutta una serie di query MySQL di filtraggio, range, ordinamento per data, ricerca full text diventano &lt;strong&gt;mortalmente lente&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;Non è solo colpa di EAV&lt;/h2&gt;
+&lt;p&gt;Al di la della scelta di usare il modello EAV, che ha qualche pregio importante in termini di flessibilità, Wordpress riesce ad utilizzare questo modello (EAV) in modo &lt;strong&gt;piuttosto scadente.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;La ragione di questo ulteriore problema va, secondo me, ricercata nel fatto che i &lt;a href="https://automattic.com/"&gt;developer di Wordpress&lt;/a&gt; avessero nei piani di creare una semplice piattaforma di blogging, poi evolutasi in modo caotico e imprevedibile nel corso degli anni (Worpress nasce, ve lo ricordo, nell 2003). Quello con cui si sono ritrovati poi è un CMS, certamente di successo inaudito, ma che, per ragioni di &lt;em&gt;marketing&lt;/em&gt; hanno deciso di bloccare dal punto di vista filosofico su un &lt;strong&gt;blog engine&lt;/strong&gt; con feature aggiuntive, perché, si sa, &lt;em&gt;squadra che vince non si cambia&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Purtroppo il mondo ha deciso diversamente, e, va riconosciuto, attraverso una community infinita di designer, developer e smanettoni vari, oltre che di aziende innovative, Wordpress da blog è stato trasformato in un CMS tuttofare.&lt;/p&gt;
+&lt;p&gt;I risultati della trasformazione sono, com'è facile intuire, una serie imbarazzante di compromessi... ad esempio:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La tabella dei post contiene anche immagini, attachment, record vari creati dai plugin&lt;/li&gt;
+&lt;li&gt;qualsiasi entità è praticamente un post, usi Woocommerce? Un ordine è un post!&lt;/li&gt;
+&lt;li&gt;La tabella dei post, con questo approccio, è destinata ad esplodere nel tempo, rendendo qualsiasi operazione su DB un'agonia&lt;/li&gt;
+&lt;li&gt;Le operazioni sulla tabella dei post soffriranno di problemi di concorrenza, e i lock che ne conseguono rendono le operazioni ancora più lente&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;D'accordo, come spesso accade oggi non è difficile trovare &lt;em&gt;hosting&lt;/em&gt; specializzati in Wordpress con la loro bella serie di ottimizzazioni, ma perché scegliere di andare su una 500 elaborata a livelli impensabili invece di scegliere una Lamborghini spendendo poco di più?&lt;/p&gt;
+&lt;h2&gt;Si, ma io uso la cache di Wordpress!&lt;/h2&gt;
+&lt;p&gt;Questa è la prima obiezione sensata che di solito mi sento rifilare quando cerco di spiegare che Wordpress è si bello, ma non è perfetto per qualsiasi caso d'uso.&lt;/p&gt;
+&lt;p&gt;I contributor / creatori di plugin Wordpress hanno velocemente capito che un sito su questa piattaforma, all'aumentare delle dimensioni diventa via via sempre meno veloce e gestibile.&lt;/p&gt;
+&lt;p&gt;Sono quindi corsi ai ripari andando ad integrare il modello di dati con una serie di funzionalità di caching più o meno avanzate.&lt;/p&gt;
+&lt;p&gt;Quello che oggi abbiamo per mantenere decente il livello di &lt;strong&gt;performance di Wordpress&lt;/strong&gt; sono una serie di &lt;em&gt;caching plugin&lt;/em&gt;, tra cui cito i più noti:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;W3 Total Cache&lt;/li&gt;
+&lt;li&gt;WP Super Cache&lt;/li&gt;
+&lt;li&gt;WP Rocket&lt;/li&gt;
+&lt;li&gt;ecc...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Alcuni di questi sono veramente ben fatti, ad esempio W3 Total Cache (quello che conosco meglio) è fantastico per chi si occupa di ops.&lt;/p&gt;
+&lt;p&gt;Quasi qualsiasi parte di Wordpress infatti si riesce a velocizzare con le cache, abbiamo a disposisizione:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cache delle pagine (Server)&lt;/li&gt;
+&lt;li&gt;Cache degli oggetti (Server)&lt;/li&gt;
+&lt;li&gt;Cache delle query sul DB (Server)&lt;/li&gt;
+&lt;li&gt;Cache delle immagini (Server e Client)&lt;/li&gt;
+&lt;li&gt;Cache asset statici (Client)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Il risultato è che molte pagine smettono di essere calcolate dinamicamente da PHP ma vengono staticizzate, con benefici di performance enormi.&lt;/p&gt;
+&lt;p&gt;Purtroppo, anche in questo caso si evidenziano alcuni limiti di Wordpress.&lt;/p&gt;
+&lt;h2&gt;Wordpress è fantastico, in qualche caso&lt;/h2&gt;
+&lt;p&gt;Se avete un blog o un sito in cui la funzionalità principale è la &lt;strong&gt;lettura di contenuti&lt;/strong&gt;, nessun problema, il caching diventerà il vostro miglior alleato per avere un sito performante.&lt;/p&gt;
+&lt;p&gt;Questo perché il caching è tanto più efficace quanto meno i contenuti all'interno del sito cambiano, quindi in un sito dove, idealmente, un contenuto viene creato e non più toccato, poi letto migliaia o milioni di volte dagli utenti, il caching va alla grande.&lt;/p&gt;
+&lt;p&gt;Ovviamente al crescere del numero di contenuti diventa più difficile mantenere una cache veloce che abbia al suo interno tutto il contenuto del sito.&lt;/p&gt;
+&lt;p&gt;Se vi è capitato di attendere qualche minuto per leggere qualche vecchio articolo su qualsiasi sito sapete già di cosa sto parlando.&lt;/p&gt;
+&lt;p&gt;E' inevitabile che, quei contenuti che vengono letti raramente, come ad esempio i contenuti più vecchi, siano quelli che hanno &lt;strong&gt;la minor probabilità di trovarsi in cache&lt;/strong&gt;, quindi questi contenuti verranno caricati solo al momento della richiesta, con performance spesso scandalose su Wordpress.&lt;/p&gt;
+&lt;p&gt;Se invece il vostro modello si discosta da quello del blog o del sito di News &lt;strong&gt;la situazione peggiora notevolmente.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Prendete ad esempio uno store online o &lt;em&gt;Ecommerce&lt;/em&gt;, qui in ogni momento avrete aggiornamenti, ai prodotti, agli ordini, alle quantità in magazzino, alla scontistica, offerte speciali e così via.&lt;/p&gt;
+&lt;p&gt;In un caso come questo, l'efficacia della cache va a farsi benedire, ecco una delle tante ragioni per cui Wordpress non ha mai veramente preso piede nell'ecommerce di un certo livello (dove troneggiano Magento, Zencart, Prestashop &amp;amp; co) nonostante la disponibilità di buoni plugin tra cui &lt;em&gt;Woocommerce&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In generale, &lt;strong&gt;il caching è una soluzione parziale al problema delle performance,&lt;/strong&gt; quindi migliora decisamente la situazione, ma se avete un collo di bottiglia delle dimensioni di uno spillo sul DB MySQL difficilmente questa tecnica rappresenterà la soluzione definitiva.&lt;/p&gt;
+&lt;h2&gt;Alternative a Wordpress&lt;/h2&gt;
+&lt;p&gt;Se i limiti di Wordpress non fanno per voi, non vi resta che andare a caccia di alternative, ma, ve lo anticipo, non sarà facile trovare qualcosa di analogo, e a ragion veduta.&lt;/p&gt;
+&lt;p&gt;Il vero problema di Wordpress secondo me sta nel fatto che questa piattaforma negli anni ha cercato di essere tutto, e quando vuoi essere un tuttofare è facile che tu non sia davvero bravo in niente... &lt;em&gt;Jack of all trades, master of none&lt;/em&gt; dicono gli inglesi, e hanno ragione.&lt;/p&gt;
+&lt;p&gt;Se sapete già di cosa vi occuperete, e siete sicuri di non dover fare altro, vi conviene orientarvi verso piattaforme meno flessibili ma più ottimizzate, per gli ecommerce abbiamo già visto che esistono varie alternative, se dovete scrivere una webapp specifica per la prenotazione di viaggi ad esempio, difficilmente troverete qualcosa di già fatto, e &lt;strong&gt;dovrete svilupparvela voi&lt;/strong&gt; o farlo fare ad una software house.&lt;/p&gt;
+&lt;p&gt;In questi ultimi tempi stanno nascendo molti nuovi progetti che presentano un approccio alternativo a Wordpress, ad esempio ci sono i Flat CMS, dove non esiste un DB ma tutti i contenuti stanno su disco, gli headless CMS, che forniscono un backoffice e una collezione di API (solitamente REST), ma non hanno un frontend e quindi lasciano la massima libertà in questo senso.&lt;/p&gt;
+&lt;p&gt;Illustrare tutte le possibili alternative va al di la dello scopo di questo articolo, quindi non mi dilungherò oltre, sappiate che ci sono &lt;a href="https://en.wikipedia.org/wiki/List_of_content_management_systems"&gt;migliaia di piattaforme&lt;/a&gt; in base al linguaggio utilizzato, ecco qualcuna di quelle che ho sentito nominare:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.cmsmadesimple.org/"&gt;CMS Made Simple&lt;/a&gt; in PHP&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.django-cms.org"&gt;Django CMS&lt;/a&gt; in Python / Django&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://mezzanine.jupo.org/"&gt;Mezzanine&lt;/a&gt; in Python / Django&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sulu.io/en"&gt;Sulu&lt;/a&gt; ih PHP / Symfony&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://craftcms.com/"&gt;Craft&lt;/a&gt; in PHP&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; in NodeJS&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://keystonejs.com/"&gt;Keystone&lt;/a&gt; in NodeJS&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://getgrav.org/"&gt;Gravity&lt;/a&gt; flat CMS in PHP&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://graphcms.com/"&gt;GraphCMS&lt;/a&gt; headless CMS as a Service, graphQL API&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.gatsbyjs.com/"&gt;GatsbyJS&lt;/a&gt; static site generator in NodeJS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;EDIT&lt;/strong&gt;
+&lt;em&gt;Sarei totalmente ipocrita se non annoverassi, tra i CMS e site generators menzionati qui sopra quello che ho deciso di usare per questo sito, ovvero &lt;a href="https://www.gatsbyjs.com/"&gt;GatsbyJS&lt;/a&gt;, provatelo!&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Bibliografia&lt;/h2&gt;
+&lt;p&gt;Tiro queste conclusioni dopo anni di esperienze personali, ma non è tutta farina del mio sacco, molte delle cose che scrivo le ho imparate a mia volta leggendo su internet, tra cui &lt;a href="http://www.antradar.com/blog-wordpress-and-the-curse-of-eav"&gt;questo eccellente articolo&lt;/a&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Wordpress"/><category term="Trends"/><category term="Performance"/></entry><entry><title>Per chi cerca di forzarvi il server SSH</title><link href="https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/" rel="alternate"/><published>2016-02-06T00:00:00+01:00</published><updated>2016-02-06T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2016-02-06:/2016/02/bruteforce-ssh-server/</id><summary type="html">&lt;p&gt;Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Articolo originariamente pubblicato il 6 febbraio 2016 su Simmessa.com&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Se avete server pubblici su internet, con la porta 22 aperta (e se leggete questo blog mi auguro che ne abbiate...), forse è il momento …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Articolo originariamente pubblicato il 6 febbraio 2016 su Simmessa.com&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Se avete server pubblici su internet, con la porta 22 aperta (e se leggete questo blog mi auguro che ne abbiate...), forse è il momento di dare un occhio ai log di autenticazione del vostro server:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tail -f /var/log/auth.log&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Fatto? Beh, se siete fortunati noterete tanti \"simpatici\" tentativi di accesso non autorizzati, giusto?&lt;/p&gt;
+&lt;p&gt;Di default, il PAM del vostro server Linux non fa altro che stare li ad attendere tentativi di connessione, se avvengono pù di 3 errori di login chiude la prompt e attende un nuovo tentativo, ma è giusto, secondo voi, dare agli scripter tutti questi infiniti tentativi di brute force su SSH?&lt;/p&gt;
+&lt;p&gt;Secondo me no,  e allora tiriamo in ballo un alleato:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fail2ban&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Questo il sito del tool &lt;a href="http://www.fail2ban.org/"&gt;Fail2ban&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Il concetto dietro questo utile demone è semplice, se sbagli più di tot tentativi di login ti banno!&lt;/p&gt;
+&lt;p&gt;Il ban di solito è temporaneo, ma può servire a dissuadere gli scocciatori abbastanza da fargli distogliere l'attenzione dal nostro server e dedicarsi ad altro, magari di più produttivo.&lt;/p&gt;
+&lt;h2&gt;Come si installa Fail2ban? (su Debian)&lt;/h2&gt;
+&lt;p&gt;Semplice, basta un apt-get:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ sudo apt-get install fail2ban&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A questo punto personalizziamo la configurazione del demone copiandoci il file .conf:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Bene, ora possiamo passare alla personalizzazione della config:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo vi /etc/fail2ban/jail.conf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Le linee più importanti da modificare determinano il comportamento di fail2ban, ad esempio vogliaom essere tranquilli di non tagliarci fuori da soli un giorno in cui verremo inevitabilmente colpiti da un attacco di babbeite!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;\"&lt;/span&gt;&lt;span class="nx"&gt;ignoreip&lt;/span&gt;&lt;span class="err"&gt;\"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;an&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;IP&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;CIDR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;mask&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;DNS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;host&lt;/span&gt;
+&lt;span class="nx"&gt;ignoreip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m m-Double"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m m-Double"&gt;192.168.1.0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;
+&lt;span class="nx"&gt;bantime&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;600&lt;/span&gt;
+&lt;span class="nx"&gt;maxretry&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Suggerisco anche di mantenere alto il numero di maxretry, 3 sono pochi certi giorni e possono darci una mano a non fare danni.&lt;/p&gt;
+&lt;p&gt;Il bantime è il tempo (in secondi) per cui vogliamo bannare i \"cattivoni\", 10 minuti potrebbero già far desistere gli scripter (se sono capaci di scriversi gli script, perlomeno).&lt;/p&gt;
+&lt;p&gt;Altro aspetto che merita menzione è l'invio automatico di email qualora venisse intercettato un tentativo di accesso non autorizzato:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Destination&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;address&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;used&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;solely&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="nx"&gt;interpolations&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;jail&lt;/span&gt;&lt;span class="p"&gt;.{&lt;/span&gt;&lt;span class="nx"&gt;conf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;local&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;configuration&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;files&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="nx"&gt;destemail&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;mail&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;nonesiste&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;caz&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ma occhio, il vostro server deve essere in grado di inviare mail perché funzioni, in alternativa potete fare delivery verso un account locale...fate voi!&lt;/p&gt;
+&lt;p&gt;L'ultima parte di &lt;strong&gt;Fail2ban&lt;/strong&gt; è quella delle azioni, che determina cosa succede quando un client oltrepassa la soglia di Maxretry.&lt;/p&gt;
+&lt;p&gt;Prima di tutto, il ban, che avviene come configurazione temporanea di iptables:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;banaction = iptables-multiport&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;e quindi, il tipo di trasporto usato per l'invio della mail:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mta = sendmail&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Con questo è tutto, mi raccomando, se avete delle box ssh in giro, proteggetevi...!&lt;/p&gt;</content><category term="Tech"/><category term="SSH"/><category term="Fail2ban"/><category term="Security"/><category term="Howto"/></entry><entry><title>Guida al protocollo KNXnet/IP cioè KNX over IP</title><link href="https://www.simonemessaggi.it/2015/12/guide-knxnet-over-ip-protocol/" rel="alternate"/><published>2015-12-31T00:00:00+01:00</published><updated>2015-12-31T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2015-12-31:/2015/12/guide-knxnet-over-ip-protocol/</id><summary type="html">&lt;p&gt;&lt;em&gt;Oggi (articolo originale pubblicato il 31 dicembre 2015 su Simmessa.com) mi sono imbattuto in un utile tutorial in inglese che spiega come funziona il protocollo KNX IP ovvero KNX over IP, per chi di voi non lo conoscesse, stiamo parlando di Konnex, ovvero uno dei più diffusi protocolli per …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Oggi (articolo originale pubblicato il 31 dicembre 2015 su Simmessa.com) mi sono imbattuto in un utile tutorial in inglese che spiega come funziona il protocollo KNX IP ovvero KNX over IP, per chi di voi non lo conoscesse, stiamo parlando di Konnex, ovvero uno dei più diffusi protocolli per la domotica e la home automation, trovate più info su http://knx.org comunque l'articolo che ho letto mi sembrava interessante ed ho pensato di riscriverlo qui in italiano per chi fosse curioso! Trovate l'originale su http://knxtoday.com/2014/01/3056/solutions-ip-and-knx-bringing-you-up-to-speed.html&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Mi chiedono spesso quali siano le limitazioni di KNX e se si tratta realmente di un sistema poco aggiornato, anche considerando che è stato pensato quasi 20 anni fa.
+Uno dei dati più usati in questo dibattito è la velocità relativamente bassa del bus KNX, con un baud rate di 9600bps, e il fatto che moltissimi sistemi moderni possono comunicare a velocità migliaia di volte superiosi.&lt;/p&gt;
+&lt;p&gt;Quello che però a volte non viene considerato è che a 9600bps il bus può arrivare ad essere molto lungo con una topologia libera e un basso consumo dei dispositivi collegati.&lt;/p&gt;
+&lt;p&gt;Anche a questo baud rate, inoltre, il bus può supportare fino a 50 telegrammi al secondo!&lt;/p&gt;
+&lt;p&gt;Ad ogni modo, con i progressi nell’uso di KNX c’è certamente un bisogno di velocità maggiori, specialmente a livello di backbone.&lt;/p&gt;
+&lt;p&gt;Con i dispositivi di video sorveglianza e monitoring centralizzato che stanno diventando molto comuni, c’è spesso un requisito per tutti i telegrammi di essere disponibili al livello topologico più alto.&lt;/p&gt;
+&lt;p&gt;Con il cavo di bus KNX TP1, ci troviamo quindi in presenza di un collo di bottiglia, che IP può risolvere.&lt;/p&gt;
+&lt;p&gt;Per supportare questo protocollo (IP) il gruppo KNX ha sviluppato il telegramma KNX/IP, ora parte ufficiale delle specifiche KNX. Questo ci permette di usare Ethernet come un’alternativa a basso costo e banda larga al vecchio bus. Inoltre abbiamo il vantaggio che Ethernet è già presente in molti edifici residanziali e commerciali.&lt;/p&gt;
+&lt;p&gt;E’ importante capire però che se anche le reti LAN hanno molti benefici, i requisiti di avere un’infrastruttura controllata e definita necessitano di mantenere KNX TP1 come base.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Il cavo KNX TP1" src="/images/KNX-cable.jpg"/&gt;
+&lt;em&gt;fig.1 - Il cavo KNX TP1&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Il telegramma KNX/IP&lt;/h2&gt;
+&lt;p&gt;Per permettere l’inclusione del protocollo IP come mezzo di comunicazione, il gruppo KNX ha creato un telegramma standard KNX/IP.&lt;/p&gt;
+&lt;p&gt;Questo è basato sul modello di riferimento OSI che definisce i livelli di trasporto, rete e fisico.&lt;/p&gt;
+&lt;p&gt;Per semplificare questo ci permette di definire come distribuire i telegrammi TP1 in presenza di reti IP.&lt;/p&gt;
+&lt;p&gt;Il telegramma  TP1 infatti si mantiene, ma viene usato un field aggiuntivo per definire l’azione KNXnet/IP, che può implementare uno dei seguenti servizi:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;KNXnet/IP Core&lt;/li&gt;
+&lt;li&gt;KNXnet/IP Device Management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KNXnet/IP Tunnelling&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KNXnet/IP Routing&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;KNXnet/IP Remote Logging&lt;/li&gt;
+&lt;li&gt;KNXnet/IP Remote Configuration and Diagnosis&lt;/li&gt;
+&lt;li&gt;KNXnet/IP Object Server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La maggior parte di questi servizi sono auto mantenuti e non necessitano del nostro intervento, quindi per noi sarà importante concentrarci sui due evidenziati sopra, &lt;strong&gt;il tunnelling e il routing.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;KNXnet/IP Tunnelling&lt;/h2&gt;
+&lt;p&gt;La modalità più semplice, nonché la principale per interfacciarsi con un sistema KNX, e permette la comunicazione punto a punto (unicast) tra un singolo device esterno e il sistema KNX, il funzionamento è del tutto analogo all’usare USB o un’interfaccia seriale!&lt;/p&gt;
+&lt;p&gt;E’ la forma di comunicazione più semplice per KNX over IP ed è facile capire perché, visto che basta puntare un device al suo indirizzo IP della scheda KNX IP.&lt;/p&gt;
+&lt;p&gt;Questo ci permette di vedere tutto il traffico del bus e comunicare direttamente con ciascun device ad esempio per la programmazione ETS.
+Si usa inoltre comunemente per far dialogare i sistemi esterni con KNX.&lt;/p&gt;
+&lt;p&gt;Nota: In ETS questo metodo si definisce semplicemente come KNX/net IP&lt;/p&gt;
+&lt;h2&gt;KNXnet/IP Routing&lt;/h2&gt;
+&lt;p&gt;Qui abbiamo invece un telegram basato su multicast, in questo modo un router KNX IP funzionerà da line o area coupler. Così facendo rendiamo il backbone di un sistema KNX basato su ethernet, con maggiore velocità di trasmissione e flessibilità in installazione!&lt;/p&gt;
+&lt;p&gt;Il router IP gestirà anche la tabella dei filtri per gestire il traffico (congestione, ecc) laddove necessario.&lt;/p&gt;
+&lt;p&gt;Chiaramente, trattandosi di multicast, abbiamo che per contattare più dispositivi punteremo ad un indirizzo multicast standard, in qusto modo abbiamo una comunicazione uno a molti, la KNX association ha riservato l’indirizzo di multicast 224.0.23.12 per comodità ma qualsiasi altro indirizzo può essere impiegato, basta che sia lo steso su tutti i dispositivi.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Usiamo un router IP come backbone e line coupler" src="/images/KNX-IP-network.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;fig.2 - Usiamo un router IP come backbone e line coupler&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Con il routing KNXnet/IP abbiamo un metodo di comunicazione che permette a tutto il traffico sul bus di venir monitorato, questo è molto utile in tutti i casi in cui i dispositivi richiedano accesso ad esempio ai sistemi di visualizzazione, però lo svantaggio è che non permette di svolgere funzioni ETS come bus monitor o il download sui device.&lt;/p&gt;
+&lt;h2&gt;Quale Hardware mi serve?&lt;/h2&gt;
+&lt;p&gt;Visti i principali metodi di comunicazione, diamo uno sguardo ai prodotti che ci servono per realizzare un sistema KNX su IP.&lt;/p&gt;
+&lt;p&gt;I principali dispositivi che ci serviranno saranno le interfacce (schede di rete IP) e i router.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Le interfacce KNX IP&lt;/strong&gt; supportano soltanto il metodo di comunicazione KNXnet/IP tunnelling, ciò nonostante una singola interfaccia, come la Weinzierl 730, può supportare connessioni multiple.&lt;/p&gt;
+&lt;p&gt;Proprio questa scheda infatti gestisce fino a 5 connessioni simultanee che si ottengono definendo più indirizzi fisici KNX sul device.&lt;/p&gt;
+&lt;p&gt;Ovviamente questa tecnica è molto utile quanto abbiamo istanze multiple di ETS che accedono allo stesso sistema KNX o se vogliamo usare l’interfaccia sia per una connessione ETS sia per una scheda esterna per un sistema Audio/Video, ad esempio.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;I router KNX IP&lt;/strong&gt;, al contrario, supportano entrambi i metodi del tunnelling e del KNXnet/IP routing, oltre a gestire le tabelle dei filtri che permettono al device di funzionare da coupler.&lt;/p&gt;
+&lt;p&gt;Di fatto alcuni router IP, come ad esempio il Gira 216700, permettono connessioni di tunnelling multiple (come le interfacce).&lt;/p&gt;
+&lt;p&gt;Il routing invece, per sua stessa natura, non ha limiti al numero di connessioni che è in grado di stabilire per via del protocollo multicast.&lt;/p&gt;
+&lt;p&gt;Alcuni device hanno inoltre time server e schede di memoria per registrare il bus.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Questo è il router KNXnet / IP Gira 2167 00" src="/images/Gira-KNX-IP-router.jpg"/&gt;
+&lt;em&gt;fig.3 - Questo è il router KNXnet / IP Gira 2167 00&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota Bene:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;E’ molto importante che ci ricordiamo di trattare questo device come line coupler, dovrà essere indirizzato correttamente nella nostra topologia di rete, e i Medium types di tutti i segmenti devono essere assegnati correttamente in ETS.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Entrambi i device che abbiamo visto, schede e router generalmente richiedono un voltaggio superiore al (24V) bus KNX. questo di solito può essere fornito dal voltaggio aux di molte PSU KNX, ma ricordiamo che generalmente una PSU KNX offre al massimo un output di 640mA.&lt;/p&gt;
+&lt;p&gt;Per non correre rischi è meglio far funzionare ciascun device con la sua PSU dedicata, o, in alternativa, usare il protocollo Power over Ethernet (PoE) se il nostro switch lo consente, il costo dello switch potrebbe aumentare, ma l’installazione si semplifica notevolmente!&lt;/p&gt;
+&lt;h2&gt;Sicurezza e accesso remoto&lt;/h2&gt;
+&lt;p&gt;Una volta che abbiamo implementato una soluzione IP è possibile configurare uno dei tipi di collegamento descritti sopra per l’accesso remoto.&lt;/p&gt;
+&lt;p&gt;Usando un’interfaccia tunnelling, possiamo stabilire una connessione diretta esterna se conosciamo l’indirizzo di WAN. Servirà una port redirection sul router per attraversare il firewall, comunque, visto che il sistema KNX non richiede una password per essere utilizzato, non è il metodo più sicuro. Questa considerazione è importante se un sistema KNX controlla un intero edificio, per evidenti ragioni di sicurezza!&lt;/p&gt;
+&lt;p&gt;Se avessimo bisogno di collegare tra loro due sistemi KNX tramite routing KNXnet/IP la VPN DEVE obbligatoriamente supportare il traffico multicast e avere questa grant dall’amministratore di sistema.&lt;/p&gt;
+&lt;h2&gt;Conclusione&lt;/h2&gt;
+&lt;p&gt;Considerato tutto, non è affatto strano per noi ricevere un sacco di domande su KNX IP, anche perché non se ne parla molto nel corso di certificatione KNX.&lt;/p&gt;
+&lt;p&gt;Una volta che i termini descritti sopra sono compresi, comunque, diventa molto più facile specificare e installare i prodotti corretti. Combinando la velocità e la flessibilità del protocollo IP con l’affidabilità e semplicità del bus KNX otteniamo un sistema molto potente, flessibile e pronto al futuro.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Articolo originale inglese scritto da Mark Warburton e disponibile all’indirizzo:
+http://knxtoday.com/2014/01/3056/solutions-ip-and-knx-bringing-you-up-to-speed.html&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tradotto da Simone Messaggi.&lt;/strong&gt;&lt;/p&gt;</content><category term="Tech"/><category term="IOT"/><category term="Home automation"/><category term="KNX"/></entry><entry><title>Email usa e getta sul tuo server di posta</title><link href="https://www.simonemessaggi.it/2008/03/throwaway-emails-for-dummies/" rel="alternate"/><published>2008-03-12T00:00:00+01:00</published><updated>2008-03-12T00:00:00+01:00</updated><author><name>simmessa</name></author><id>tag:www.simonemessaggi.it,2008-03-12:/2008/03/throwaway-emails-for-dummies/</id><summary type="html">&lt;p&gt;Hai un server email privato? Bene! Vuoi avere un'email che puoi dare via per le registrazioni senza preoccuparti della quantità infinita di spam che finirai per ricevere?&lt;/p&gt;
+&lt;p&gt;Allora continua a leggere, forse questo articolo e' per te...&lt;/p&gt;
+&lt;p&gt;Uno dei modi semplici in cui molti, se non tutti, dei punti sopra …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hai un server email privato? Bene! Vuoi avere un'email che puoi dare via per le registrazioni senza preoccuparti della quantità infinita di spam che finirai per ricevere?&lt;/p&gt;
+&lt;p&gt;Allora continua a leggere, forse questo articolo e' per te...&lt;/p&gt;
+&lt;p&gt;Uno dei modi semplici in cui molti, se non tutti, dei punti sopra possono essere realizzati è un hack molto semplice della vostra configurazione *nix.&lt;/p&gt;
+&lt;h1&gt;Divertiamoci con /etc/aliases&lt;/h1&gt;
+&lt;p&gt;Cos'è un file /etc/aliases sui sistemi *nix? è un repository centrale per i nomi utente locali sul server utilizzato quando si tratta di consegna e-mail.&lt;/p&gt;
+&lt;p&gt;Non ho molto da dire sugli alias che non si poteva trovare su migliori risorse online, quindi non vi so dare grandi spiegazioni qui.&lt;/p&gt;
+&lt;p&gt;Uso postfix sul mio server, e lo adoro, rende l'impostazione e-mail molto facile mentre sotto il cofano è parecchio potente.&lt;/p&gt;
+&lt;p&gt;Cosa c'è in un file di alias? Scopriamolo.&lt;/p&gt;
+&lt;p&gt;Ecco un esempio rapido di /etc/aliases:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    # See man 5 aliases for format
+
+    some_alias: some_unix_username
+    some_other_alias: some_other_username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E' piuttosto semplice, giusto?&lt;/p&gt;
+&lt;p&gt;Ora, la grande domanda e': cosa possiamo fare attraverso una manipolazione degli alias?&lt;/p&gt;
+&lt;p&gt;Molto, è un file di testo dopotutto ;)&lt;/p&gt;
+&lt;p&gt;Ecco cosa troverai alla fine del mio alias attuale:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    cut...
+    #weekmail_start
+    this_alias_changes_every_day: my_linux_username
+    #weekmail_end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Il concetto qui è piuttosto semplice, stiamo per creare una nuova e-mail diversa ogni giorno, utilizzando alcuni parametri che cambiano ogni giorno, in modo che non sarà disponibile per spamming in tempi successivi. Il punto è quello di inventare una regola con cui siamo in grado di calcolare l'indirizzo e-mail esatto ogni giorno.&lt;/p&gt;
+&lt;p&gt;Ecco come usiamo alcuni comandi disponibili su bash in linux:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#need day of the week&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;dotw&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%A&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;number&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%d&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;month&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%m&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$dotw$number$month&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;alias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$alias&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;tr&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"[:upper:]"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"[:lower:]"&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-z&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Needs filename as argument."&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;fname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'/weekmail_start/,/weekmail_end/d'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;.weekmail
+
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;/sbin/weekmail&lt;span class="p"&gt;|&lt;/span&gt;sed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;'s/replaceme/'&lt;/span&gt;&lt;span class="nv"&gt;$alias&lt;/span&gt;&lt;span class="s1"&gt;'/'&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/sbin/weekmail_changed
+
+&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;.weekmail&lt;span class="w"&gt; &lt;/span&gt;/sbin/weekmail_changed&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="nv"&gt;$fname&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;newaliases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Logica degli alias usa e getta&lt;/h2&gt;
+&lt;p&gt;Ok, i passi qui sono abbastanza lineari, ma controlliamoli assieme:&lt;/p&gt;
+&lt;p&gt;1) riempire alcune varsiabili con cose che cambiano ogni giorno, prese tramite il comando "date" per creare degli alias usa e getta.
+2) tagliare la parte "weekmail" dal file /etc/aliases (questo passaggio coinvolge l'editor sed) e salvare il risultato in un file temporaneo.
+3) prendere una nuova porzione di weekmail da un altro file statico (/sbin/weekmail in questo esempio) e sostituire una stringa conosciuta con l'alias appena calcolato, quindi memorizzarlo da qualche parte.
+4) creare un nuovo /etc/aliases unendo i due file precedentemente creati
+5) invocare &lt;code&gt;newaliases&lt;/code&gt; per assicurarsi che il vostro nuovo alias sia attivato&lt;/p&gt;
+&lt;p&gt;Ora basta metterlo nel crontab con "crontab -e":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    10 0 &lt;span class="gs"&gt;* *&lt;/span&gt; * /path_to/your_weekmail_script /etc/aliases
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Et Voila'! Questo è un bel indirizzo email spazzatura che hai appena creato, fresco ogni giorno!&lt;/p&gt;
+&lt;p&gt;Sono abbastanza sicuro che i vantaggi di questo approccio dopo aver impostato delle wildcard pigliatutto (*@yourdomain.com) sono evidenti...&lt;/p&gt;
+&lt;p&gt;Assicurati di inviarmi il tuo feedback se usi anche tu questo hack... il mio script è stato buttato giu' velocemente (circa 10 minuti) e quindi dovrebbe essere il minimo sindacale...migliorabile.&lt;/p&gt;
+&lt;p&gt;Spero che vi sia utile, ragazzi. Vi faccio i migliori auguri!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;p.s.: Riporto qui un articolo davvero vecchio (2008) comparso sul mio primo blog, ma che suona stranamente attuale, dato che il problema dello SPAM e' esploso in questi quasi 20 anni&lt;/em&gt;&lt;/p&gt;</content><category term="Tech"/><category term="Tutorial"/><category term="Email"/><category term="Hack"/><category term="Howto"/></entry></feed>

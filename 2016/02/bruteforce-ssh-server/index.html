@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="it">
-<head>
-<meta charset="utf-8"/>
-<meta charset="utf-8" content="text/html" http-equiv="Content-Type"/>
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<title>Per chi cerca di forzarvi il server SSH</title>
-<meta content="Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti." name="description"/>
-<meta content="True" name="HandheldFriendly"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="origin" name="referrer"/>
-<meta content="Pelican" name="generator"/>
-<link href="http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" rel="canonical"/>
-<!-- Feed -->
-<link href="http://127.0.0.1:8000/theme/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="http://127.0.0.1:8000/extra/ico/favicon.ico" rel="icon"/>
-<link href="http://127.0.0.1:8000/extra/ico/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="http://127.0.0.1:8000/extra/ico/apple-touch-icon.png" rel="apple-touch-icon"/><!-- 180×180 -->
-<link href="http://127.0.0.1:8000/extra/ico/site.webmanifest" rel="manifest"/>
-<!-- CSS specified by the user -->
-<link href="http://127.0.0.1:8000/theme/css/simonemessaggi.css" rel="stylesheet" type="text/css"/>
-<!-- Custom fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel="stylesheet" type="text/css"/>
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-<script>
-    var siteUrl = 'http://127.0.0.1:8000';
-  </script>
-<script>
-    var localTheme = localStorage.getItem('attila_theme');
+<!doctype html><html lang=it><meta charset=utf-8><meta charset=utf-8 content=text/html http-equiv=Content-Type><meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible><title>Per chi cerca di forzarvi il server SSH</title><meta content="Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti." name=description><meta content=True name=HandheldFriendly><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=origin name=referrer><meta content=Pelican name=generator><link href=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/ rel=canonical><link title="SimoneMessaggi.it Full Atom Feed" href=https://www.simonemessaggi.it/feeds/all.atom.xml rel=alternate type=application/atom+xml><link title="SimoneMessaggi.it Categories Atom Feed" href=https://www.simonemessaggi.it/feeds/tech.atom.xml rel=alternate type=application/atom+xml><link href=https://www.simonemessaggi.it/theme/css/style.css rel=stylesheet><link href=https://www.simonemessaggi.it/extra/ico/favicon.ico rel=icon><link href=https://www.simonemessaggi.it/extra/ico/favicon.svg rel=icon type=image/svg+xml><link href=https://www.simonemessaggi.it/extra/ico/apple-touch-icon.png rel=apple-touch-icon><link href=https://www.simonemessaggi.it/extra/ico/site.webmanifest rel=manifest><link href=https://www.simonemessaggi.it/theme/css/simonemessaggi.css rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Lato" rel=stylesheet><script>var siteUrl = 'https://www.simonemessaggi.it';</script><script>var localTheme = localStorage.getItem('attila_theme');
     switch (localTheme) {
       case 'dark':
         document.documentElement.classList.add('theme-dark');
@@ -43,38 +8,7 @@
         break;
       default:
         break;
-    }
-  </script>
-<meta content="Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..." name="description"/>
-<meta content="simmessa" name="author"/>
-<meta content="SSH" name="tags"/>
-<meta content="Fail2ban" name="tags"/>
-<meta content="Security" name="tags"/>
-<meta content="Howto" name="tags"/>
-<!-- Open Graph -->
-<meta content="SimoneMessaggi.it" prefix="og: http://ogp.me/ns#" property="og:site_name"/>
-<meta content="Per chi cerca di forzarvi il server SSH" prefix="og: http://ogp.me/ns#" property="og:title"/>
-<meta content="Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..." prefix="og: http://ogp.me/ns#" property="og:description"/>
-<meta content="en_US" prefix="og: http://ogp.me/ns#" property="og:locale"/>
-<meta content="http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" prefix="og: http://ogp.me/ns#" property="og:url"/>
-<meta content="article" prefix="og: http://ogp.me/ns#" property="og:type"/>
-<meta content="2016-02-06 00:00:00+01:00" prefix="og: http://ogp.me/ns#" property="article:published_time">
-<meta content="" prefix="og: http://ogp.me/ns#" property="article:modified_time">
-<meta content="http://127.0.0.1:8000/author/simmessa/" prefix="og: http://ogp.me/ns#" property="article:author">
-<meta content="Tech" prefix="og: http://ogp.me/ns#" property="article:section"/>
-<meta content="SSH" prefix="og: http://ogp.me/ns#" property="article:tag">
-<meta content="Fail2ban" prefix="og: http://ogp.me/ns#" property="article:tag">
-<meta content="Security" prefix="og: http://ogp.me/ns#" property="article:tag">
-<meta content="Howto" prefix="og: http://ogp.me/ns#" property="article:tag">
-<meta content="http://127.0.0.1:8000/images/webp/K-Line.webp" prefix="og: http://ogp.me/ns#" property="og:image"/>
-<!-- Twitter Card -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@simmessa" name="twitter:site"/>
-<meta content="Per chi cerca di forzarvi il server SSH" name="twitter:title"/>
-<meta content="http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" name="twitter:url"/>
-<meta content="http://127.0.0.1:8000/images/webp/K-Line.webp" name="twitter:image:src"/>
-<meta content="Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..." name="twitter:description"/>
-<script type="application/ld+json">
+    }</script><meta content="Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..." name=description><meta content=simmessa name=author><meta content=SSH name=tags><meta content=Fail2ban name=tags><meta content=Security name=tags><meta content=Howto name=tags><meta prefix="og: http://ogp.me/ns#" content=SimoneMessaggi.it property=og:site_name><meta content="Per chi cerca di forzarvi il server SSH" prefix="og: http://ogp.me/ns#" property=og:title><meta content="Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..." prefix="og: http://ogp.me/ns#" property=og:description><meta prefix="og: http://ogp.me/ns#" content=en_US property=og:locale><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/ property=og:url><meta prefix="og: http://ogp.me/ns#" content=article property=og:type><meta content="2016-02-06 00:00:00+01:00" prefix="og: http://ogp.me/ns#" property=article:published_time><meta prefix="og: http://ogp.me/ns#" property=article:modified_time><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/author/simmessa/ property=article:author><meta prefix="og: http://ogp.me/ns#" content=Tech property=article:section><meta prefix="og: http://ogp.me/ns#" content=SSH property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Fail2ban property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Security property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Howto property=article:tag><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/images/webp/K-Line.webp property=og:image><meta content=summary_large_image name=twitter:card><meta content=@simmessa name=twitter:site><meta content="Per chi cerca di forzarvi il server SSH" name=twitter:title><meta content=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/ name=twitter:url><meta content=https://www.simonemessaggi.it/images/webp/K-Line.webp name=twitter:image:src><meta content="Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..." name=twitter:description><script type=application/ld+json>
 {
   "@context": "http://schema.org",
   "@type": "Article",
@@ -85,204 +19,24 @@
   "author": {
     "@type": "Person",
     "name": "Simmessa",
-    "url": "http://127.0.0.1:8000/author/simmessa/"
+    "url": "https://www.simonemessaggi.it/author/simmessa/"
   },
-  "image": "http://127.0.0.1:8000/images/webp/K-Line.webp",
-  "url": "http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/",
+  "image": "https://www.simonemessaggi.it/images/webp/K-Line.webp",
+  "url": "https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/",
   "description": "Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito. Articolo originariamente pubblicato il..."
 }
-</script>
-</meta></meta></meta></meta></meta></meta></meta></meta><link href="http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" rel="canonical"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "http://127.0.0.1:8000"}, {"@type": "ListItem", "position": 2, "name": "2016", "item": "http://127.0.0.1:8000/2016"}, {"@type": "ListItem", "position": 3, "name": "02", "item": "http://127.0.0.1:8000/2016/02"}, {"@type": "ListItem", "position": 4, "name": "Bruteforce ssh server", "item": "http://127.0.0.1:8000/2016/02/bruteforce-ssh-server"}, {"@type": "ListItem", "position": 5, "name": "Index", "item": "http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/index.html"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Per chi cerca di forzarvi il server SSH", "about": "Tech", "datePublished": "2016-02-06 00:00"}</script><meta content="summary" name="twitter:card"/><meta content="http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" property="og:url"/><meta content="article" property="og:type"/><meta content="Per chi cerca di forzarvi il server SSH" property="og:title"/><meta content="en_US" property="og:locale"/></head>
-<body class="category-template">
-<div class="nav-header">
-<nav aria-label="Main" class="nav-wrapper">
-<ul>
-<li class="nav-Home" role="presentation"><a href="/"><span>Home</span></a></li>
-<li class="nav-Rants" role="presentation"><a href="/category/rants/"><span>Rants</span></a></li>
-<li class="nav-Tech active" role="presentation"><a href="/category/tech/"><span>Tech</span></a></li>
-<li class="nav-Humans" role="presentation"><a href="/category/humans/"><span>Humans</span></a></li>
-<li class="nav-Music" role="presentation"><a href="/category/music/"><span>Music</span></a></li>
-<li role="presentation"><a href="http://127.0.0.1:8000/pages/contact/"><span>Contact</span></a></li>
-</ul>
-<ul class="nav-meta">
-<li class="nav-twitter"><a aria-label="Twitter" href="http://twitter.com/simmessa" target="_blank"><i aria-hidden="true" class="icon icon-twitter"></i>
-<span>Twitter</span>
-</a></li>
-<li class="nav-github"><a aria-label="Github" href="https://github.com/simmessa" target="_blank"><i aria-hidden="true" class="icon icon-github"></i>
-<span>Github</span>
-</a></li>
-<li class="nav-search" style="display: none;">
-<a title="Search">
-<i aria-hidden="true" class="icon icon-search"></i>
-<span>Search</span>
-</a>
-</li>
-</ul> </nav>
-<div class="nav-wrapper-control">
-<div class="inner">
-<a class="nav-menu" role="button"><i aria-hidden="true" class="icon icon-menu"></i>Menu</a>
-<a class="nav-search" role="button" style="display: none;" title="Search"><i aria-hidden="true" class="icon icon-search"></i></a>
-</div>
-</div>
-</div>
-<div aria-label="Close" class="nav-close" role="button"></div>
-<section class="page-wrapper" id="wrapper">
-<!-- Progressbar -->
-<div class="progress-container">
-<span class="progress-bar"></span>
-</div>
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="post-header has-cover">
-<div class="inner">
-<span class="post-info">
-<a href="http://127.0.0.1:8000"><span class="post-type">Home</span></a> &gt; 
-          <span class="post-type">Article</span>
-<a href="http://127.0.0.1:8000/category/tech/"><span class="post-count">Tech</span></a>
-</span>
-<h1 class="post-title">Per chi cerca di forzarvi il server SSH</h1>
-<div class="post-meta">
-<div class="post-meta-avatars">
-<figure class="post-meta-avatar avatar">
-<a class="author-avatar" href="http://127.0.0.1:8000/author/simmessa/">
-<img alt="Simone Messaggi" class="author-profile-image" fetchpriority="high" rel="preload" src="http://127.0.0.1:8000/images/simmessa.png"/>
-</a>
-</figure>
-</div>
-<h4 class="post-meta-author">
-            Simone Messaggi
-          </h4>
-<time datetime="Sat 06 February 2016">Sat 06 February 2016</time>
-          • 2 min read
-          <div>
-<hr/>
-<p>Read <strong><a href="http://127.0.0.1:8000/2016/02/en/bruteforce-ssh-server/">this article</a></strong> in 
- 
-                    English
- 
-                language <strong><a href="http://127.0.0.1:8000/2016/02/en/bruteforce-ssh-server/"> here &gt;&gt;</a></strong>
-</p>
-</div>
-</div>
-<div class="post-cover cover">
-<img alt="Category Tech" fetchpriority="high" rel="preload" src="http://127.0.0.1:8000/images/webp/K-Line.webp"/>
-</div>
-</div>
-</header>
-<!-- Post content -->
-<main class="content" role="main">
-<article class="post">
-<div class="inner">
-<section class="post-content">
-<p>Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito.</p>
-<p><em>Articolo originariamente pubblicato il 6 febbraio 2016 su Simmessa.com</em></p>
-<p>Se avete server pubblici su internet, con la porta 22 aperta (e se leggete questo blog mi auguro che ne abbiate...), forse è il momento di dare un occhio ai log di autenticazione del vostro server:</p>
-<p><code>tail -f /var/log/auth.log</code></p>
-<p>Fatto? Beh, se siete fortunati noterete tanti \"simpatici\" tentativi di accesso non autorizzati, giusto?</p>
-<p>Di default, il PAM del vostro server Linux non fa altro che stare li ad attendere tentativi di connessione, se avvengono pù di 3 errori di login chiude la prompt e attende un nuovo tentativo, ma è giusto, secondo voi, dare agli scripter tutti questi infiniti tentativi di brute force su SSH?</p>
-<p>Secondo me no,  e allora tiriamo in ballo un alleato:</p>
-<p><strong>Fail2ban</strong></p>
-<p><em>Questo il sito del tool <a href="http://www.fail2ban.org/">Fail2ban</a></em></p>
-<p>Il concetto dietro questo utile demone è semplice, se sbagli più di tot tentativi di login ti banno!</p>
-<p>Il ban di solito è temporaneo, ma può servire a dissuadere gli scocciatori abbastanza da fargli distogliere l'attenzione dal nostro server e dedicarsi ad altro, magari di più produttivo.</p>
-<h2>Come si installa Fail2ban? (su Debian)</h2>
-<p>Semplice, basta un apt-get:</p>
-<p><code>$ sudo apt-get install fail2ban</code></p>
-<p>A questo punto personalizziamo la configurazione del demone copiandoci il file .conf:</p>
-<p><code>sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local</code></p>
-<p>Bene, ora possiamo passare alla personalizzazione della config:</p>
-<p><code>sudo vi /etc/fail2ban/jail.conf</code></p>
-<p>Le linee più importanti da modificare determinano il comportamento di fail2ban, ad esempio vogliaom essere tranquilli di non tagliarci fuori da soli un giorno in cui verremo inevitabilmente colpiti da un attacco di babbeite!</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="err">\"</span><span class="nx">ignoreip</span><span class="err">\"</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">IP</span><span class="w"> </span><span class="nx">address</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">CIDR</span><span class="w"> </span><span class="nx">mask</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">DNS</span><span class="w"> </span><span class="nx">host</span>
+</script><link href=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/ rel=canonical><script type=application/ld+json>{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "https://www.simonemessaggi.it"}, {"@type": "ListItem", "position": 2, "name": "2016", "item": "https://www.simonemessaggi.it/2016"}, {"@type": "ListItem", "position": 3, "name": "02", "item": "https://www.simonemessaggi.it/2016/02"}, {"@type": "ListItem", "position": 4, "name": "Bruteforce ssh server", "item": "https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server"}, {"@type": "ListItem", "position": 5, "name": "Index", "item": "https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/index.html"}]}</script><script type=application/ld+json>{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Per chi cerca di forzarvi il server SSH", "about": "Tech", "datePublished": "2016-02-06 00:00"}</script><meta content=summary name=twitter:card><meta content=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/ property=og:url><meta content=article property=og:type><meta content="Per chi cerca di forzarvi il server SSH" property=og:title><meta content=en_US property=og:locale><body class=category-template><div class=nav-header><nav aria-label=Main class=nav-wrapper><ul><li class=nav-Home role=presentation><a href=/><span>Home</span></a><li class=nav-Rants role=presentation><a href=/category/rants/><span>Rants</span></a><li class="nav-Tech active" role=presentation><a href=/category/tech/><span>Tech</span></a><li class=nav-Humans role=presentation><a href=/category/humans/><span>Humans</span></a><li class=nav-Music role=presentation><a href=/category/music/><span>Music</span></a><li role=presentation><a href=https://www.simonemessaggi.it/pages/contact/><span>Contact</span></a></ul><ul class=nav-meta><li class=nav-twitter><a aria-label=Twitter href=http://twitter.com/simmessa target=_blank><i class="icon icon-twitter" aria-hidden=true></i> <span>Twitter</span> </a><li class=nav-github><a aria-label=Github href=https://github.com/simmessa target=_blank><i class="icon icon-github" aria-hidden=true></i> <span>Github</span> </a><li class=nav-search style=display:none><a title=Search> <i class="icon icon-search" aria-hidden=true></i> <span>Search</span> </a></ul></nav><div class=nav-wrapper-control><div class=inner><a class=nav-menu role=button><i class="icon icon-menu" aria-hidden=true></i>Menu</a><a class=nav-search role=button style=display:none title=Search><i class="icon icon-search" aria-hidden=true></i></a></div></div></div><div aria-label=Close class=nav-close role=button></div><section class=page-wrapper id=wrapper><div class=progress-container><span class=progress-bar></span></div><header class="post-header has-cover"><div class=inner><span class=post-info> <a href=https://www.simonemessaggi.it><span class=post-type>Home</span></a> >  <span class=post-type>Article</span> <a href=https://www.simonemessaggi.it/category/tech/><span class=post-count>Tech</span></a> </span><h1 class=post-title>Per chi cerca di forzarvi il server SSH</h1><div class=post-meta><div class=post-meta-avatars><figure class="post-meta-avatar avatar"><a class=author-avatar href=https://www.simonemessaggi.it/author/simmessa/> <img alt="Simone Messaggi" class=author-profile-image fetchpriority=high rel=preload src=https://www.simonemessaggi.it/images/simmessa.png> </a></figure></div><h4 class=post-meta-author>Simone Messaggi</h4><time datetime="Sat 06 February 2016">Sat 06 February 2016</time> • 2 min read <div><hr><p>Read <strong><a href=https://www.simonemessaggi.it/2016/02/en/bruteforce-ssh-server/>this article</a></strong> in English language <strong><a href=https://www.simonemessaggi.it/2016/02/en/bruteforce-ssh-server/> here >></a></strong></div></div><div class="post-cover cover"><img alt="Category Tech" fetchpriority=high rel=preload src=https://www.simonemessaggi.it/images/webp/K-Line.webp></div></div></header><main class=content role=main><article class=post><div class=inner><section class=post-content><p>Oggi una ricettina veloce per evitare gli accessi non autorizzati al vostro server SSH preferito.<p><em>Articolo originariamente pubblicato il 6 febbraio 2016 su Simmessa.com</em><p>Se avete server pubblici su internet, con la porta 22 aperta (e se leggete questo blog mi auguro che ne abbiate...), forse è il momento di dare un occhio ai log di autenticazione del vostro server:<p><code>tail -f /var/log/auth.log</code><p>Fatto? Beh, se siete fortunati noterete tanti \"simpatici\" tentativi di accesso non autorizzati, giusto?<p>Di default, il PAM del vostro server Linux non fa altro che stare li ad attendere tentativi di connessione, se avvengono pù di 3 errori di login chiude la prompt e attende un nuovo tentativo, ma è giusto, secondo voi, dare agli scripter tutti questi infiniti tentativi di brute force su SSH?<p>Secondo me no, e allora tiriamo in ballo un alleato:<p><strong>Fail2ban</strong><p><em>Questo il sito del tool <a href=http://www.fail2ban.org/>Fail2ban</a></em><p>Il concetto dietro questo utile demone è semplice, se sbagli più di tot tentativi di login ti banno!<p>Il ban di solito è temporaneo, ma può servire a dissuadere gli scocciatori abbastanza da fargli distogliere l'attenzione dal nostro server e dedicarsi ad altro, magari di più produttivo.<h2>Come si installa Fail2ban? (su Debian)</h2><p>Semplice, basta un apt-get:<p><code>$ sudo apt-get install fail2ban</code><p>A questo punto personalizziamo la configurazione del demone copiandoci il file .conf:<p><code>sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local</code><p>Bene, ora possiamo passare alla personalizzazione della config:<p><code>sudo vi /etc/fail2ban/jail.conf</code><p>Le linee più importanti da modificare determinano il comportamento di fail2ban, ad esempio vogliaom essere tranquilli di non tagliarci fuori da soli un giorno in cui verremo inevitabilmente colpiti da un attacco di babbeite!<div class=highlight><pre><span></span><code><span class=err>#</span><span class=w> </span><span class=err>\"</span><span class=nx>ignoreip</span><span class=err>\"</span><span class=w> </span><span class=nx>can</span><span class=w> </span><span class=nx>be</span><span class=w> </span><span class=nx>an</span><span class=w> </span><span class=nx>IP</span><span class=w> </span><span class=nx>address</span><span class=p>,</span><span class=w> </span><span class=nx>a</span><span class=w> </span><span class=nx>CIDR</span><span class=w> </span><span class=nx>mask</span><span class=w> </span><span class=k>or</span><span class=w> </span><span class=nx>a</span><span class=w> </span><span class=nx>DNS</span><span class=w> </span><span class=nx>host</span>
 
-<span class="nx">ignoreip</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m m-Double">127.0.0.1</span><span class="o">/</span><span class="mi">8</span><span class="w"> </span><span class="m m-Double">192.168.1.0</span><span class="o">/</span><span class="mi">24</span>
-<span class="nx">bantime</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="mi">600</span>
-<span class="nx">maxretry</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span>
-</code></pre></div>
-<p>Suggerisco anche di mantenere alto il numero di maxretry, 3 sono pochi certi giorni e possono darci una mano a non fare danni.</p>
-<p>Il bantime è il tempo (in secondi) per cui vogliamo bannare i \"cattivoni\", 10 minuti potrebbero già far desistere gli scripter (se sono capaci di scriversi gli script, perlomeno).</p>
-<p>Altro aspetto che merita menzione è l'invio automatico di email qualora venisse intercettato un tentativo di accesso non autorizzato:</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Destination</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">solely</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span>
-<span class="nx">interpolations</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">jail</span><span class="p">.{</span><span class="nx">conf</span><span class="p">,</span><span class="nx">local</span><span class="p">}</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="nx">files</span><span class="p">.</span>
-<span class="nx">destemail</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">mail</span><span class="err">@</span><span class="nx">nonesiste</span><span class="p">.</span><span class="nx">caz</span>
-</code></pre></div>
-<p>Ma occhio, il vostro server deve essere in grado di inviare mail perché funzioni, in alternativa potete fare delivery verso un account locale...fate voi!</p>
-<p>L'ultima parte di <strong>Fail2ban</strong> è quella delle azioni, che determina cosa succede quando un client oltrepassa la soglia di Maxretry.</p>
-<p>Prima di tutto, il ban, che avviene come configurazione temporanea di iptables:</p>
-<p><code>banaction = iptables-multiport</code></p>
-<p>e quindi, il tipo di trasporto usato per l'invio della mail:</p>
-<p><code>mta = sendmail</code></p>
-<p>Con questo è tutto, mi raccomando, se avete delle box ssh in giro, proteggetevi...!</p>
-<div id="back_home">
-<p><a href="http://127.0.0.1:8000">done reading? go back to the homepage &gt;</a></p>
-</div>
-</section>
-<section class="post-footer">
-<div class="post-share">
-<span class="post-info-label">Share</span>
-<a aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Per chi cerca di forzarvi il server SSH&amp;url=http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Twitter">
-<i aria-hidden="true" class="icon icon-twitter"></i><span class="hidden">Twitter</span>
-</a>
-<a aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Facebook">
-<i aria-hidden="true" class="icon icon-facebook"></i><span class="hidden">Facebook</span>
-</a>
-<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/&amp;title=Per chi cerca di forzarvi il server SSH" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" title="LinkedIn">
-<i aria-hidden="true" class="icon icon-linkedin"></i><span class="hidden">LinkedIn</span>
-</a>
-<a aria-label="Email" class="email" href="mailto:?subject=Per chi cerca di forzarvi il server SSH&amp;body=http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/" title="Email">
-<i aria-hidden="true" class="icon icon-mail"></i><span class="hidden">Email</span>
-</a>
-<div class="clear"></div>
-</div>
-<aside class="post-tags">
-<a href="http://127.0.0.1:8000/tag/ssh/">SSH</a><a href="http://127.0.0.1:8000/tag/fail2ban/">Fail2ban</a><a href="http://127.0.0.1:8000/tag/security/">Security</a><a href="http://127.0.0.1:8000/tag/howto/">Howto</a> </aside>
-<div class="clear"></div>
-</section>
-<aside class="post-nav">
-<a class="post-nav-next" href="http://127.0.0.1:8000/2018/06/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/">
-<section class="post-nav-teaser">
-<i class="icon icon-arrow-left"></i>
-<h2 class="post-nav-title">Perché Wordpress non è adatto ai siti di grosse dimensioni</h2>
-<p class="post-nav-excerpt">Era un po' che volevo scrivere questo articolo, per varie ragioni, ma soprattutto per...</p>
-<p class="post-nav-meta"><time datetime="Wed 13 June 2018">Wed 13 June 2018</time></p>
-</section>
-</a>
-<a class="post-nav-prev" href="http://127.0.0.1:8000/2015/12/guide-knxnet-over-ip-protocol/">
-<section class="post-nav-teaser">
-<i class="icon icon-arrow-right"></i>
-<h2 class="post-nav-title">Guida al protocollo KNXnet/IP cioè KNX over IP</h2>
-<p class="post-nav-excerpt">Oggi (articolo originale pubblicato il 31 dicembre 2015 su Simmessa.com) mi sono...</p>
-<p class="post-nav-meta"><time datetime="Thu 31 December 2015">Thu 31 December 2015</time></p>
-</section>
-</a>
-<div class="clear"></div>
-</aside>
-</div>
-</article>
-</main>
-<div class="nav-footer">
-<nav aria-label="Footer" class="nav-wrapper">
-<span class="nav-copy"><a href="/">SimoneMessaggi.it © 2025</a>
-</span>
-<span class="nav-credits">
-
-
-
-          Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a> • Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a> •
-          <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href="#">
-<span class="theme-icon"></span><span class="theme-text">System theme</span>
-</a>
-</span>
-</nav>
-</div>
-</section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script src="http://127.0.0.1:8000/theme/js/jquery.fitvids.min.js?cb=123" type="text/javascript"></script>
-<script src="http://127.0.0.1:8000/theme/js/script.min.js?cb=123" type="text/javascript"></script>
-<!-- 	The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in article.html, but it needs to be included down here, after jQuery has already loaded. -->
-<script>
-  $(document).ready(function () {
+<span class=nx>ignoreip</span><span class=w> </span><span class=p>=</span><span class=w> </span><span class="m m-Double">127.0.0.1</span><span class=o>/</span><span class=mi>8</span><span class=w> </span><span class="m m-Double">192.168.1.0</span><span class=o>/</span><span class=mi>24</span>
+<span class=nx>bantime</span><span class=w>  </span><span class=p>=</span><span class=w> </span><span class=mi>600</span>
+<span class=nx>maxretry</span><span class=w> </span><span class=p>=</span><span class=w> </span><span class=mi>6</span>
+</code></pre></div><p>Suggerisco anche di mantenere alto il numero di maxretry, 3 sono pochi certi giorni e possono darci una mano a non fare danni.<p>Il bantime è il tempo (in secondi) per cui vogliamo bannare i \"cattivoni\", 10 minuti potrebbero già far desistere gli scripter (se sono capaci di scriversi gli script, perlomeno).<p>Altro aspetto che merita menzione è l'invio automatico di email qualora venisse intercettato un tentativo di accesso non autorizzato:<div class=highlight><pre><span></span><code><span class=err>#</span><span class=w> </span><span class=nx>Destination</span><span class=w> </span><span class=nx>email</span><span class=w> </span><span class=nx>address</span><span class=w> </span><span class=nx>used</span><span class=w> </span><span class=nx>solely</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=nx>the</span><span class=w> </span>
+<span class=nx>interpolations</span><span class=w> </span><span class=k>in</span><span class=w> </span><span class=nx>jail</span><span class=p>.{</span><span class=nx>conf</span><span class=p>,</span><span class=nx>local</span><span class=p>}</span><span class=w> </span><span class=nx>configuration</span><span class=w> </span><span class=nx>files</span><span class=p>.</span>
+<span class=nx>destemail</span><span class=w> </span><span class=p>=</span><span class=w> </span><span class=nx>mail</span><span class=err>@</span><span class=nx>nonesiste</span><span class=p>.</span><span class=nx>caz</span>
+</code></pre></div><p>Ma occhio, il vostro server deve essere in grado di inviare mail perché funzioni, in alternativa potete fare delivery verso un account locale...fate voi!<p>L'ultima parte di <strong>Fail2ban</strong> è quella delle azioni, che determina cosa succede quando un client oltrepassa la soglia di Maxretry.<p>Prima di tutto, il ban, che avviene come configurazione temporanea di iptables:<p><code>banaction = iptables-multiport</code><p>e quindi, il tipo di trasporto usato per l'invio della mail:<p><code>mta = sendmail</code><p>Con questo è tutto, mi raccomando, se avete delle box ssh in giro, proteggetevi...!<div id=back_home><p><a href=https://www.simonemessaggi.it>done reading? go back to the homepage ></a></div></section><section class=post-footer><div class=post-share><span class=post-info-label>Share</span><a href="https://twitter.com/share?text=Per chi cerca di forzarvi il server SSH&url=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label=Twitter class=twitter title=Twitter> <i class="icon icon-twitter" aria-hidden=true></i><span class=hidden>Twitter</span> </a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" aria-label=Facebook class=facebook title=Facebook> <i class="icon icon-facebook" aria-hidden=true></i><span class=hidden>Facebook</span> </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/&title=Per chi cerca di forzarvi il server SSH" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" aria-label=LinkedIn class=linkedin title=LinkedIn> <i class="icon icon-linkedin" aria-hidden=true></i><span class=hidden>LinkedIn</span> </a><a href="mailto:?subject=Per chi cerca di forzarvi il server SSH&body=https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/" aria-label=Email class=email title=Email> <i class="icon icon-mail" aria-hidden=true></i><span class=hidden>Email</span> </a><div class=clear></div></div><aside class=post-tags><a href=https://www.simonemessaggi.it/tag/ssh/>SSH</a><a href=https://www.simonemessaggi.it/tag/fail2ban/>Fail2ban</a><a href=https://www.simonemessaggi.it/tag/security/>Security</a><a href=https://www.simonemessaggi.it/tag/howto/>Howto</a></aside><div class=clear></div></section><aside class=post-nav><a class=post-nav-next href=https://www.simonemessaggi.it/2018/06/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/> <section class=post-nav-teaser><i class="icon icon-arrow-left"></i><h2 class=post-nav-title>Perché Wordpress non è adatto ai siti di grosse dimensioni</h2><p class=post-nav-excerpt>Era un po' che volevo scrivere questo articolo, per varie ragioni, ma soprattutto per...<p class=post-nav-meta><time datetime="Wed 13 June 2018">Wed 13 June 2018</time></section> </a><a class=post-nav-prev href=https://www.simonemessaggi.it/2015/12/guide-knxnet-over-ip-protocol/> <section class=post-nav-teaser><i class="icon icon-arrow-right"></i><h2 class=post-nav-title>Guida al protocollo KNXnet/IP cioè KNX over IP</h2><p class=post-nav-excerpt>Oggi (articolo originale pubblicato il 31 dicembre 2015 su Simmessa.com) mi sono...<p class=post-nav-meta><time datetime="Thu 31 December 2015">Thu 31 December 2015</time></section> </a><div class=clear></div></aside></div></article></main><div class=nav-footer><nav aria-label=Footer class=nav-wrapper><span class=nav-copy><a href=/>SimoneMessaggi.it © 2025</a> </span><span class=nav-credits> Published with <a href=https://github.com/getpelican/pelican rel=nofollow>Pelican</a> • Theme <a href=https://github.com/arulrajnet/attila rel=nofollow>Attila</a> • <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href=#> <span class=theme-icon></span><span class=theme-text>System theme</span> </a> </span></nav></div></section><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js></script><script src="https://www.simonemessaggi.it/theme/js/jquery.fitvids.min.js?cb=122334"></script><script src="https://www.simonemessaggi.it/theme/js/script.min.js?cb=122334"></script><script src="https://www.googletagmanager.com/gtag/js?id=G-Q242MTLMK7" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q242MTLMK7', { 'anonymize_ip': true });</script><script>$(document).ready(function () {
     var viewport = $(window);
     var post = $('.post-content');
     // Responsive videos with fitVids
@@ -344,7 +98,4 @@
       }
     });
 
-  });
-</script>
-</body>
-</html>
+  });</script>

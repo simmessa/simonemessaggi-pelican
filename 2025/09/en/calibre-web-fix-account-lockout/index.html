@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="it">
-<head>
-<meta charset="utf-8"/>
-<meta charset="utf-8" content="text/html" http-equiv="Content-Type"/>
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<title>Calibre-web, how to fix being locked out and reset password from shell</title>
-<meta content="Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti." name="description"/>
-<meta content="True" name="HandheldFriendly"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="origin" name="referrer"/>
-<meta content="Pelican" name="generator"/>
-<link href="http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" rel="canonical"/>
-<!-- Feed -->
-<link href="http://127.0.0.1:8000/theme/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="http://127.0.0.1:8000/extra/ico/favicon.ico" rel="icon"/>
-<link href="http://127.0.0.1:8000/extra/ico/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="http://127.0.0.1:8000/extra/ico/apple-touch-icon.png" rel="apple-touch-icon"/><!-- 180×180 -->
-<link href="http://127.0.0.1:8000/extra/ico/site.webmanifest" rel="manifest"/>
-<!-- CSS specified by the user -->
-<link href="http://127.0.0.1:8000/theme/css/simonemessaggi.css" rel="stylesheet" type="text/css"/>
-<!-- Custom fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel="stylesheet" type="text/css"/>
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-<script>
-    var siteUrl = 'http://127.0.0.1:8000';
-  </script>
-<script>
-    var localTheme = localStorage.getItem('attila_theme');
+<!doctype html><html lang=it><meta charset=utf-8><meta charset=utf-8 content=text/html http-equiv=Content-Type><meta content="IE=edge,chrome=1" http-equiv=X-UA-Compatible><title>Calibre-web, how to fix being locked out and reset password from shell</title><meta content="Il sito personale di Simone Messaggi, blog tecnico opinionistico musicale di uno che di errori ne ha commessi, e tanti." name=description><meta content=True name=HandheldFriendly><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=origin name=referrer><meta content=Pelican name=generator><link href=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/ rel=canonical><link title="SimoneMessaggi.it Full Atom Feed" href=https://www.simonemessaggi.it/feeds/all.atom.xml rel=alternate type=application/atom+xml><link title="SimoneMessaggi.it Categories Atom Feed" href=https://www.simonemessaggi.it/feeds/tech.atom.xml rel=alternate type=application/atom+xml><link href=https://www.simonemessaggi.it/theme/css/style.css rel=stylesheet><link href=https://www.simonemessaggi.it/extra/ico/favicon.ico rel=icon><link href=https://www.simonemessaggi.it/extra/ico/favicon.svg rel=icon type=image/svg+xml><link href=https://www.simonemessaggi.it/extra/ico/apple-touch-icon.png rel=apple-touch-icon><link href=https://www.simonemessaggi.it/extra/ico/site.webmanifest rel=manifest><link href=https://www.simonemessaggi.it/theme/css/simonemessaggi.css rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Lato" rel=stylesheet><script>var siteUrl = 'https://www.simonemessaggi.it';</script><script>var localTheme = localStorage.getItem('attila_theme');
     switch (localTheme) {
       case 'dark':
         document.documentElement.classList.add('theme-dark');
@@ -43,36 +8,7 @@
         break;
       default:
         break;
-    }
-  </script>
-<meta content="I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..." name="description"/>
-<meta content="simmessa" name="author"/>
-<meta content="eBook" name="tags"/>
-<meta content="Selfhosted" name="tags"/>
-<meta content="Howto" name="tags"/>
-<!-- Open Graph -->
-<meta content="SimoneMessaggi.it" prefix="og: http://ogp.me/ns#" property="og:site_name"/>
-<meta content="Calibre-web, how to fix being locked out and reset password from shell" prefix="og: http://ogp.me/ns#" property="og:title"/>
-<meta content="I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..." prefix="og: http://ogp.me/ns#" property="og:description"/>
-<meta content="en_US" prefix="og: http://ogp.me/ns#" property="og:locale"/>
-<meta content="http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" prefix="og: http://ogp.me/ns#" property="og:url"/>
-<meta content="article" prefix="og: http://ogp.me/ns#" property="og:type">
-<meta content="2025-09-08 00:00:00+02:00" prefix="og: http://ogp.me/ns#" property="article:published_time">
-<meta content="" prefix="og: http://ogp.me/ns#" property="article:modified_time">
-<meta content="http://127.0.0.1:8000/author/simmessa/" prefix="og: http://ogp.me/ns#" property="article:author">
-<meta content="tech" prefix="og: http://ogp.me/ns#" property="article:section"/>
-<meta content="eBook" prefix="og: http://ogp.me/ns#" property="article:tag">
-<meta content="Selfhosted" prefix="og: http://ogp.me/ns#" property="article:tag">
-<meta content="Howto" prefix="og: http://ogp.me/ns#" property="article:tag"/>
-<meta content="http://127.0.0.1:8000/images/webp/calibre-web-cover.webp" prefix="og: http://ogp.me/ns#" property="og:image"/>
-<!-- Twitter Card -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@simmessa" name="twitter:site"/>
-<meta content="Calibre-web, how to fix being locked out and reset password from shell" name="twitter:title"/>
-<meta content="http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" name="twitter:url"/>
-<meta content="http://127.0.0.1:8000/images/webp/calibre-web-cover.webp" name="twitter:image:src"/>
-<meta content="I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..." name="twitter:description"/>
-<script type="application/ld+json">
+    }</script><meta content="I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..." name=description><meta content=simmessa name=author><meta content=eBook name=tags><meta content=Selfhosted name=tags><meta content=Howto name=tags><meta prefix="og: http://ogp.me/ns#" content=SimoneMessaggi.it property=og:site_name><meta content="Calibre-web, how to fix being locked out and reset password from shell" prefix="og: http://ogp.me/ns#" property=og:title><meta content="I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..." prefix="og: http://ogp.me/ns#" property=og:description><meta prefix="og: http://ogp.me/ns#" content=en_US property=og:locale><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/ property=og:url><meta prefix="og: http://ogp.me/ns#" content=article property=og:type><meta content="2025-09-08 00:00:00+02:00" prefix="og: http://ogp.me/ns#" property=article:published_time><meta prefix="og: http://ogp.me/ns#" property=article:modified_time><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/author/simmessa/ property=article:author><meta prefix="og: http://ogp.me/ns#" content=tech property=article:section><meta prefix="og: http://ogp.me/ns#" content=eBook property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Selfhosted property=article:tag><meta prefix="og: http://ogp.me/ns#" content=Howto property=article:tag><meta prefix="og: http://ogp.me/ns#" content=https://www.simonemessaggi.it/images/webp/calibre-web-cover.webp property=og:image><meta content=summary_large_image name=twitter:card><meta content=@simmessa name=twitter:site><meta content="Calibre-web, how to fix being locked out and reset password from shell" name=twitter:title><meta content=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/ name=twitter:url><meta content=https://www.simonemessaggi.it/images/webp/calibre-web-cover.webp name=twitter:image:src><meta content="I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..." name=twitter:description><script type=application/ld+json>
 {
   "@context": "http://schema.org",
   "@type": "Article",
@@ -83,219 +19,34 @@
   "author": {
     "@type": "Person",
     "name": "Simmessa",
-    "url": "http://127.0.0.1:8000/author/simmessa/"
+    "url": "https://www.simonemessaggi.it/author/simmessa/"
   },
-  "image": "http://127.0.0.1:8000/images/webp/calibre-web-cover.webp",
-  "url": "http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/",
+  "image": "https://www.simonemessaggi.it/images/webp/calibre-web-cover.webp",
+  "url": "https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/",
   "description": "I totally love Calibre-web, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've..."
 }
-</script>
-</meta></meta></meta></meta></meta></meta></meta><link href="http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" rel="canonical"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "http://127.0.0.1:8000"}, {"@type": "ListItem", "position": 2, "name": "2025", "item": "http://127.0.0.1:8000/2025"}, {"@type": "ListItem", "position": 3, "name": "09", "item": "http://127.0.0.1:8000/2025/09"}, {"@type": "ListItem", "position": 4, "name": "En", "item": "http://127.0.0.1:8000/2025/09/en"}, {"@type": "ListItem", "position": 5, "name": "Calibre web fix account lockout", "item": "http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout"}, {"@type": "ListItem", "position": 6, "name": "Index", "item": "http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/index.html"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Calibre-web, how to fix being locked out and reset password from shell", "about": "tech", "datePublished": "2025-09-08 00:00"}</script><meta content="summary" name="twitter:card"/><meta content="http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" property="og:url"/><meta content="article" property="og:type"/><meta content="Calibre-web, how to fix being locked out and reset password from shell" property="og:title"/><meta content="en_US" property="og:locale"/></head>
-<body class="category-template">
-<div class="nav-header">
-<nav aria-label="Main" class="nav-wrapper">
-<ul>
-<li class="nav-Home" role="presentation"><a href="/"><span>Home</span></a></li>
-<li class="nav-Rants" role="presentation"><a href="/category/rants/"><span>Rants</span></a></li>
-<li class="nav-Tech active" role="presentation"><a href="/category/tech/"><span>Tech</span></a></li>
-<li class="nav-Humans" role="presentation"><a href="/category/humans/"><span>Humans</span></a></li>
-<li class="nav-Music" role="presentation"><a href="/category/music/"><span>Music</span></a></li>
-<li role="presentation"><a href="http://127.0.0.1:8000/pages/contact/"><span>Contact</span></a></li>
-</ul>
-<ul class="nav-meta">
-<li class="nav-twitter"><a aria-label="Twitter" href="http://twitter.com/simmessa" target="_blank"><i aria-hidden="true" class="icon icon-twitter"></i>
-<span>Twitter</span>
-</a></li>
-<li class="nav-github"><a aria-label="Github" href="https://github.com/simmessa" target="_blank"><i aria-hidden="true" class="icon icon-github"></i>
-<span>Github</span>
-</a></li>
-<li class="nav-search" style="display: none;">
-<a title="Search">
-<i aria-hidden="true" class="icon icon-search"></i>
-<span>Search</span>
-</a>
-</li>
-</ul> </nav>
-<div class="nav-wrapper-control">
-<div class="inner">
-<a class="nav-menu" role="button"><i aria-hidden="true" class="icon icon-menu"></i>Menu</a>
-<a class="nav-search" role="button" style="display: none;" title="Search"><i aria-hidden="true" class="icon icon-search"></i></a>
-</div>
-</div>
-</div>
-<div aria-label="Close" class="nav-close" role="button"></div>
-<section class="page-wrapper" id="wrapper">
-<!-- Progressbar -->
-<div class="progress-container">
-<span class="progress-bar"></span>
-</div>
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="post-header has-cover">
-<div class="inner">
-<span class="post-info">
-<a href="http://127.0.0.1:8000"><span class="post-type">Home</span></a> &gt; 
-          <span class="post-type">Article</span>
-<a href="http://127.0.0.1:8000/category/tech/"><span class="post-count">Tech</span></a>
-</span>
-<h1 class="post-title">Calibre-web, how to fix being locked out and reset password from shell</h1>
-<div class="post-meta">
-<div class="post-meta-avatars">
-<figure class="post-meta-avatar avatar">
-<a class="author-avatar" href="http://127.0.0.1:8000/author/simmessa/">
-<img alt="Simone Messaggi" class="author-profile-image" fetchpriority="high" rel="preload" src="http://127.0.0.1:8000/images/simmessa.png"/>
-</a>
-</figure>
-</div>
-<h4 class="post-meta-author">
-            Simone Messaggi
-          </h4>
-<time datetime="Mon 08 September 2025">Mon 08 September 2025</time>
-          • 2 min read
-        </div>
-<div class="post-cover cover">
-<img alt="Category tech" fetchpriority="high" rel="preload" src="http://127.0.0.1:8000/images/webp/calibre-web-cover.webp"/>
-</div>
-</div>
-</header>
-<!-- Post content -->
-<main class="content" role="main">
-<article class="post">
-<div class="inner">
-<section class="post-content">
-<p>I totally love <a href="https://github.com/janeczku/calibre-web/">Calibre-web</a>, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've download from the web.</p>
-<p>Here's an example screenshot:</p>
-<p><img alt="Calibre-web gui" src="/images/calibre-web-gui.png"/></p>
-<p>Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your review, load metadata from the internet, and the list goes on... here's what listed on the github page:</p>
-<ul>
-<li>Modern and responsive Bootstrap 3 HTML5 interface</li>
-<li>Full graphical setup</li>
-<li>Comprehensive user management with fine-grained per-user permissions</li>
-<li>Admin interface</li>
-<li>Multilingual user interface supporting 20+ languages (<a href="https://github.com/janeczku/calibre-web/wiki/Translation-Status">supported languages</a>)</li>
-<li>OPDS feed for eBook reader apps</li>
-<li>Advanced search and filtering options</li>
-<li>Custom book collection (shelves) creation</li>
-<li>eBook metadata editing and deletion support</li>
-<li>Metadata download from various sources (extensible via plugins)</li>
-<li>eBook conversion through Calibre binaries</li>
-<li>eBook download restriction to logged-in users</li>
-<li>Public user registration support</li>
-<li>Send eBooks to E-Readers with a single click</li>
-<li>Sync Kobo devices with your Calibre library</li>
-<li>In-browser eBook reading support for multiple formats</li>
-<li>Upload new books in various formats, including audio formats</li>
-<li>Calibre Custom Columns support</li>
-<li>Content hiding based on categories and Custom Column content per user</li>
-<li>Self-update capability</li>
-<li>"Magic Link" login for easy access on eReaders</li>
-<li>LDAP, Google/GitHub OAuth, and proxy authentication support</li>
-</ul>
-<p>You can even read books directly from the web interface, but I must admit the resulting experience is everything but stellar...</p>
-<p>I run my own via docker container, using the image provided by the excellent <a href="https://docs.linuxserver.io/images/docker-calibre-web">linux-server</a>. Setup is pretty straightforward</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--name<span class="o">=</span>calibre-web<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">PUID</span><span class="o">=</span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">PGID</span><span class="o">=</span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">TZ</span><span class="o">=</span>Etc/UTC<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">DOCKER_MODS</span><span class="o">=</span>linuxserver/mods:universal-calibre<span class="w"> </span><span class="sb">`</span><span class="c1">#optional` \</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">OAUTHLIB_RELAX_TOKEN_SCOPE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="sb">`</span><span class="c1">#optional` \</span>
-<span class="w">  </span>-p<span class="w"> </span><span class="m">8083</span>:8083<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/path/to/calibre-web/data:/config<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/path/to/calibre/library:/books<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>lscr.io/linuxserver/calibre-web:latest
-</code></pre></div>
-<p>And I love the fact this is a single container without a separate db or anything like that, it's very selfhosting friendy and easy to use.</p>
-<h2>The lockout problem</h2>
-<p>Let's say you're logging in from mobile and you accidentally click on the "Forgot Password?" button...</p>
-<p><img alt="Don't click the forgot password button" src="/images/calibre-web-forgot-password.png"/></p>
-<p>And well, by design calibreweb will then set a <em>random password</em> for the user you selected and send it via email to the email address linked to that user.</p>
-<p><em>Except that your calibreweb install might not be allowed to send email in ANY WAY</em></p>
-<p>I know that's what mine does, as I don't let docker containers send mail in normal conditions.</p>
-<p><em>WELL, You just LOCKED yourself out of your calibre-web instance my friend :/</em></p>
-<p>Is there a way we can fix this without re-creating the calibre-web instance from scratch?</p>
-<h2>Solution: reset that password from inside</h2>
-<p>Assuming that you're using docker, enter the calibreweb container:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>calibre-web<span class="w"> </span>bash
+</script><link href=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/ rel=canonical><script type=application/ld+json>{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SimoneMessaggi.it", "item": "https://www.simonemessaggi.it"}, {"@type": "ListItem", "position": 2, "name": "2025", "item": "https://www.simonemessaggi.it/2025"}, {"@type": "ListItem", "position": 3, "name": "09", "item": "https://www.simonemessaggi.it/2025/09"}, {"@type": "ListItem", "position": 4, "name": "En", "item": "https://www.simonemessaggi.it/2025/09/en"}, {"@type": "ListItem", "position": 5, "name": "Calibre web fix account lockout", "item": "https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout"}, {"@type": "ListItem", "position": 6, "name": "Index", "item": "https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/index.html"}]}</script><script type=application/ld+json>{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "simmessa"}, "publisher": {"@type": "Organization", "name": "SimoneMessaggi.it"}, "headline": "Calibre-web, how to fix being locked out and reset password from shell", "about": "tech", "datePublished": "2025-09-08 00:00"}</script><meta content=summary name=twitter:card><meta content=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/ property=og:url><meta content=article property=og:type><meta content="Calibre-web, how to fix being locked out and reset password from shell" property=og:title><meta content=en_US property=og:locale><body class=category-template><div class=nav-header><nav aria-label=Main class=nav-wrapper><ul><li class=nav-Home role=presentation><a href=/><span>Home</span></a><li class=nav-Rants role=presentation><a href=/category/rants/><span>Rants</span></a><li class="nav-Tech active" role=presentation><a href=/category/tech/><span>Tech</span></a><li class=nav-Humans role=presentation><a href=/category/humans/><span>Humans</span></a><li class=nav-Music role=presentation><a href=/category/music/><span>Music</span></a><li role=presentation><a href=https://www.simonemessaggi.it/pages/contact/><span>Contact</span></a></ul><ul class=nav-meta><li class=nav-twitter><a aria-label=Twitter href=http://twitter.com/simmessa target=_blank><i class="icon icon-twitter" aria-hidden=true></i> <span>Twitter</span> </a><li class=nav-github><a aria-label=Github href=https://github.com/simmessa target=_blank><i class="icon icon-github" aria-hidden=true></i> <span>Github</span> </a><li class=nav-search style=display:none><a title=Search> <i class="icon icon-search" aria-hidden=true></i> <span>Search</span> </a></ul></nav><div class=nav-wrapper-control><div class=inner><a class=nav-menu role=button><i class="icon icon-menu" aria-hidden=true></i>Menu</a><a class=nav-search role=button style=display:none title=Search><i class="icon icon-search" aria-hidden=true></i></a></div></div></div><div aria-label=Close class=nav-close role=button></div><section class=page-wrapper id=wrapper><div class=progress-container><span class=progress-bar></span></div><header class="post-header has-cover"><div class=inner><span class=post-info> <a href=https://www.simonemessaggi.it><span class=post-type>Home</span></a> >  <span class=post-type>Article</span> <a href=https://www.simonemessaggi.it/category/tech/><span class=post-count>Tech</span></a> </span><h1 class=post-title>Calibre-web, how to fix being locked out and reset password from shell</h1><div class=post-meta><div class=post-meta-avatars><figure class="post-meta-avatar avatar"><a class=author-avatar href=https://www.simonemessaggi.it/author/simmessa/> <img alt="Simone Messaggi" class=author-profile-image fetchpriority=high rel=preload src=https://www.simonemessaggi.it/images/simmessa.png> </a></figure></div><h4 class=post-meta-author>Simone Messaggi</h4><time datetime="Mon 08 September 2025">Mon 08 September 2025</time> • 2 min read</div><div class="post-cover cover"><img alt="Category tech" fetchpriority=high rel=preload src=https://www.simonemessaggi.it/images/webp/calibre-web-cover.webp></div></div></header><main class=content role=main><article class=post><div class=inner><section class=post-content><p>I totally love <a href=https://github.com/janeczku/calibre-web/>Calibre-web</a>, over the years it's become my go to repository / archive for everything from webcomic to eBooks that I've download from the web.<p>Here's an example screenshot:<p><img alt="Calibre-web gui" src=/images/calibre-web-gui.png><p>Pretty cool huh? you can do everything from shelving your books in categories, join books from a collection, edit your review, load metadata from the internet, and the list goes on... here's what listed on the github page:<ul><li>Modern and responsive Bootstrap 3 HTML5 interface<li>Full graphical setup<li>Comprehensive user management with fine-grained per-user permissions<li>Admin interface<li>Multilingual user interface supporting 20+ languages (<a href=https://github.com/janeczku/calibre-web/wiki/Translation-Status>supported languages</a>)<li>OPDS feed for eBook reader apps<li>Advanced search and filtering options<li>Custom book collection (shelves) creation<li>eBook metadata editing and deletion support<li>Metadata download from various sources (extensible via plugins)<li>eBook conversion through Calibre binaries<li>eBook download restriction to logged-in users<li>Public user registration support<li>Send eBooks to E-Readers with a single click<li>Sync Kobo devices with your Calibre library<li>In-browser eBook reading support for multiple formats<li>Upload new books in various formats, including audio formats<li>Calibre Custom Columns support<li>Content hiding based on categories and Custom Column content per user<li>Self-update capability<li>"Magic Link" login for easy access on eReaders<li>LDAP, Google/GitHub OAuth, and proxy authentication support</ul><p>You can even read books directly from the web interface, but I must admit the resulting experience is everything but stellar...<p>I run my own via docker container, using the image provided by the excellent <a href=https://docs.linuxserver.io/images/docker-calibre-web>linux-server</a>. Setup is pretty straightforward<div class=highlight><pre><span></span><code>docker<span class=w> </span>run<span class=w> </span>-d<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>--name<span class=o>=</span>calibre-web<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>-e<span class=w> </span><span class=nv>PUID</span><span class=o>=</span><span class=m>1000</span><span class=w> </span><span class=se>\</span>
+<span class=w>  </span>-e<span class=w> </span><span class=nv>PGID</span><span class=o>=</span><span class=m>1000</span><span class=w> </span><span class=se>\</span>
+<span class=w>  </span>-e<span class=w> </span><span class=nv>TZ</span><span class=o>=</span>Etc/UTC<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>-e<span class=w> </span><span class=nv>DOCKER_MODS</span><span class=o>=</span>linuxserver/mods:universal-calibre<span class=w> </span><span class=sb>`</span><span class=c1>#optional` \</span>
+<span class=w>  </span>-e<span class=w> </span><span class=nv>OAUTHLIB_RELAX_TOKEN_SCOPE</span><span class=o>=</span><span class=m>1</span><span class=w> </span><span class=sb>`</span><span class=c1>#optional` \</span>
+<span class=w>  </span>-p<span class=w> </span><span class=m>8083</span>:8083<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>-v<span class=w> </span>/path/to/calibre-web/data:/config<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>-v<span class=w> </span>/path/to/calibre/library:/books<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>--restart<span class=w> </span>unless-stopped<span class=w> </span><span class=se>\</span>
+<span class=w>  </span>lscr.io/linuxserver/calibre-web:latest
+</code></pre></div><p>And I love the fact this is a single container without a separate db or anything like that, it's very selfhosting friendy and easy to use.<h2>The lockout problem</h2><p>Let's say you're logging in from mobile and you accidentally click on the "Forgot Password?" button...<p><img alt="Don't click the forgot password button" src=/images/calibre-web-forgot-password.png><p>And well, by design calibreweb will then set a <em>random password</em> for the user you selected and send it via email to the email address linked to that user.<p><em>Except that your calibreweb install might not be allowed to send email in ANY WAY</em><p>I know that's what mine does, as I don't let docker containers send mail in normal conditions.<p><em>WELL, You just LOCKED yourself out of your calibre-web instance my friend :/</em><p>Is there a way we can fix this without re-creating the calibre-web instance from scratch?<h2>Solution: reset that password from inside</h2><p>Assuming that you're using docker, enter the calibreweb container:<div class=highlight><pre><span></span><code>docker<span class=w> </span><span class=nb>exec</span><span class=w> </span>-it<span class=w> </span>calibre-web<span class=w> </span>bash
 
-<span class="c1">#now that you're in just run this command:</span>
-root@xxx:/app/calibre-web#<span class="w"> </span>python3<span class="w"> </span>cps.py<span class="w"> </span>-s<span class="w"> </span>myuser:myvery_STRONG_password789
-Password<span class="w"> </span><span class="k">for</span><span class="w"> </span>user<span class="w"> </span><span class="s1">'myuser'</span><span class="w"> </span>changed
+<span class=c1>#now that you're in just run this command:</span>
+root@xxx:/app/calibre-web#<span class=w> </span>python3<span class=w> </span>cps.py<span class=w> </span>-s<span class=w> </span>myuser:myvery_STRONG_password789
+Password<span class=w> </span><span class=k>for</span><span class=w> </span>user<span class=w> </span><span class=s1>'myuser'</span><span class=w> </span>changed
 root@xxx:/app/calibre-web#
-</code></pre></div>
-<p>And that's all! You should now be able to login with your user and the new password.</p>
-<p><em>p.s.: Thanks to this Reddit thread for the info: <a href="https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in">https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in_</a></em></p>
-<div id="back_home">
-<p><a href="http://127.0.0.1:8000">done reading? go back to the homepage &gt;</a></p>
-</div>
-</section>
-<section class="post-footer">
-<div class="post-share">
-<span class="post-info-label">Share</span>
-<a aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Calibre-web, how to fix being locked out and reset password from shell&amp;url=http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Twitter">
-<i aria-hidden="true" class="icon icon-twitter"></i><span class="hidden">Twitter</span>
-</a>
-<a aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Facebook">
-<i aria-hidden="true" class="icon icon-facebook"></i><span class="hidden">Facebook</span>
-</a>
-<a aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/&amp;title=Calibre-web, how to fix being locked out and reset password from shell" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" title="LinkedIn">
-<i aria-hidden="true" class="icon icon-linkedin"></i><span class="hidden">LinkedIn</span>
-</a>
-<a aria-label="Email" class="email" href="mailto:?subject=Calibre-web, how to fix being locked out and reset password from shell&amp;body=http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/" title="Email">
-<i aria-hidden="true" class="icon icon-mail"></i><span class="hidden">Email</span>
-</a>
-<div class="clear"></div>
-</div>
-<aside class="post-tags">
-<a href="http://127.0.0.1:8000/tag/ebook/">eBook</a><a href="http://127.0.0.1:8000/tag/selfhosted/">Selfhosted</a><a href="http://127.0.0.1:8000/tag/howto/">Howto</a> </aside>
-<div class="clear"></div>
-</section>
-<aside class="post-nav">
-<a class="post-nav-next" href="http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/">
-<section class="post-nav-teaser">
-<i class="icon icon-arrow-left"></i>
-<h2 class="post-nav-title">Controlling Govee lights from your LAN in Home Assistant</h2>
-<p class="post-nav-excerpt">I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent),...</p>
-<p class="post-nav-meta"><time datetime="Sat 20 September 2025">Sat 20 September 2025</time></p>
-</section>
-</a>
-<a class="post-nav-prev" href="http://127.0.0.1:8000/2025/09/en/artec-poa4-pro-tone-precision-bass-27-euros/">
-<section class="post-nav-teaser">
-<i class="icon icon-arrow-right"></i>
-<h2 class="post-nav-title">Artec POA4, get pro tone on your p-bass for 27 euros!</h2>
-<p class="post-nav-excerpt">Are you stuck on a bass that is a blast to play but has a bad sound? Here's a quick...</p>
-<p class="post-nav-meta"><time datetime="Sat 06 September 2025">Sat 06 September 2025</time></p>
-</section>
-</a>
-<div class="clear"></div>
-</aside>
-</div>
-</article>
-</main>
-<div class="nav-footer">
-<nav aria-label="Footer" class="nav-wrapper">
-<span class="nav-copy"><a href="/">SimoneMessaggi.it © 2025</a>
-</span>
-<span class="nav-credits">
-
-
-
-          Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a> • Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a> •
-          <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href="#">
-<span class="theme-icon"></span><span class="theme-text">System theme</span>
-</a>
-</span>
-</nav>
-</div>
-</section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script src="http://127.0.0.1:8000/theme/js/jquery.fitvids.min.js?cb=123" type="text/javascript"></script>
-<script src="http://127.0.0.1:8000/theme/js/script.min.js?cb=123" type="text/javascript"></script>
-<!-- 	The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in article.html, but it needs to be included down here, after jQuery has already loaded. -->
-<script>
-  $(document).ready(function () {
+</code></pre></div><p>And that's all! You should now be able to login with your user and the new password.<p><em>p.s.: Thanks to this Reddit thread for the info: <a href=https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in>https://www.reddit.com/r/Calibre/comments/v4h16j/calibreweb_for_some_reason_i_can_no_longer_log_in_</a></em><div id=back_home><p><a href=https://www.simonemessaggi.it>done reading? go back to the homepage ></a></div></section><section class=post-footer><div class=post-share><span class=post-info-label>Share</span><a href="https://twitter.com/share?text=Calibre-web, how to fix being locked out and reset password from shell&url=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label=Twitter class=twitter title=Twitter> <i class="icon icon-twitter" aria-hidden=true></i><span class=hidden>Twitter</span> </a><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" aria-label=Facebook class=facebook title=Facebook> <i class="icon icon-facebook" aria-hidden=true></i><span class=hidden>Facebook</span> </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/&title=Calibre-web, how to fix being locked out and reset password from shell" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;" aria-label=LinkedIn class=linkedin title=LinkedIn> <i class="icon icon-linkedin" aria-hidden=true></i><span class=hidden>LinkedIn</span> </a><a href="mailto:?subject=Calibre-web, how to fix being locked out and reset password from shell&body=https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/" aria-label=Email class=email title=Email> <i class="icon icon-mail" aria-hidden=true></i><span class=hidden>Email</span> </a><div class=clear></div></div><aside class=post-tags><a href=https://www.simonemessaggi.it/tag/ebook/>eBook</a><a href=https://www.simonemessaggi.it/tag/selfhosted/>Selfhosted</a><a href=https://www.simonemessaggi.it/tag/howto/>Howto</a></aside><div class=clear></div></section><aside class=post-nav><a class=post-nav-next href=https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/> <section class=post-nav-teaser><i class="icon icon-arrow-left"></i><h2 class=post-nav-title>Controlling Govee lights from your LAN in Home Assistant</h2><p class=post-nav-excerpt>I'm a big fan of Govee lights (this is the latest I've bought, and it's excellent),...<p class=post-nav-meta><time datetime="Sat 20 September 2025">Sat 20 September 2025</time></section> </a><a class=post-nav-prev href=https://www.simonemessaggi.it/2025/09/en/artec-poa4-pro-tone-precision-bass-27-euros/> <section class=post-nav-teaser><i class="icon icon-arrow-right"></i><h2 class=post-nav-title>Artec POA4, get pro tone on your p-bass for 27 euros!</h2><p class=post-nav-excerpt>Are you stuck on a bass that is a blast to play but has a bad sound? Here's a quick...<p class=post-nav-meta><time datetime="Sat 06 September 2025">Sat 06 September 2025</time></section> </a><div class=clear></div></aside></div></article></main><div class=nav-footer><nav aria-label=Footer class=nav-wrapper><span class=nav-copy><a href=/>SimoneMessaggi.it © 2025</a> </span><span class=nav-credits> Published with <a href=https://github.com/getpelican/pelican rel=nofollow>Pelican</a> • Theme <a href=https://github.com/arulrajnet/attila rel=nofollow>Attila</a> • <a class="menu-item js-theme" data-dark="Dark theme" data-light="Light theme" data-system="System theme" href=#> <span class=theme-icon></span><span class=theme-text>System theme</span> </a> </span></nav></div></section><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js></script><script src="https://www.simonemessaggi.it/theme/js/jquery.fitvids.min.js?cb=122334"></script><script src="https://www.simonemessaggi.it/theme/js/script.min.js?cb=122334"></script><script src="https://www.googletagmanager.com/gtag/js?id=G-Q242MTLMK7" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q242MTLMK7', { 'anonymize_ip': true });</script><script>$(document).ready(function () {
     var viewport = $(window);
     var post = $('.post-content');
     // Responsive videos with fitVids
@@ -357,7 +108,4 @@ root@xxx:/app/calibre-web#
       }
     });
 
-  });
-</script>
-</body>
-</html>
+  });</script>

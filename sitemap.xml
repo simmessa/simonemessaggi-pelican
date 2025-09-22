@@ -5,898 +5,898 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml"
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://127.0.0.1:8000/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2007/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2007/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2007/05/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2007/05/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2007/05/en/manowar-the-epic-years/</loc>
+<loc>https://www.simonemessaggi.it/2007/05/en/manowar-the-epic-years/</loc>
 <lastmod>2007-05-23T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2007/06/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2007/06/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2007/06/en/album-review-wim-roelants-burn/</loc>
+<loc>https://www.simonemessaggi.it/2007/06/en/album-review-wim-roelants-burn/</loc>
 <lastmod>2007-06-27T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2008/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2008/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2008/03/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2008/03/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2008/03/en/throwaway-emails-for-dummies/</loc>
+<loc>https://www.simonemessaggi.it/2008/03/en/throwaway-emails-for-dummies/</loc>
 <lastmod>2008-03-12T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2008/03/throwaway-emails-for-dummies/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2008/03/throwaway-emails-for-dummies/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2008/03/throwaway-emails-for-dummies/</loc>
+<loc>https://www.simonemessaggi.it/2008/03/throwaway-emails-for-dummies/</loc>
 <lastmod>2008-03-12T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2008/03/en/throwaway-emails-for-dummies/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2008/03/en/throwaway-emails-for-dummies/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2014/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2014/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2014/08/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2014/08/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2014/08/en/italy-so-behind-in-tech/</loc>
+<loc>https://www.simonemessaggi.it/2014/08/en/italy-so-behind-in-tech/</loc>
 <lastmod>2014-08-12T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2014/08/italy-so-behind-in-tech/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2014/08/italy-so-behind-in-tech/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2014/08/en/post-wordpress-cms-era/</loc>
+<loc>https://www.simonemessaggi.it/2014/08/en/post-wordpress-cms-era/</loc>
 <lastmod>2014-08-21T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2014/08/post-wordpress-cms-era/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2014/08/post-wordpress-cms-era/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2014/08/italy-so-behind-in-tech/</loc>
+<loc>https://www.simonemessaggi.it/2014/08/italy-so-behind-in-tech/</loc>
 <lastmod>2014-08-12T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2014/08/en/italy-so-behind-in-tech/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2014/08/en/italy-so-behind-in-tech/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2014/08/post-wordpress-cms-era/</loc>
+<loc>https://www.simonemessaggi.it/2014/08/post-wordpress-cms-era/</loc>
 <lastmod>2014-08-21T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2014/08/en/post-wordpress-cms-era/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2014/08/en/post-wordpress-cms-era/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2015/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2015/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2015/12/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2015/12/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2015/12/en/guide-knxnet-over-ip-protocol/</loc>
+<loc>https://www.simonemessaggi.it/2015/12/en/guide-knxnet-over-ip-protocol/</loc>
 <lastmod>2015-12-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2015/12/guide-knxnet-over-ip-protocol/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2015/12/guide-knxnet-over-ip-protocol/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2015/12/guide-knxnet-over-ip-protocol/</loc>
+<loc>https://www.simonemessaggi.it/2015/12/guide-knxnet-over-ip-protocol/</loc>
 <lastmod>2015-12-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2015/12/en/guide-knxnet-over-ip-protocol/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2015/12/en/guide-knxnet-over-ip-protocol/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2016/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2016/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2016/02/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2016/02/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/</loc>
+<loc>https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/</loc>
 <lastmod>2016-02-06T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2016/02/en/bruteforce-ssh-server/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2016/02/en/bruteforce-ssh-server/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2016/02/en/bruteforce-ssh-server/</loc>
+<loc>https://www.simonemessaggi.it/2016/02/en/bruteforce-ssh-server/</loc>
 <lastmod>2016-02-06T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2016/02/bruteforce-ssh-server/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2016/02/bruteforce-ssh-server/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2018/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/06/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2018/06/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/06/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/</loc>
+<loc>https://www.simonemessaggi.it/2018/06/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/</loc>
 <lastmod>2018-06-13T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/08/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2018/08/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/08/lo-stato-della-fibra-a-rivolta-dadda/</loc>
+<loc>https://www.simonemessaggi.it/2018/08/lo-stato-della-fibra-a-rivolta-dadda/</loc>
 <lastmod>2018-08-07T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/10/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2018/10/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/10/dump-rds-snapshot-to-sql-python-terraform/</loc>
+<loc>https://www.simonemessaggi.it/2018/10/dump-rds-snapshot-to-sql-python-terraform/</loc>
 <lastmod>2018-10-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/</loc>
+<loc>https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/</loc>
 <lastmod>2018-10-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2018/10/dump-rds-snapshot-to-sql-python-terraform/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2018/10/dump-rds-snapshot-to-sql-python-terraform/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/11/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2018/11/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/11/attract-talent-in-tech-world/</loc>
+<loc>https://www.simonemessaggi.it/2018/11/attract-talent-in-tech-world/</loc>
 <lastmod>2018-11-20T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2018/11/en/attract-talent-in-tech-world/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2018/11/en/attract-talent-in-tech-world/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/11/en/attract-talent-in-tech-world/</loc>
+<loc>https://www.simonemessaggi.it/2018/11/en/attract-talent-in-tech-world/</loc>
 <lastmod>2018-11-20T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2018/11/attract-talent-in-tech-world/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2018/11/attract-talent-in-tech-world/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2018/11/la-mia-esperienza-di-lavoro-a-ilgiornaleit/</loc>
+<loc>https://www.simonemessaggi.it/2018/11/la-mia-esperienza-di-lavoro-a-ilgiornaleit/</loc>
 <lastmod>2018-11-11T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2019/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2019/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2019/09/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2019/09/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2019/09/distroless-containers-improve-security/</loc>
+<loc>https://www.simonemessaggi.it/2019/09/distroless-containers-improve-security/</loc>
 <lastmod>2019-09-01T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2019/09/en/distroless-containers-improve-security/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2019/09/en/distroless-containers-improve-security/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2019/09/en/distroless-containers-improve-security/</loc>
+<loc>https://www.simonemessaggi.it/2019/09/en/distroless-containers-improve-security/</loc>
 <lastmod>2019-09-01T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2019/09/distroless-containers-improve-security/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2019/09/distroless-containers-improve-security/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2020/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2020/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2020/12/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2020/12/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2020/12/en/my-brief-history-mechanical-keyboards-part1/</loc>
+<loc>https://www.simonemessaggi.it/2020/12/en/my-brief-history-mechanical-keyboards-part1/</loc>
 <lastmod>2020-12-25T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="it" ref="http://127.0.0.1:8000/2020/12/my-brief-history-mechanical-keyboards-part1/"/>
+<xhtml:link rel="alternate" hreflang="it" ref="https://www.simonemessaggi.it/2020/12/my-brief-history-mechanical-keyboards-part1/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2020/12/my-brief-history-mechanical-keyboards-part1/</loc>
+<loc>https://www.simonemessaggi.it/2020/12/my-brief-history-mechanical-keyboards-part1/</loc>
 <lastmod>2020-12-25T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2020/12/en/my-brief-history-mechanical-keyboards-part1/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2020/12/en/my-brief-history-mechanical-keyboards-part1/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2025/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2025/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2025/09/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/2025/09/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2025/09/en/artec-poa4-pro-tone-precision-bass-27-euros/</loc>
+<loc>https://www.simonemessaggi.it/2025/09/en/artec-poa4-pro-tone-precision-bass-27-euros/</loc>
 <lastmod>2025-09-06T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2025/09/en/calibre-web-fix-account-lockout/</loc>
+<loc>https://www.simonemessaggi.it/2025/09/en/calibre-web-fix-account-lockout/</loc>
 <lastmod>2025-09-08T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/2025/09/en/control-govee-lights-local-lan-home-assistant/</loc>
+<loc>https://www.simonemessaggi.it/2025/09/en/control-govee-lights-local-lan-home-assistant/</loc>
 <lastmod>2025-09-20T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/album-review-wim-roelants-burn/</loc>
+<loc>https://www.simonemessaggi.it/album-review-wim-roelants-burn/</loc>
 <lastmod>2007-06-27T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/archive/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/archive/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/artec-poa4-pro-tone-precision-bass-27-euros/</loc>
+<loc>https://www.simonemessaggi.it/artec-poa4-pro-tone-precision-bass-27-euros/</loc>
 <lastmod>2025-09-06T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/attract-talent-in-tech-world/</loc>
+<loc>https://www.simonemessaggi.it/attract-talent-in-tech-world/</loc>
 <lastmod>2018-11-20T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2018/11/en/attract-talent-in-tech-world/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2018/11/en/attract-talent-in-tech-world/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/author/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/author/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/author/simmessa/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/author/simmessa/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/author/simmessa/index2.html</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/author/simmessa/index2.html</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/bruteforce-ssh-server/</loc>
+<loc>https://www.simonemessaggi.it/bruteforce-ssh-server/</loc>
 <lastmod>2016-02-06T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2016/02/en/bruteforce-ssh-server/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2016/02/en/bruteforce-ssh-server/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/calibre-web-fix-account-lockout/</loc>
+<loc>https://www.simonemessaggi.it/calibre-web-fix-account-lockout/</loc>
 <lastmod>2025-09-08T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/category/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/humans/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/category/humans/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/music/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/category/music/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/rants/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/category/rants/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/category/tech/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/category/tech/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/contact/</loc>
+<loc>https://www.simonemessaggi.it/contact/</loc>
 <lastmod>2025-08-19T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/control-govee-lights-local-lan-home-assistant/</loc>
+<loc>https://www.simonemessaggi.it/control-govee-lights-local-lan-home-assistant/</loc>
 <lastmod>2025-09-20T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/distroless-containers-improve-security/</loc>
+<loc>https://www.simonemessaggi.it/distroless-containers-improve-security/</loc>
 <lastmod>2019-09-01T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2019/09/en/distroless-containers-improve-security/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2019/09/en/distroless-containers-improve-security/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/dump-rds-snapshot-to-sql-python-terraform/</loc>
+<loc>https://www.simonemessaggi.it/dump-rds-snapshot-to-sql-python-terraform/</loc>
 <lastmod>2018-10-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2018/10/en/dump-rds-snapshot-to-sql-python-terraform/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/guide-knxnet-over-ip-protocol/</loc>
+<loc>https://www.simonemessaggi.it/guide-knxnet-over-ip-protocol/</loc>
 <lastmod>2015-12-31T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2015/12/en/guide-knxnet-over-ip-protocol/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2015/12/en/guide-knxnet-over-ip-protocol/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/index2.html</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/index2.html</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/italy-so-behind-in-tech/</loc>
+<loc>https://www.simonemessaggi.it/italy-so-behind-in-tech/</loc>
 <lastmod>2014-08-12T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2014/08/en/italy-so-behind-in-tech/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2014/08/en/italy-so-behind-in-tech/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/la-mia-esperienza-di-lavoro-a-ilgiornaleit/</loc>
+<loc>https://www.simonemessaggi.it/la-mia-esperienza-di-lavoro-a-ilgiornaleit/</loc>
 <lastmod>2018-11-11T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/lo-stato-della-fibra-a-rivolta-dadda/</loc>
+<loc>https://www.simonemessaggi.it/lo-stato-della-fibra-a-rivolta-dadda/</loc>
 <lastmod>2018-08-07T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/manowar-the-epic-years/</loc>
+<loc>https://www.simonemessaggi.it/manowar-the-epic-years/</loc>
 <lastmod>2007-05-23T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/my-brief-history-mechanical-keyboards-part1/</loc>
+<loc>https://www.simonemessaggi.it/my-brief-history-mechanical-keyboards-part1/</loc>
 <lastmod>2020-12-25T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2020/12/en/my-brief-history-mechanical-keyboards-part1/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2020/12/en/my-brief-history-mechanical-keyboards-part1/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/pages/contact/</loc>
+<loc>https://www.simonemessaggi.it/pages/contact/</loc>
 <lastmod>2025-08-19T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/</loc>
+<loc>https://www.simonemessaggi.it/perche-wordpress-non-e-adatto-ai-siti-di-grosse-dimensioni/</loc>
 <lastmod>2018-06-13T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/post-wordpress-cms-era/</loc>
+<loc>https://www.simonemessaggi.it/post-wordpress-cms-era/</loc>
 <lastmod>2014-08-21T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2014/08/en/post-wordpress-cms-era/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2014/08/en/post-wordpress-cms-era/"/>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/album/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/album/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/aws-cloud/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/aws-cloud/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/bass-pickups/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/bass-pickups/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/cherry-mx/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/cherry-mx/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/cms/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/cms/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/digital-divide/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/digital-divide/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/distroless/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/distroless/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/diy/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/diy/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/docker/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/docker/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/ebook/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/ebook/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/email/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/email/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/fail2ban/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/fail2ban/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/fibra-ottica/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/fibra-ottica/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/ghost/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/ghost/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/govee/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/govee/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/hack/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/hack/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/home-assistant/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/home-assistant/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/home-automation/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/home-automation/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/howto/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/howto/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/iot/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/iot/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/knx/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/knx/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/kubernetes/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/kubernetes/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/led-lights/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/led-lights/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/legacy/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/legacy/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/mechanical-keyboards/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/mechanical-keyboards/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/mysql/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/mysql/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/nodejs/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/nodejs/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/p-bass/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/p-bass/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/performance/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/performance/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/python/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/python/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/rds/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/rds/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/review/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/review/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/security/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/security/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/selfhosted/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/selfhosted/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/ssh/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/ssh/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/startups/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/startups/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/talent/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/talent/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/talk/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/talk/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/teambuilding/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/teambuilding/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/tech/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/tech/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/terraform/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/terraform/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/trends/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/trends/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/tutorial/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/tutorial/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/upgrades/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/upgrades/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/wordpress/</loc>
-<lastmod>2025-09-22T11:43:29-00:00</lastmod>
+<loc>https://www.simonemessaggi.it/tag/wordpress/</loc>
+<lastmod>2025-09-22T12:01:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/throwaway-emails-for-dummies/</loc>
+<loc>https://www.simonemessaggi.it/throwaway-emails-for-dummies/</loc>
 <lastmod>2008-03-12T00:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
-<xhtml:link rel="alternate" hreflang="en" ref="http://127.0.0.1:8000/2008/03/en/throwaway-emails-for-dummies/"/>
+<xhtml:link rel="alternate" hreflang="en" ref="https://www.simonemessaggi.it/2008/03/en/throwaway-emails-for-dummies/"/>
 </url>
 
 </urlset>
