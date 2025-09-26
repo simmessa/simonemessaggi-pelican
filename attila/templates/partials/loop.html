@@ -11,6 +11,13 @@
             {% set primary_tag=article.tags[0] %}
         {% endif %}
 
+
+        {% if (loop.index == 1 or loop.index == 2) %}
+            {% set LAZY_LOADING='' %}
+        {% else %}
+            {% set LAZY_LOADING='loading="lazy"' %}
+        {% endif %}
+
     <article class="post">
         <div class="inner">
             <div class="box post-box">
@@ -18,7 +25,7 @@
                     {% set selected_cover = article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
                 {% else %}
                     {% set selected_cover = SITEURL+"/"+article.cover|replace("images/","images/webp/")|replace(".jpg",".webp")|replace(".jpeg",".webp")|replace(".png",".webp") %}
-                    <img src="{{ selected_cover }}" class="boh" alt="{{ article.summary|striptags|truncate(100) }}" rel="preload" fetchpriority="high"/>
+                    <img src="{{ selected_cover }}" {{ LAZY_LOADING }} alt="{{ article.summary|striptags|truncate(100) }}" rel="preload" fetchpriority="high"/>
                 {% endif %}
                 <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>
