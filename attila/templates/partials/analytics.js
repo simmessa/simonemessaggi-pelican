@@ -1,5 +1,5 @@
-{% if GOOGLE_ANALYTICS %}
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+{% if GOOGLE_ANALYTICS_OLD %}
+    <!-- Global Site Tag (gtag.js) - Google Analytics - OLD VERSION-->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{GOOGLE_ANALYTICS}}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -8,6 +8,18 @@
         gtag('config', '{{GOOGLE_ANALYTICS}}', { 'anonymize_ip': true });
     </script>
 {% endif %}
+
+{% if GOOGLE_ANALYTICS %}
+    <!-- Google tag (gtag.js) - SM modded version-->
+    <script async src="/theme/js/ga.js?id={{GOOGLE_ANALYTICS}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{GOOGLE_ANALYTICS}}', { 'anonymize_ip': true });
+    </script>
+{% endif %}
+
 {% if GAUGES %}
     <script type="text/javascript">
     var _gauges = _gauges || [];

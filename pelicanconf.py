@@ -169,3 +169,6 @@ INLINE_JS_MIN = False
 # Random cache breakers
 JSMIN = ".min"
 CB = "?cb=123"
+
+# just for testing
+GOOGLE_ANALYTICS = "G-Q242MTLMK7"
