@@ -14,7 +14,7 @@ tags: tag1, tag2
 
 Your text
 
-![ALT text](./images/coverimage.jpg)
+![ALT text](/images/coverimage.jpg)
 
 ## Title
 
