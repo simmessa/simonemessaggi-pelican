@@ -223,7 +223,7 @@ td,th {
     src: url("../font/icon.eot?89549845#iefix") format("embedded-opentype"),url("../font/icon.woff2?89549845") format("woff2"),url("../font/icon.woff?89549845") format("woff"),url("../font/icon.ttf?89549845") format("truetype"),url("../font/icon.svg?89549845#icon") format("svg");
     font-weight: normal;
     font-style: normal;
-    font-display: swap
+    font-display: block; /* block until font is loaded */
 }
 
 [class^="icon-"]:before,[class*=" icon-"]:before {
@@ -1351,7 +1351,7 @@ button,input,select,textarea {
 }
 
 .blog-description {
-    font-family: var(--font-secondary);
+    /* font-family: var(--font-secondary); */
     display: block;
     margin-top: 1rem;
     padding: 0;
