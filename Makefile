@@ -67,7 +67,8 @@ devserver:
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
-	rm content/images/webp/*.webp
+	rm content/images/webp/*.webp -f
+	cp content/images/*.webp content/images/webp/
 	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/ --profile space_saver --keep-originals
 	"$(PELICAN)" -lr
 
@@ -75,7 +76,8 @@ devserver-global:
 	"$(PELICAN)" "$(INPUTDIR)" -o "$(OUTPUTDIR)" -s "$(CONFFILE)" $(PELICANOPTS)
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
-	rm content/images/webp/*.webp
+	rm content/images/webp/*.webp -f
+	cp content/images/*.webp content/images/webp/
 	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/ --profile space_saver --keep-originals
 	"$(PELICAN)" -lr -b 0.0.0.0
 
@@ -85,7 +87,8 @@ publish:
 github: publish
 	css-html-js-minify output/theme/js/jquery.fitvids.js
 	css-html-js-minify output/theme/js/script.js
-	rm content/images/webp/*.webp
+	rm content/images/webp/*.webp -f
+	cp content/images/*.webp content/images/webp/
 	python3 image-to-webp-converter/image_to_webp.py content/images/ -r -o content/images/webp/ --profile space_saver --keep-originals
 	ghp-import -m "$(GITHUB_PAGES_COMMIT_MESSAGE)" -b $(GITHUB_PAGES_BRANCH) "$(OUTPUTDIR)" --no-jekyll
 	git push origin $(GITHUB_PAGES_BRANCH)
