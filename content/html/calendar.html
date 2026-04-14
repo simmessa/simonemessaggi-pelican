@@ -148,10 +148,10 @@ body::before {
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
     border-radius: 15px;
     padding: 25px;
-    display: flex;
-    gap: 25px;
     transition: all 0.3s ease;
     border-left: 5px solid #667eea;
+    display: flex;
+    gap: 25px;
 }
 
 .event-card:hover {
@@ -230,6 +230,37 @@ body::before {
 .maps-link:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.calendar-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.calendar-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+}
+
+.event-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.maps-link,
+.calendar-link {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .no-events {
@@ -316,18 +347,25 @@ body::before {
                                     <span class="icon">📍</span>
                                     {{ event.address || event.Address }}
                                 </p>
-                                <a v-if="event.map_link" 
-                                   :href="event.map_link" 
-                                   target="_blank" 
-                                   class="maps-link">
-                                    View on Google Maps ↗
-                                </a>
-                                <a v-else 
-                                   :href="getMapLink(event)" 
-                                   target="_blank" 
-                                   class="maps-link">
-                                    View on Google Maps ↗
-                                </a>
+                                <div class="event-buttons">
+                                    <a v-if="event.map_link" 
+                                       :href="event.map_link" 
+                                       target="_blank" 
+                                       class="maps-link">
+                                        View on Google Maps ↗
+                                    </a>
+                                    <a v-else 
+                                       :href="getMapLink(event)" 
+                                       target="_blank" 
+                                       class="maps-link">
+                                        View on Google Maps ↗
+                                    </a>
+                                    <a :href="getGoogleCalendarLink(event)" 
+                                       target="_blank" 
+                                       class="calendar-link">
+                                        Add to Google Calendar
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -465,6 +503,27 @@ createApp({
             const address = event.address || event.Address;
             const encodedAddress = encodeURIComponent(address);
             return `http://maps.google.com/maps?q=${encodedAddress}`;
+        },
+        getGoogleCalendarLink(event) {
+            const title = event.event_title || '';
+            const details = event.extra_description || event.event_description || '';
+            const location = event.address || event.Address || '';
+            
+            const parts = event.starting_time.split('_');
+            const dateStr = parts[0];
+            const timeStr = parts[1] || '00:00';
+            
+            const startDate = `${dateStr}T${timeStr.replace(/:/g, '')}`;
+            
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            const endHours = hours + 2;
+            const endDate = `${dateStr}T${String(endHours).padStart(2, '0')}${String(minutes).padStart(2, '0')}`;
+            
+            const encodedTitle = encodeURIComponent(title);
+            const encodedDetails = encodeURIComponent(details);
+            const encodedLocation = encodeURIComponent(location);
+            
+            return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodedTitle}&dates=${startDate}/${endDate}&details=${encodedDetails}&location=${encodedLocation}`;
         }
     }
 }).mount('#app');
