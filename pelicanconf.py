@@ -58,7 +58,8 @@ DEFAULT_LANG = 'it'
 STATIC_PATHS = ['images', 'extra/CNAME', 'extra/ico', 'html']
 EXTRA_PATH_METADATA = {
   'extra/CNAME': {'path': 'CNAME'},
-  'html/metronome.html': {'path': 'metronome.html'}
+  'html/metronome.html': {'path': 'metronome.html'},
+  'html/calendar.html': {'path': 'calendar.html'}
 }
 ARTICLE_EXCLUDES = ['html'] 
 
