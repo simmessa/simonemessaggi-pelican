@@ -513,11 +513,24 @@ createApp({
             const dateStr = parts[0];
             const timeStr = parts[1] || '00:00';
             
-            const startDate = `${dateStr}T${timeStr.replace(/:/g, '')}`;
+            const [startHours, startMinutes] = timeStr.split(':').map(Number);
             
-            const [hours, minutes] = timeStr.split(':').map(Number);
-            const endHours = hours + 2;
-            const endDate = `${dateStr}T${String(endHours).padStart(2, '0')}${String(minutes).padStart(2, '0')}`;
+            const eventStartMinutes = startHours * 60 + startMinutes;
+            const calendarStartMinutes = eventStartMinutes - 30;
+            
+            let calHours, calMinutes;
+            if (calendarStartMinutes < 0) {
+                calHours = 23 + Math.floor(calendarStartMinutes / 60);
+                calMinutes = 60 + (calendarStartMinutes % 60);
+            } else {
+                calHours = Math.floor(calendarStartMinutes / 60);
+                calMinutes = calendarStartMinutes % 60;
+            }
+            
+            const startDate = `${dateStr}T${String(calHours).padStart(2, '0')}${String(calMinutes).padStart(2, '0')}`;
+            
+            const endHours = startHours + 2;
+            const endDate = `${dateStr}T${String(endHours).padStart(2, '0')}${String(startMinutes).padStart(2, '0')}`;
             
             const encodedTitle = encodeURIComponent(title);
             const encodedDetails = encodeURIComponent(details);
