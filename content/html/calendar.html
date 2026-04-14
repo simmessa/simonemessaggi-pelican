@@ -509,28 +509,56 @@ createApp({
             const details = event.extra_description || event.event_description || '';
             const location = event.address || event.Address || '';
             
+            // Parse date and time: 2026-04-18_10:00_GMT+2
             const parts = event.starting_time.split('_');
             const dateStr = parts[0];
             const timeStr = parts[1] || '00:00';
+            const tz = parts[2] || 'GMT+2';
+            
+            // Parse date: 2026-04-18 -> 20260418
+            const [year, month, day] = dateStr.split('-');
+            const formattedDate = `${year}${month}${day}`;
             
             const [startHours, startMinutes] = timeStr.split(':').map(Number);
             
-            const eventStartMinutes = startHours * 60 + startMinutes;
-            const calendarStartMinutes = eventStartMinutes - 30;
+            // Extract timezone offset (e.g., GMT+2 -> 2, GMT-1 -> -1)
+            const tzMatch = tz.match(/[+|-](\d+)/);
+            const tzOffsetHours = tzMatch ? parseInt(tzMatch[1]) : 0;
             
+            // Convert from local time to UTC
+            const localStartMinutes = startHours * 60 + startMinutes;
+            const utcStartMinutes = localStartMinutes - (tzOffsetHours * 60);
+            
+            // Start time = 30 minutes before local time in UTC
+            const calendarStartMinutes = localStartMinutes - 30;
+            const utcCalendarStartMinutes = calendarStartMinutes - (tzOffsetHours * 60);
+            
+            // Calculate UTC hours/minutes for calendar start
             let calHours, calMinutes;
-            if (calendarStartMinutes < 0) {
-                calHours = 23 + Math.floor(calendarStartMinutes / 60);
-                calMinutes = 60 + (calendarStartMinutes % 60);
+            if (utcCalendarStartMinutes < 0) {
+                calHours = 23 + Math.floor(utcCalendarStartMinutes / 60);
+                calMinutes = 60 + (utcCalendarStartMinutes % 60);
             } else {
-                calHours = Math.floor(calendarStartMinutes / 60);
-                calMinutes = calendarStartMinutes % 60;
+                calHours = Math.floor(utcCalendarStartMinutes / 60);
+                calMinutes = utcCalendarStartMinutes % 60;
             }
             
-            const startDate = `${dateStr}T${String(calHours).padStart(2, '0')}${String(calMinutes).padStart(2, '0')}`;
+            const startDate = `${formattedDate}T${String(calHours).padStart(2, '0')}${String(calMinutes).padStart(2, '0')}Z`;
             
-            const endHours = startHours + 2;
-            const endDate = `${dateStr}T${String(endHours).padStart(2, '0')}${String(startMinutes).padStart(2, '0')}`;
+            // End time = 2 hours after local start time in UTC
+            const localEndMinutes = (startHours + 2) * 60 + startMinutes;
+            const utcEndMinutes = localEndMinutes - (tzOffsetHours * 60);
+            
+            let endH, endM;
+            if (utcEndMinutes < 0) {
+                endH = 23 + Math.floor(utcEndMinutes / 60);
+                endM = 60 + (utcEndMinutes % 60);
+            } else {
+                endH = Math.floor(utcEndMinutes / 60);
+                endM = utcEndMinutes % 60;
+            }
+            
+            const endDate = `${formattedDate}T${String(endH).padStart(2, '0')}${String(endM).padStart(2, '0')}Z`;
             
             const encodedTitle = encodeURIComponent(title);
             const encodedDetails = encodeURIComponent(details);
