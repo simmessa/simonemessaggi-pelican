@@ -179,10 +179,10 @@ body::before {
 
 .date-time {
     display: block;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 1.3rem;
+    color: #ff8c00;
     margin-top: 5px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .event-details {
@@ -403,7 +403,7 @@ const calendarData = {
                 },
                 {
                     "event_title": "Rivolta d'Adda vs Linea Verde",
-                    "starting_time": "2026-04-25_17:00_GMT+2",
+                    "starting_time": "2026-04-25_10:30_GMT+2",
                     "address": "Rivolta d'Adda, Via G.Galilei, 1, Palestra Comunale",
                     "extra_description": "Pronti in palestra mezz'ora prima per il riscaldamento"
                 },
@@ -489,8 +489,10 @@ createApp({
     methods: {
         getEventDay(timeString) {
             const datePart = timeString.split('_')[0];
-            const date = new Date(datePart);
-            return date.getDate();
+            const [year, month, day] = datePart.split('-');
+            // Convert month to number to remove leading zero, then format dd/m
+            const monthNum = parseInt(month);
+            return `${day}/${monthNum}`;
         },
         getEventTime(timeString) {
             const timePart = timeString.split('_')[1];
