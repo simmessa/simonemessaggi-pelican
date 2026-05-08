@@ -3,7 +3,7 @@ date: 2025-08-19
 title: Just your title
 slug: your-slug-here
 lang: it
-cover: images/coverimage.jpg
+cover: images/placeholder.webp
 author: simmessa
 status: hidden
 category: none
@@ -14,7 +14,7 @@ tags: tag1, tag2
 
 Testo
 
-![ALT text](/images/webp/coverimage.webp)
+![ALT text](/images/coverimage.webp)
 
 ## Titolo
 
