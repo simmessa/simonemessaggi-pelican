@@ -81,7 +81,9 @@ Questo rende il lavoro riproducibile, e anche migliorabile, se volete.
 
 ## Finalmente: Il riassunto, cos'e', cosa non e'
 
-Il riassunto e' un file in formato Markdown che trovate [qui](/2026/05/riassunto-amministrative-2026). buona lettura.
+Il riassunto e' un file in formato Markdown che trovate pubblicato anche qui:
+
+[Buona lettura.](/2026/05/riassunto-amministrative-2026)
 
 Ovviamente si tratta di un riassunto automatico, l'AI non prende le parti politiche di nessuno, quindi dovrebbe essere libero da bias vari, anche se non si puo' garantire che tecnicamente il modello sia imparziale, perche' il training viene svolto partendo da materiale generato da esseri umani, e che quindi raramente possiamo definire "oggettivo".
 
